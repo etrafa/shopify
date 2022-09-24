@@ -1,3 +1,7 @@
+//react
+import { useState } from "react";
+
+//image && icons
 import SearchIcon, {
   BagIcon,
   UserIcon,
@@ -6,15 +10,13 @@ import SearchIcon, {
 } from "../../Utilities/Icons/Icons";
 import Image from "next/image";
 import Logo from "../../public/logo.png";
-import styles from "./Navbar.module.css";
-import { useState } from "react";
 
 const Navbar = () => {
-  const [isNavbarOpen, setIsNavbarOpen] = useState(false); //check if navbar is open.
+  const [isNavbarOpen, setIsNavbarOpen] = useState(true); //check if navbar is open.
 
   return (
     <nav>
-      <div className="flex justify-between items-center mx-6 mt-2 lg:justify-center lg:gap-x-12">
+      <div className="flex justify-between items-center mx-6 mt-12 lg:justify-center lg:gap-x-12">
         {!isNavbarOpen && (
           <HamburgerIcon
             navbarClickHandler={() => setIsNavbarOpen(!isNavbarOpen)}
@@ -36,34 +38,45 @@ const Navbar = () => {
           className="cursor-pointer"
         />
 
-        <div className="hidden lg:block">
-          <ul className="flex ml-4">
-            <li className="uppercase text-sm px-4 cursor-pointer hover:underline">
+        <div
+          className={
+            isNavbarOpen
+              ? "absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto"
+              : "hidden lg:block absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto"
+          }
+        >
+          <ul className="flex ml-4 flex-col lg:flex-row">
+            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
               Home
             </li>
-            <li className="uppercase text-sm px-4 cursor-pointer hover:underline">
+            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
               National Team
             </li>
-            <li className="uppercase text-sm px-4 cursor-pointer hover:underline">
+            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
               Premier Leauge
             </li>
-            <li className="uppercase text-sm px-4 cursor-pointer hover:underline">
+            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
               Bundesliga
             </li>
-            <li className="uppercase text-sm px-4 cursor-pointer hover:underline">
+            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
               Serie A
             </li>
-            <li className="uppercase text-sm px-4 cursor-pointer hover:underline">
+            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
               La Liga
             </li>
-            <li className="uppercase text-sm px-4 cursor-pointer hover:underline">
+            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
               Ligue One
             </li>
-            <li className="uppercase text-sm px-4 cursor-pointer hover:underline">
+            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
               Other Clubs
+            </li>
+            <li className="lg:hidden uppercase text-sm p-4 cursor-pointer hover:underline">
+              Sign up
+              <UserIcon iconStyle="w-5 h-5 cursor-pointer hover:scale-110 lg:hidden inline-block" />
             </li>
           </ul>
         </div>
+
         <div className="flex gap-x-4">
           <SearchIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110" />
           <UserIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110 hidden lg:block" />
