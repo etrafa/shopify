@@ -10,6 +10,7 @@ import SearchIcon, {
 } from "../../Utilities/Icons/Icons";
 import Image from "next/image";
 import Logo from "../../public/logo.png";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(true); //check if navbar is open.
@@ -46,37 +47,53 @@ const Navbar = () => {
           }
         >
           <ul className="flex ml-4 flex-col lg:flex-row">
-            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
-              Home
-            </li>
-            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
-              National Team
-            </li>
-            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
-              Premier Leauge
-            </li>
-            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
-              Bundesliga
-            </li>
-            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
-              Serie A
-            </li>
-            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
-              La Liga
-            </li>
-            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
-              Ligue One
-            </li>
-            <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
-              Other Clubs
-            </li>
+            <Link href="/">
+              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
+                Home
+              </li>
+            </Link>
+            <Link href="/store/national-teams">
+              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
+                National Team
+              </li>
+            </Link>
+
+            <Link href="/store-premier-leauge">
+              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
+                Premier Leauge
+              </li>
+            </Link>
+            <Link href="/store-bundesliga">
+              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
+                Bundesliga
+              </li>
+            </Link>
+            <Link href="/store-seriea-leauge">
+              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
+                Serie A
+              </li>
+            </Link>
+            <Link href="/store-la-liga">
+              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
+                La Liga
+              </li>
+            </Link>
+            <Link href="/store-ligue-one">
+              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
+                Ligue One
+              </li>
+            </Link>
+            <Link href="/store-other-clubs">
+              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
+                Other Clubs
+              </li>
+            </Link>
             <li className="lg:hidden uppercase text-sm p-4 cursor-pointer hover:underline">
               Sign up
               <UserIcon iconStyle="w-5 h-5 cursor-pointer hover:scale-110 lg:hidden inline-block" />
             </li>
           </ul>
         </div>
-
         <div className="flex gap-x-4">
           <SearchIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110" />
           <UserIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110 hidden lg:block" />
