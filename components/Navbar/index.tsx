@@ -52,38 +52,38 @@ const Navbar = () => {
                 Home
               </li>
             </Link>
-            <Link href="/store/national-teams">
+            <Link href="/leauge/national-teams">
               <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
                 National Team
               </li>
             </Link>
 
-            <Link href="/store-premier-leauge">
+            <Link href="/leauge/premier-leauge">
               <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
                 Premier Leauge
               </li>
             </Link>
-            <Link href="/store-bundesliga">
+            <Link href="/leauge/bundesliga">
               <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
                 Bundesliga
               </li>
             </Link>
-            <Link href="/store-seriea-leauge">
+            <Link href="/leauge/seriea-leauge">
               <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
                 Serie A
               </li>
             </Link>
-            <Link href="/store-la-liga">
+            <Link href="/leauge/la-liga">
               <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
                 La Liga
               </li>
             </Link>
-            <Link href="/store-ligue-one">
+            <Link href="/leauge/ligue-one">
               <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
                 Ligue One
               </li>
             </Link>
-            <Link href="/store-other-clubs">
+            <Link href="/leauge/other-clubs">
               <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
                 Other Clubs
               </li>
