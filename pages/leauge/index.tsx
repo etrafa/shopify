@@ -22,24 +22,13 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export const getStaticPaths = () => {
-  return {
-    paths: [
-      "/leauge/national-teams",
-      "/leauge/premier-leauge",
-      "/leauge/bundesliga",
-      "/leauge/seriea-leauge",
-      "/leauge/la-liga",
-      "/leauge/ligue-one",
-      "/leauge/other-clubs",
-    ],
-    fallback: true,
-  };
-};
+const Store: NextPage<{ data: IProduct[] }> = ({ data }) => {
+  console.log(data.map((item) => item.id));
 
-const LeaugeStore: NextPage<{ data: IProduct[] }> = ({ data }) => {
-  console.log(data);
-
-  return <div>Leauge Store</div>;
+  return (
+    <div>
+      <h2>hey</h2>
+    </div>
+  );
 };
-export default LeaugeStore;
+export default Store;
