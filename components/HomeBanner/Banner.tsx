@@ -16,42 +16,42 @@ import styles from "./Banner.module.css";
 const Banner = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:w-10/12 xl:w-8/12 lg:mx-auto gap-4 mt-8">
-      <Link href="/store/national-teams">
+      <Link href="/leauge/national-teams">
         <Image
           className={styles.zoomAnimation}
           src={NationalTeam}
           alt="national team banner"
         />
       </Link>
-      <Link href="/store/premier-leauge">
+      <Link href="/leauge/premier-leauge">
         <Image
           className={styles.zoomAnimation}
           src={PremierLeauge}
           alt="premier leauge banner"
         />
       </Link>
-      <Link href="/store/bundesliga">
+      <Link href="/leauge/bundesliga">
         <Image
           className={styles.zoomAnimation}
           src={Bundesliga}
           alt="bundesliga banner"
         />
       </Link>
-      <Link href="/store/seriea-leauge">
+      <Link href="/leauge/seriea-leauge">
         <Image
           className={styles.zoomAnimation}
           src={SeriA}
           alt="serie-a banner"
         />
       </Link>
-      <Link href="/store/la-liga">
+      <Link href="/leauge/la-liga">
         <Image
           className={styles.zoomAnimation}
           src={LaLiga}
           alt="la-liga banner"
         />
       </Link>
-      <Link href="/store/ligue-one">
+      <Link href="/leauge/ligue-one">
         <Image
           className={styles.zoomAnimation}
           src={LigueOne}
