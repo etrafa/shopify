@@ -1,6 +1,7 @@
 import { collection, DocumentData, getDocs } from "firebase/firestore";
 import { GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
+import StoreLayout from "../../components/StoreLayout/StoreLayout";
 import { db } from "../../firebase/firabaseConfig";
 import { IProduct } from "../../interfaces/ProductInterface";
 
@@ -45,6 +46,27 @@ export const getStaticPaths = () => {
 const LeaugeStore: NextPage<{ data: IProduct[] }> = ({ data }) => {
   console.log(data);
 
-  return <div>Leauge Store</div>;
+  return (
+    <div className="grid grid-cols-2 px-4 mt-12 md:grid-cols-3 lg:grid-cols-4 lg:mx-36 xl:grid-cols-5">
+      {data.map((tshirt) => {
+        return (
+          <StoreLayout
+            backLarge={tshirt.backLarge}
+            backSmall={tshirt.backLarge}
+            description={tshirt.description}
+            frontLarge={tshirt.frontLarge}
+            frontSmall={tshirt.frontSmall}
+            id={tshirt.id}
+            isBestSeller={tshirt.isBestSeller}
+            isStock={tshirt.isStock}
+            leauge={tshirt.leauge}
+            price={tshirt.price}
+            tshirtName={tshirt.tshirtName}
+            key={tshirt.id}
+          />
+        );
+      })}
+    </div>
+  );
 };
 export default LeaugeStore;

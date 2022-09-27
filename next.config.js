@@ -11,6 +11,9 @@ const nextConfig = {
     NEXT_MESSAGING_SENDER_ID: process.env.NEXT_MESSAGING_SENDER_ID,
     NEXT_APP_ID: process.env.NEXT_APP_ID,
   },
+  images: {
+    domains: ["firebasestorage.googleapis.com"],
+  },
 };
 
 module.exports = nextConfig;
