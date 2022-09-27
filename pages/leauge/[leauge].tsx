@@ -1,11 +1,15 @@
 import { collection, DocumentData, getDocs } from "firebase/firestore";
 import { GetStaticProps, NextPage } from "next";
-import { useGetDocs } from "../../customHooks/useGetDocs";
+import { ParsedUrlQuery } from "querystring";
 import { db } from "../../firebase/firabaseConfig";
 import { IProduct } from "../../interfaces/ProductInterface";
 
-export const getStaticProps: GetStaticProps = async () => {
-  const colRef = collection(db, "bundesliga");
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { params } = context;
+  const leaugeID = params?.leauge;
+
+  const colRef = collection(db, `${leaugeID}`);
+
   const res = await getDocs(colRef);
 
   const data = res.docs.map((item) => {
@@ -18,6 +22,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       data,
+      params,
     },
   };
 };
@@ -37,7 +42,10 @@ export const getStaticPaths = () => {
   };
 };
 
-const LeaugeStore: NextPage<{ data: IProduct[] }> = ({ data }) => {
+const LeaugeStore: NextPage<{ data: IProduct[]; params: ParsedUrlQuery }> = ({
+  data,
+  params,
+}) => {
   console.log(data);
 
   return <div>Leauge Store</div>;
