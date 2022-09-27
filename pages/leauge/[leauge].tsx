@@ -42,10 +42,7 @@ export const getStaticPaths = () => {
   };
 };
 
-const LeaugeStore: NextPage<{ data: IProduct[]; params: ParsedUrlQuery }> = ({
-  data,
-  params,
-}) => {
+const LeaugeStore: NextPage<{ data: IProduct[] }> = ({ data }) => {
   console.log(data);
 
   return <div>Leauge Store</div>;
