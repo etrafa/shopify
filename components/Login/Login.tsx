@@ -30,7 +30,7 @@ const Login = () => {
       </h1>
       <form className="px-8 py-8 w-11/12 mx-auto max-w-3xl">
         <CustomInput
-          type="text"
+          type="email"
           changeHandler={() => console.log("hey")}
           isInputClicked={emailInputClicked}
           setIsInputClicked={setEmailInputClicked}
@@ -49,7 +49,6 @@ const Login = () => {
           labelText="Password"
           labelHTMLForTag="password"
         />
-
         <button className="border w-44 h-12 bg-light-gray text-sm tracking-widest hover:scale-105 ease-in-out text-button-text">
           Sign in
         </button>
