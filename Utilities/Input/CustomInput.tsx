@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import styles from "./CustomInput.module.css";
 
 interface CustomInputProps {
   type: string;
-  changeHandler: () => void;
+  changeHandler: (e: ChangeEvent<HTMLInputElement>) => void;
   isInputClicked: boolean;
   setIsInputClicked: React.Dispatch<React.SetStateAction<boolean>>;
   placeholderText: string;
@@ -18,7 +18,7 @@ const CustomInput = (props: CustomInputProps) => {
       <input
         className={styles.input}
         type={props.type}
-        onChange={props.changeHandler}
+        onChange={(e) => props.changeHandler(e)}
         onFocus={(e) => {
           e.target.placeholder = "";
           props.setIsInputClicked(true);
