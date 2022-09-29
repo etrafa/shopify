@@ -1,0 +1,33 @@
+.loginContainer {
+  width: 100%;
+  height: 3rem;
+  max-width: 26rem;
+  display: block;
+  margin: 2rem auto;
+  position: relative;
+}
+
+.loginInput {
+  width: 100%;
+  height: 3rem;
+  border: 1px solid black;
+  padding: 15px;
+  padding-top: 20px;
+}
+
+.loginInput::placeholder {
+  color: #404040;
+}
+
+.loginLabelDisabled {
+  display: none;
+}
+
+.loginLabelActive {
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 1.2rem;
+  color: #404040;
+  font-size: 10px;
+}

@@ -48,11 +48,6 @@ const Footer = () => {
                 Return Policy
               </li>
             </Link>
-            <Link href="/payment-method">
-              <li className="mt-2 cursor-pointer hover:underline">
-                Payment Method
-              </li>
-            </Link>
           </ul>
         </div>
         <div className="pt-8 px-6">
