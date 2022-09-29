@@ -1,4 +1,6 @@
+import CreateAccount from "../../components/Register/CreateAccount";
+
 const register = () => {
-  return <div></div>;
+  return <CreateAccount />;
 };
 export default register;

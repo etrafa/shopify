@@ -1,4 +1,5 @@
 import { ChangeEvent, MouseEvent, useState } from "react";
+import CustomInput from "../../Utilities/Input/CustomInput";
 import styles from "./Login.module.css";
 
 const Login = () => {
@@ -28,67 +29,27 @@ const Login = () => {
         Login
       </h1>
       <form className="px-8 py-8 w-11/12 mx-auto max-w-3xl">
-        <div className={styles.loginContainer}>
-          <input
-            className={styles.loginInput}
-            type="text"
-            onChange={changeHandler}
-            onFocus={(e) => {
-              e.target.placeholder = "";
+        <CustomInput
+          type="text"
+          changeHandler={() => console.log("hey")}
+          isInputClicked={emailInputClicked}
+          setIsInputClicked={setEmailInputClicked}
+          placeholderText="Email"
+          inputName="email"
+          labelText="Email"
+          labelHTMLForTag="email"
+        />
+        <CustomInput
+          type="password"
+          changeHandler={() => console.log("hey")}
+          isInputClicked={passwordInputClicked}
+          setIsInputClicked={setPasswordInputClicked}
+          placeholderText="Password"
+          inputName="password"
+          labelText="Password"
+          labelHTMLForTag="password"
+        />
 
-              setEmailInputClicked(true);
-            }}
-            onBlur={(e) => {
-              e.target.placeholder = "Email";
-              setEmailInputClicked(false);
-              if (e.target.value.length >= 1) {
-                setEmailInputClicked(true);
-              }
-            }}
-            name="customerEmail"
-            placeholder="Email"
-          />
-          <label
-            className={
-              emailInputClicked
-                ? styles.loginLabelActive
-                : styles.loginLabelDisabled
-            }
-            htmlFor="email"
-          >
-            Email
-          </label>
-        </div>
-        <div className={styles.loginContainer}>
-          <input
-            className={styles.loginInput}
-            type="password"
-            onChange={changeHandler}
-            onFocus={(e) => {
-              e.target.placeholder = "";
-              setPasswordInputClicked(true);
-            }}
-            onBlur={(e) => {
-              e.target.placeholder = "Password";
-              setPasswordInputClicked(false);
-              if (e.target.value.length >= 1) {
-                setPasswordInputClicked(true);
-              }
-            }}
-            name="customerPassword"
-            placeholder="Password"
-          />
-          <label
-            className={
-              passwordInputClicked
-                ? styles.loginLabelActive
-                : styles.loginLabelDisabled
-            }
-            htmlFor="customerPassword"
-          >
-            Password
-          </label>
-        </div>
         <button className="border w-44 h-12 bg-light-gray text-sm tracking-widest hover:scale-105 ease-in-out text-button-text">
           Sign in
         </button>
