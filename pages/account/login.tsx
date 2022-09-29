@@ -1,5 +1,5 @@
 //components
-import Login from "../components/Login/Login";
+import Login from "../../components/Login/Login";
 
 const login = () => {
   return <Login />;

@@ -54,10 +54,10 @@ const Footer = () => {
           <h2>MY ACCOUNT</h2>
           <hr className="mt-2 w-11/12 border-gray-400" />
           <ul className="mt-3">
-            <Link href="/login">
+            <Link href="/account/login">
               <li className="cursor-pointer hover:underline">LOG IN</li>
             </Link>
-            <Link href="/create-account">
+            <Link href="/account/register">
               <li className="mt-2 cursor-pointer hover:underline">SIGN UP</li>
             </Link>
             <Link href="/my-account">
