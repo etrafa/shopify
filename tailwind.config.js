@@ -19,6 +19,7 @@ module.exports = {
     extend: {
       colors: {
         "light-gray": "#F8F5EF",
+        "button-text": "#4D4D4D",
       },
     },
   },

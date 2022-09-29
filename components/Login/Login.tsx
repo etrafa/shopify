@@ -24,7 +24,7 @@ const Login = () => {
 
   return (
     <div className="mt-14 min-h-[50vh] text-center">
-      <h1 className="text-border text-2xl font-bold text-zinc-700 text-center">
+      <h1 className="text-border text-5xl text-buttonText text-center">
         Login
       </h1>
       <form className="px-8 py-8 w-11/12 mx-auto max-w-3xl">
@@ -89,7 +89,13 @@ const Login = () => {
             Password
           </label>
         </div>
+        <button className="border w-44 h-12 bg-light-gray text-sm tracking-widest hover:scale-105 ease-in-out text-button-text">
+          Sign in
+        </button>
       </form>
+      <p className="text-xs text-button-text font-bold tracking-widest underline underline-offset-4 cursor-pointer decoration-slate-600 hover:decoration-black hover:decoration-2">
+        Create Account
+      </p>
     </div>
   );
 };
