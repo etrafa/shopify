@@ -3,5 +3,9 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firabaseConfig";
 
 export const firebaseLogout = async () => {
-  await signOut(auth);
+  try {
+    await signOut(auth);
+  } catch (err) {
+    console.log(err);
+  }
 };
