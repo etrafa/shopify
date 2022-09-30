@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { ChangeEvent, MouseEvent, useState } from "react";
+import { useState } from "react";
 import { signUpWithEmail } from "../../firebase/sign-up/signUpWithEmail";
 import CustomInput from "../../Utilities/Input/CustomInput";
 import * as yup from "yup";
@@ -37,7 +37,6 @@ const CreateAccount = () => {
       );
     },
   });
-  1;
 
   return (
     <div className="mt-14 min-h-[50vh] text-center">

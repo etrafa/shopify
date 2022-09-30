@@ -10,7 +10,7 @@ interface CustomInputProps {
   inputName: string;
   labelHTMLForTag: string;
   labelText: string;
-  value: string;
+  value: string | number;
   isFormikTouched: boolean | undefined;
   formikErrorMessage: string | undefined;
 }

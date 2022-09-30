@@ -1,10 +1,10 @@
 //images
 import NationalTeam from "./banner-assets/nationalteam.png";
-import PremierLeauge from "./banner-assets/premier.png";
-import Bundesliga from "./banner-assets/bundesliga.png";
-import SeriA from "./banner-assets/seria.png";
-import LaLiga from "./banner-assets/laliga.png";
-import LigueOne from "./banner-assets/ligue1.png";
+import PremierLeauge from "./banner-assets/premier.jpg";
+import Bundesliga from "./banner-assets/bundesliga.jpg";
+import SeriA from "./banner-assets/seria.jpg";
+import LaLiga from "./banner-assets/laliga.jpg";
+import LigueOne from "./banner-assets/ligue1.jpg";
 
 //nextjs
 import Image from "next/image";

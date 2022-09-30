@@ -52,14 +52,14 @@ const MyAccount = () => {
           <h2 className="font-bold inline-block md:w-32 h-6 ml-3">Cart</h2>
           <Link href="/account/my-account/cart">
             <p className="block underline underline-offset-2 mt-3 cursor-pointer text-button-text hover:text-slate-500">
-              Profile
+              View
             </p>
           </Link>
         </div>
         <div>
           <AddressIcon />
           <h2 className="font-bold inline-block md:w-32 h-6 ml-3">Address</h2>
-          <Link href="/account/my-account/profile">
+          <Link href="/account/my-account/address">
             <p className="block underline underline-offset-2 mt-3 cursor-pointer text-button-text hover:text-slate-500">
               Address
             </p>
