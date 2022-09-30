@@ -60,13 +60,15 @@ const Footer = () => {
             <Link href="/account/register">
               <li className="mt-2 cursor-pointer hover:underline">SIGN UP</li>
             </Link>
-            <Link href="/my-account">
+            <Link href="/account/my-account">
               <li className="mt-2 cursor-pointer hover:underline">
                 My Account
               </li>
             </Link>
-            <li className="mt-2 cursor-pointer hover:underline">My Orders</li>
-            <Link href="/forgot-password">
+            <Link href="/account/my-orders">
+              <li className="mt-2 cursor-pointer hover:underline">My Orders</li>
+            </Link>
+            <Link href="/account/forgot-password">
               <li className="mt-2 cursor-pointer hover:underline">
                 Forgot Password
               </li>
