@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AddressForm from "../../../components/Address/AddressForm";
+import AddressForm from "../../components/Address/AddressForm";
 
 const Address = () => {
   const [isAddressOpen, setIsAddressOpen] = useState(false);
