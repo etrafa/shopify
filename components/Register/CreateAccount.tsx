@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { useState } from "react";
-import { signUpWithEmail } from "../../firebase/sign-up/signUpWithEmail";
+import { signUpWithEmail } from "../../firebase/FirebaseAuthFunctions/signUpWithEmail";
 import CustomInput from "../../Utilities/Input/CustomInput";
 import * as yup from "yup";
 
