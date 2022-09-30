@@ -10,6 +10,9 @@ interface CustomInputProps {
   inputName: string;
   labelHTMLForTag: string;
   labelText: string;
+  value: string;
+  isFormikTouched: boolean | undefined;
+  formikErrorMessage: string | undefined;
 }
 
 const CustomInput = (props: CustomInputProps) => {
@@ -31,6 +34,7 @@ const CustomInput = (props: CustomInputProps) => {
           }
         }}
         name={props.inputName}
+        value={props.value}
         placeholder={props.placeholderText}
       />
       <label
@@ -43,6 +47,9 @@ const CustomInput = (props: CustomInputProps) => {
       >
         {props.labelText}
       </label>
+      {props.isFormikTouched && props.formikErrorMessage && (
+        <p className={styles.errorMessage}>{props.formikErrorMessage}</p>
+      )}
     </div>
   );
 };
