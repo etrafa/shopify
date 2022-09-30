@@ -1,6 +1,11 @@
 import Link from "next/link";
+import { useAuth } from "../../firebase/firabaseConfig";
+import FooterItems_FOR_GUEST from "./FooterItems_FOR_GUEST";
+import FooterItems_FOR_USERS from "./FooterItems_FOR_USERS";
 
 const Footer = () => {
+  const currentUser = useAuth();
+
   return (
     <footer className="bg-light-gray text-black mt-12 text-sm">
       <div className=" lg:flex flex-row lg:justify-between px-12 pb-12 lg:px-24 xl:px-48">
@@ -53,27 +58,7 @@ const Footer = () => {
         <div className="pt-8 px-6">
           <h2>MY ACCOUNT</h2>
           <hr className="mt-2 w-11/12 border-gray-400" />
-          <ul className="mt-3">
-            <Link href="/account/login">
-              <li className="cursor-pointer hover:underline">LOG IN</li>
-            </Link>
-            <Link href="/account/register">
-              <li className="mt-2 cursor-pointer hover:underline">SIGN UP</li>
-            </Link>
-            <Link href="/account/my-account">
-              <li className="mt-2 cursor-pointer hover:underline">
-                My Account
-              </li>
-            </Link>
-            <Link href="/account/my-orders">
-              <li className="mt-2 cursor-pointer hover:underline">My Orders</li>
-            </Link>
-            <Link href="/account/forgot-password">
-              <li className="mt-2 cursor-pointer hover:underline">
-                Forgot Password
-              </li>
-            </Link>
-          </ul>
+          {currentUser ? <FooterItems_FOR_USERS /> : <FooterItems_FOR_GUEST />}
         </div>
         <div className="pt-8 px-6">
           <h2>CONTACT US</h2>
