@@ -109,7 +109,7 @@ export const OrderHistoryIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-6 h-6 inline"
     >
       <path
         strokeLinecap="round"
@@ -128,7 +128,7 @@ export const WishlistIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-6 h-6 inline"
     >
       <path
         strokeLinecap="round"
@@ -147,7 +147,7 @@ export const MyProfileIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-6 h-6 inline"
     >
       <path
         strokeLinecap="round"
@@ -166,7 +166,7 @@ export const CartIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-6 h-6 inline"
     >
       <path
         strokeLinecap="round"
@@ -185,7 +185,7 @@ export const AddressIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-6 h-6 inline"
     >
       <path
         strokeLinecap="round"
@@ -209,7 +209,7 @@ export const LogoutIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-6 h-6 inline"
     >
       <path
         strokeLinecap="round"
