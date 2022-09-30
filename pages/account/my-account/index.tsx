@@ -26,7 +26,7 @@ const MyAccount = () => {
   }, [currentUser, router]);
 
   return (
-    <div>
+    <>
       {currentUser && (
         <div className="w-full mt-14 min-h-[50vh]">
           <h1 className="text-border text-2xl font-bold text-zinc-700 text-center">
@@ -95,7 +95,7 @@ const MyAccount = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 export default MyAccount;

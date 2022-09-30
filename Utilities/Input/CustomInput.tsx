@@ -10,9 +10,9 @@ interface CustomInputProps {
   inputName: string;
   labelHTMLForTag: string;
   labelText: string;
-  value: string | number;
-  isFormikTouched: boolean | undefined;
-  formikErrorMessage: string | undefined;
+  value?: string | number;
+  isFormikTouched?: boolean | undefined;
+  formikErrorMessage?: string | undefined;
 }
 
 const CustomInput = (props: CustomInputProps) => {

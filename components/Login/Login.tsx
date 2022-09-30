@@ -1,6 +1,7 @@
+import { useRouter } from "next/router";
 import { ChangeEvent, MouseEvent, useState } from "react";
+import { firebaseSignIn } from "../../firebase/FirebaseAuthFunctions/signInWithEmail";
 import CustomInput from "../../Utilities/Input/CustomInput";
-import styles from "./Login.module.css";
 
 const Login = () => {
   const [customerLoginInformation, setCustomerLoginInformation] = useState({
@@ -11,17 +12,29 @@ const Login = () => {
   const [emailInputClicked, setEmailInputClicked] = useState(false);
   const [passwordInputClicked, setPasswordInputClicked] = useState(false);
 
+  const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("Your password is wrong.");
+
   //save user's input into the CUSTOMER_LOGIN_INFORMATION STATE
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     let newInput = { [e.target.name]: e.target.value };
     setCustomerLoginInformation({ ...customerLoginInformation, ...newInput });
+    setDisplayErrorMessage(false);
   };
 
   //login function
   const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log(customerLoginInformation);
+    firebaseSignIn(
+      customerLoginInformation.customerEmail,
+      customerLoginInformation.customerPassword,
+      router,
+      setDisplayErrorMessage,
+      setErrorMessage
+    );
   };
+
+  const router = useRouter();
 
   return (
     <div className="mt-14 min-h-[50vh] text-center">
@@ -31,25 +44,33 @@ const Login = () => {
       <form className="px-8 py-8 w-11/12 mx-auto max-w-3xl">
         <CustomInput
           type="email"
-          changeHandler={() => console.log("hey")}
+          changeHandler={changeHandler}
           isInputClicked={emailInputClicked}
           setIsInputClicked={setEmailInputClicked}
           placeholderText="Email"
-          inputName="email"
+          inputName="customerEmail"
           labelText="Email"
-          labelHTMLForTag="email"
+          labelHTMLForTag="customerEmail"
         />
         <CustomInput
           type="password"
-          changeHandler={() => console.log("hey")}
+          changeHandler={changeHandler}
           isInputClicked={passwordInputClicked}
           setIsInputClicked={setPasswordInputClicked}
           placeholderText="Password"
-          inputName="password"
+          inputName="customerPassword"
           labelText="Password"
-          labelHTMLForTag="password"
+          labelHTMLForTag="customerPassword"
         />
-        <button className="border w-44 h-12 bg-light-gray text-sm tracking-widest hover:scale-105 ease-in-out text-button-text">
+        {displayErrorMessage && (
+          <p className="w-full max-w-[26rem] mx-auto text-left pb-6 text-main-red">
+            {errorMessage}
+          </p>
+        )}
+        <button
+          onClick={clickHandler}
+          className="border w-44 h-12 bg-light-gray text-sm tracking-widest hover:scale-105 ease-in-out text-button-text"
+        >
           Sign in
         </button>
       </form>
