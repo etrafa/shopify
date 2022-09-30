@@ -1,4 +1,5 @@
 //icons
+import Link from "next/link";
 import {
   OrderHistoryIcon,
   WishlistIcon,
@@ -20,39 +21,49 @@ const MyAccount = () => {
           <h2 className="font-bold inline-block md:w-32 h-6 ml-3">
             Order history
           </h2>
-          <p className="block underline underline-offset-2 mt-3 cursor-pointer text-button-text hover:text-slate-500">
-            View
-          </p>
+          <Link href="/account/my-account/order-history">
+            <p className="block underline underline-offset-2 mt-3 cursor-pointer text-button-text hover:text-slate-500">
+              View
+            </p>
+          </Link>
         </div>
         <div>
           <WishlistIcon />
           <h2 className="font-bold inline-block  md:w-32 h-6 ml-3">Wishlist</h2>
-          <p className="block underline underline-offset-2 mt-3 cursor-pointer text-button-text hover:text-slate-500">
-            View
-          </p>
+          <Link href="/account/my-account/wishlist">
+            <p className="block underline underline-offset-2 mt-3 cursor-pointer text-button-text hover:text-slate-500">
+              View
+            </p>
+          </Link>
         </div>
         <div>
           <MyProfileIcon />
           <h2 className="font-bold inline-block md:w-32 h-6 ml-3">
             My Profile
           </h2>
-          <p className="block underline underline-offset-2 mt-3 cursor-pointer text-button-text hover:text-slate-500">
-            View
-          </p>
+          <Link href="/account/my-account/profile">
+            <p className="block underline underline-offset-2 mt-3 cursor-pointer text-button-text hover:text-slate-500">
+              Profile
+            </p>
+          </Link>
         </div>
         <div>
           <CartIcon />
           <h2 className="font-bold inline-block md:w-32 h-6 ml-3">Cart</h2>
-          <p className="block underline underline-offset-2 mt-3 cursor-pointer text-button-text hover:text-slate-500">
-            View
-          </p>
+          <Link href="/account/my-account/cart">
+            <p className="block underline underline-offset-2 mt-3 cursor-pointer text-button-text hover:text-slate-500">
+              Profile
+            </p>
+          </Link>
         </div>
         <div>
           <AddressIcon />
           <h2 className="font-bold inline-block md:w-32 h-6 ml-3">Address</h2>
-          <p className="block underline underline-offset-2 mt-3 cursor-pointer text-button-text hover:text-slate-500">
-            View
-          </p>
+          <Link href="/account/my-account/profile">
+            <p className="block underline underline-offset-2 mt-3 cursor-pointer text-button-text hover:text-slate-500">
+              Address
+            </p>
+          </Link>
         </div>
         <div className="cursor-pointer">
           <LogoutIcon />
