@@ -62,22 +62,7 @@ const SingleProductComp: NextPage<{
     //
     //
     //
-    //   <div>
-    //     <p className="text-button-text text-sm mt-8 pl-4">Quantity</p>
-    //     <div className="w-4/12 max-w-xs h-10 border flex items-center mx-4 my-2">
-    //       <button className="w-3/12 h-10 text-button-text font-bold text-xl">
-    //         -
-    //       </button>
-    //       <input
-    //         className="w-6/12 text-center"
-    //         type="number"
-    //         name="quantity"
-    //         min={1}
-    //         value={1}
-    //       />
-    //       <button className="w-3/12 h-10 text-button-text font-bold">+</button>
-    //     </div>
-    //   </div>
+
     //   <button className="mt-12 w-11/12 h-12 block mx-auto border rounded-sm bg-light-gray text-sm tracking-widest hover:scale-105 ease-in-out text-button-text">
     //     Add to Cart
     //   </button>
