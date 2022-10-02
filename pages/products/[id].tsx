@@ -59,41 +59,9 @@ const SingleProductComp: NextPage<{
     // <div>
     //
     //   </div>
-    //   <h1 className="text-border text-center mt-8 font-bold">
-    //     {data.tshirtName}
-    //   </h1>
-    //   <p className="italic mt-4 px-5 font-semibold text-button-text tracking-widest">
-    //     ${data.price.toFixed(2)}
-    //   </p>
-    //   <div>
-    //     <p className="text-button-text text-sm mt-8 pl-4">Size</p>
-    //     <ul className="flex gap-x-4 p-4">
-    //       <li className="h-7 w-7 border text-center">
-    //         <label className="text-sm">
-    //           S
-    //           <input type="radio" value="S" className="hidden" />
-    //         </label>
-    //       </li>
-    //       <li className="h-7 w-7 border text-center">
-    //         <label className="text-sm">
-    //           M
-    //           <input type="radio" value="M" className="hidden" />
-    //         </label>
-    //       </li>
-    //       <li className="h-7 w-7 border text-center">
-    //         <label className="text-sm">
-    //           L
-    //           <input type="radio" value="L" className="hidden" />
-    //         </label>
-    //       </li>
-    //       <li className="h-7 w-7 border text-center">
-    //         <label className="text-sm">
-    //           XL
-    //           <input type="radio" value="XL" className="hidden" />
-    //         </label>
-    //       </li>
-    //     </ul>
-    //   </div>
+    //
+    //
+    //
     //   <div>
     //     <p className="text-button-text text-sm mt-8 pl-4">Quantity</p>
     //     <div className="w-4/12 max-w-xs h-10 border flex items-center mx-4 my-2">
