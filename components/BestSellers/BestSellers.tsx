@@ -16,15 +16,14 @@ const BestSellers = () => {
 
   useEffect(() => {
     const bestSellerProductsQuery = [
-      // "/bundesliga/pVb9NJrhhzcrW0",
       "/la-liga/359s2n7F762786",
       "/la-liga/5A129G766300rx",
       "/ligue-one/704DNePMkX683H",
       "/premier-leauge/2m6x15UP89WA47",
       "/premier-leauge/77178208357f97",
-      "/premier-leauge/VBF477q93lAzPZ",
       "/premier-leauge/no8436588a4052",
       "/seriea-leauge/5QX430D5MC665L",
+      "/premier-leauge/VBF477q93lAzPZ",
       "/seriea-leauge/0u6870i0223427",
     ];
 
