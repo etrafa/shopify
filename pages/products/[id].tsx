@@ -55,35 +55,6 @@ const SingleProductComp: NextPage<{
   params: ParsedUrlQuery;
   data: IProduct;
 }> = ({ params, data }) => {
-  return (
-    // <div>
-    //
-    //   </div>
-    //
-    //
-    //
-
-    //   <button className="mt-12 w-11/12 h-12 block mx-auto border rounded-sm bg-light-gray text-sm tracking-widest hover:scale-105 ease-in-out text-button-text">
-    //     Add to Cart
-    //   </button>
-
-    //   <div>
-    //     <h2 className="my-8 text-sm text-button-text font-bold pl-4 tracking-widest">
-    //       Product Details
-    //     </h2>
-
-    //     <ul className="list-disc  list-inside">
-    //       {data.description.map((description) => (
-    //         <>
-    //           <li key={description} className="text-sm px-4 py-2">
-    //             {description}
-    //           </li>
-    //         </>
-    //       ))}
-    //     </ul>
-    //   </div>
-    // </div>
-    <SingleProduct {...data} />
-  );
+  return <SingleProduct {...data} />;
 };
 export default SingleProductComp;

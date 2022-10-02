@@ -1,4 +1,6 @@
 import { IProduct } from "../../../interfaces/ProductInterface";
+import SingleProductButton from "./SingleProductButton";
+import SingleProductDetails from "./SingleProductDetails";
 import SingleProductHeader from "./SingleProductHeader";
 import SingleProductPreviews from "./SingleProductPreviews";
 import SingleProductQuantity from "./SingleProductQuantity";
@@ -17,6 +19,8 @@ const SingleProduct = (props: IProduct) => {
       <SingleProductHeader tshirtName={props.tshirtName} price={props.price} />
       <SingleProductSize />
       <SingleProductQuantity />
+      <SingleProductButton />
+      <SingleProductDetails description={props.description} />
     </div>
   );
 };
