@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import { db } from "../../firebase/firabaseConfig";
 import { IProduct } from "../../interfaces/ProductInterface";
-import StoreLayout from "../StoreLayout/StoreLayout";
+import StoreLayout from "../Layouts/StoreLayout/StoreLayout";
 
 const BestSellers = () => {
   const [bestSellerItems, setBestSellerItems] = useState<IProduct[] | null>(

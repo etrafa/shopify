@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IProduct } from "../../interfaces/ProductInterface";
+import { IProduct } from "../../../interfaces/ProductInterface";
 
 const StoreLayout = (props: IProduct) => {
   return (

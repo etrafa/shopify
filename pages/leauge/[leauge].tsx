@@ -1,7 +1,7 @@
 import { collection, DocumentData, getDocs } from "firebase/firestore";
 import { GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
-import StoreLayout from "../../components/StoreLayout/StoreLayout";
+import StoreLayout from "../../components/Layouts/StoreLayout/StoreLayout";
 import { db } from "../../firebase/firabaseConfig";
 import { IProduct } from "../../interfaces/ProductInterface";
 
