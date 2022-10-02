@@ -8,7 +8,7 @@ import SingleProductSize from "./SingleProductSize";
 
 const SingleProduct = (props: IProduct) => {
   return (
-    <div>
+    <div className="md:flex md:justify-center">
       <SingleProductPreviews
         backLarge={props.backLarge}
         backSmall={props.backSmall}
@@ -16,11 +16,16 @@ const SingleProduct = (props: IProduct) => {
         frontSmall={props.frontSmall}
         tshirtName={props.tshirtName}
       />
-      <SingleProductHeader tshirtName={props.tshirtName} price={props.price} />
-      <SingleProductSize />
-      <SingleProductQuantity />
-      <SingleProductButton />
-      <SingleProductDetails description={props.description} />
+      <div className="md:mt-16 lg:mx-12">
+        <SingleProductHeader
+          tshirtName={props.tshirtName}
+          price={props.price}
+        />
+        <SingleProductSize />
+        <SingleProductQuantity />
+        <SingleProductButton />
+        <SingleProductDetails description={props.description} />
+      </div>
     </div>
   );
 };

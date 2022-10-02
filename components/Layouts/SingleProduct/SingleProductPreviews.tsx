@@ -19,7 +19,7 @@ const SingleProductPreviews = ({
   const [currentImage, setCurrentImage] = useState(frontLarge);
 
   return (
-    <div className="mt-16">
+    <div className="mt-16 text-center">
       <Image src={currentImage} width={520} height={520} alt={tshirtName} />
       <div className="flex mx-8 mt-2 lg:justify-center">
         <div className="w-20 border text-center cursor-pointer">
