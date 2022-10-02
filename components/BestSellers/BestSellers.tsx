@@ -43,7 +43,11 @@ const BestSellers = () => {
 
   return (
     <div>
-      <h2>Hot Sales</h2>
+      <header className="w-full flex justify-center pt-24">
+        <h2 className="w-44 h-12 bg-light-gray text-button-text font-semibold tracking-widest text-center underline underline-offset-8 pt-2">
+          HOT SALES
+        </h2>
+      </header>
       <div className="grid grid-cols-2 px-4 mt-12 md:grid-cols-3 lg:grid-cols-4 lg:mx-36 xl:grid-cols-5">
         {bestSellerItems &&
           bestSellerItems?.map((item) => (
