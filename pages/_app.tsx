@@ -7,8 +7,6 @@ import { useAuth } from "../firebase/firabaseConfig";
 function MyApp({ Component, pageProps }: AppProps) {
   const currentUser = useAuth();
 
-  console.log(currentUser);
-
   return (
     <div>
       <Navbar />

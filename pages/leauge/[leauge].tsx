@@ -44,8 +44,6 @@ export const getStaticPaths = () => {
 };
 
 const LeaugeStore: NextPage<{ data: IProduct[] }> = ({ data }) => {
-  console.log(data);
-
   return (
     <div className="grid grid-cols-2 px-4 mt-12 md:grid-cols-3 lg:grid-cols-4 lg:mx-36 xl:grid-cols-5">
       {data.map((tshirt) => {
