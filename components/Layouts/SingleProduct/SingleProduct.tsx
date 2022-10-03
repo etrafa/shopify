@@ -23,7 +23,13 @@ const SingleProduct = (props: IProduct) => {
         />
         <SingleProductSize />
         <SingleProductQuantity />
-        <SingleProductButton />
+        <SingleProductButton
+          id={props.id}
+          tshirtName={props.tshirtName}
+          leauge={props.leauge}
+          price={props.price}
+          frontSmall={props.frontSmall}
+        />
         <SingleProductDetails description={props.description} />
       </div>
     </div>
