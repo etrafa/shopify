@@ -4,4 +4,6 @@ export interface ISingleProductForCart {
   leauge: string;
   price: number;
   frontSmall: string;
+  amount: number;
+  size: string;
 }
