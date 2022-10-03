@@ -4,11 +4,13 @@ import { ISingleProductForCart } from "../../interfaces/SingleProductForCart";
 interface CartState {
   cartItems: ISingleProductForCart[];
   amount: number;
+  size: string;
 }
 
 const initialState: CartState = {
   cartItems: [],
   amount: 1,
+  size: "",
 };
 
 const cartSlice = createSlice({
@@ -30,9 +32,13 @@ const cartSlice = createSlice({
         state.amount = 1;
       }
     },
+    changeSize: (state, { payload }) => {
+      const selectedSize = payload;
+      state.size = selectedSize;
+    },
   },
 });
 
 export default cartSlice.reducer;
-export const { addItemToCart, increaseQuantity, decreaseQuantity } =
+export const { addItemToCart, increaseQuantity, decreaseQuantity, changeSize } =
   cartSlice.actions;
