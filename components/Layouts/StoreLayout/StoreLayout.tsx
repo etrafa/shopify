@@ -4,7 +4,7 @@ import { IProduct } from "../../../interfaces/ProductInterface";
 
 const StoreLayout = (props: IProduct) => {
   return (
-    <Link href={"/products/" + props.id}>
+    <Link href={"/products/" + props.leauge + "/" + props.id}>
       <div className="py-8 flex flex-col justify-between items-center group">
         <span
           className={
