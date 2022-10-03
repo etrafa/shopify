@@ -1,9 +1,24 @@
+import {
+  decreaseQuantity,
+  increaseQuantity,
+} from "../../../src/features/cartSlicer";
+import { useAppDispatch, useAppSelector } from "../../../src/store";
+
 const SingleProductQuantity = () => {
+  const { amount } = useAppSelector((store) => store.cart);
+  const dispatch = useAppDispatch();
+
   return (
     <div>
       <p className="text-button-text text-sm mt-8 pl-4">Quantity</p>
       <div className="w-4/12 max-w-xs h-10 border flex items-center mx-4 my-2">
-        <button className="w-3/12 h-10 text-button-text font-bold text-xl">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(decreaseQuantity());
+          }}
+          className="w-3/12 h-10 text-button-text font-bold text-xl"
+        >
           -
         </button>
         <input
@@ -11,9 +26,18 @@ const SingleProductQuantity = () => {
           type="number"
           name="quantity"
           min={1}
-          value={1}
+          max={10}
+          value={amount}
         />
-        <button className="w-3/12 h-10 text-button-text font-bold">+</button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(increaseQuantity());
+          }}
+          className="w-3/12 h-10 text-button-text font-bold"
+        >
+          +
+        </button>
       </div>
     </div>
   );
