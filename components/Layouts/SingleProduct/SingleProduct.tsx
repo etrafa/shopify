@@ -16,7 +16,7 @@ const SingleProduct = (props: IProduct) => {
         frontSmall={props.frontSmall}
         tshirtName={props.tshirtName}
       />
-      <div className="md:mt-16 lg:mx-12">
+      <div className="md:mt-16 lg:mx-12 max-w-sm">
         <SingleProductHeader
           tshirtName={props.tshirtName}
           price={props.price}
