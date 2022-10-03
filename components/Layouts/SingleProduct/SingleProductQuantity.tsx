@@ -7,7 +7,7 @@ const SingleProductQuantity = () => {
           -
         </button>
         <input
-          className="w-6/12 text-center"
+          className="w-6/12 text-center h-full"
           type="number"
           name="quantity"
           min={1}
