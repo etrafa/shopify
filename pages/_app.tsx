@@ -2,17 +2,16 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer/Footer";
-import { useAuth } from "../firebase/firabaseConfig";
+import { Provider } from "react-redux";
+import { store } from "../src/store";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const currentUser = useAuth();
-
   return (
-    <div>
+    <Provider store={store}>
       <Navbar />
       <Component {...pageProps} />
       <Footer />
-    </div>
+    </Provider>
   );
 }
 
