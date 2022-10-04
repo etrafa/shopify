@@ -2,15 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ISingleProductForCart } from "../../interfaces/SingleProductForCart";
 
 interface CartState {
-  cartItems: ISingleProductForCart[];
-  amount: number;
-  size: string;
+  value: ISingleProductForCart;
 }
 
 const initialState: CartState = {
-  cartItems: [],
-  amount: 1,
-  size: "S",
+  value: {
+    tshirtName: "",
+    id: "",
+    leauge: "",
+    amount: 1,
+    price: 0,
+    size: "S",
+    frontSmall: "",
+  },
 };
 
 const cartSlice = createSlice({
@@ -18,23 +22,23 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItemToCart: (state, { payload }) => {
-      state.cartItems = [...state.cartItems, payload];
+      state.value = { ...payload };
     },
     increaseQuantity: (state) => {
-      state.amount = state.amount + 1;
-      if (state.amount >= 10) {
-        state.amount = 10;
+      state.value.amount = state.value.amount + 1;
+      if (state.value.amount >= 10) {
+        state.value.amount = 10;
       }
     },
     decreaseQuantity: (state) => {
-      state.amount = state.amount - 1;
-      if (state.amount < 1) {
-        state.amount = 1;
+      state.value.amount = state.value.amount - 1;
+      if (state.value.amount < 1) {
+        state.value.amount = 1;
       }
     },
     changeSize: (state, { payload }) => {
       const selectedSize = payload;
-      state.size = selectedSize;
+      state.value.size = selectedSize;
     },
   },
 });

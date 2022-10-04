@@ -3,7 +3,7 @@ import { addItemToCart } from "../../../src/features/cartSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 
 const SingleProductButton = (props: ISingleProductForCart) => {
-  const { cartItems } = useAppSelector((store) => store.cart);
+  const { value } = useAppSelector((store) => store.cart);
   const dispatch = useAppDispatch();
 
   return (
@@ -11,7 +11,7 @@ const SingleProductButton = (props: ISingleProductForCart) => {
       onClick={(e) => {
         e.preventDefault();
         dispatch(addItemToCart(props));
-        console.log(cartItems);
+        console.log(value);
       }}
       className="mt-12 w-11/12 h-12 block mx-auto border rounded-sm bg-light-gray text-sm tracking-widest hover:scale-105 ease-in-out text-button-text"
     >

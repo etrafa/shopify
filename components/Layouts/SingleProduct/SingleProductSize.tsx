@@ -5,9 +5,9 @@ import { useAppDispatch, useAppSelector } from "../../../src/store";
 const SingleProductSize = () => {
   const dispatch = useAppDispatch();
 
-  const { size } = useAppSelector((store) => store.cart);
+  const { value } = useAppSelector((store) => store.cart);
 
-  const [activeSize, setActiveSize] = useState(size);
+  const [activeSize, setActiveSize] = useState(value.size);
 
   return (
     <div>

@@ -5,7 +5,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 
 const SingleProductQuantity = () => {
-  const { amount } = useAppSelector((store) => store.cart);
+  const { value } = useAppSelector((store) => store.cart);
   const dispatch = useAppDispatch();
 
   return (
@@ -27,7 +27,7 @@ const SingleProductQuantity = () => {
           name="quantity"
           min={1}
           max={10}
-          value={amount}
+          value={value.amount}
         />
         <button
           onClick={(e) => {
