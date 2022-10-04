@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useAuth } from "../../firebase/firabaseConfig";
+import { ADD_ITEM_TO_DB } from "../../firebase/FirebaseCartFunctions/ADD_ITEM_TO_DB";
 import { ISingleProductForCart } from "../../interfaces/SingleProductForCart";
 
 interface CartState {
