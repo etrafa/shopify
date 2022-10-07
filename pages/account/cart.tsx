@@ -1,52 +1,40 @@
+import { collection, DocumentData, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import CartFormBody from "../../components/Layouts/Cart/CartFormBody";
+import CartFormHeader from "../../components/Layouts/Cart/CartFormHeader";
+import CartHeader from "../../components/Layouts/Cart/CartHeader";
+import { db, useAuth } from "../../firebase/firabaseConfig";
+import { ISingleProductForCart } from "../../interfaces/SingleProductForCart";
+
 const Cart = () => {
+  const currentUser = useAuth();
+  const [userCartItems, setUserCartItems] = useState<
+    ISingleProductForCart[] | null
+  >(null);
+
+  useEffect(() => {
+    const getUserCartItems = async () => {
+      const cartRef = collection(db, "users", `${currentUser?.uid}`, "cart");
+      const res = await getDocs(cartRef);
+      const data = res.docs.map((product: DocumentData) => {
+        return { ...product.data(), id: product.id };
+      });
+
+      setUserCartItems(data);
+    };
+
+    getUserCartItems();
+  }, [currentUser?.uid]);
+
   return (
     <div className="w-full mt-14 min-h-[50vh]">
-      <header>
-        <h1 className="text-border text-2xl font-bold text-zinc-700 text-center">
-          Your Cart
-        </h1>
-      </header>
-      <form className="mt-12">
-        <table className="w-full text-left max-w-screen-lg lg:mx-auto">
-          <thead>
-            <tr className=" text-button-text text-[8px] tracking-widest uppercase">
-              <th className="py-3 px-6">Product name</th>
-              <th className="py-3 px-6 hidden md:block">Quantity</th>
-              <th className="py-3 px-6 text-right">Total</th>
-            </tr>
-          </thead>
-          {/* <tbody>
-            <tr className="bg-white border-b ">
-              <th
-                scope="row"
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap "
-              >
-                Apple MacBook Pro 17
-              </th>
-              <td className="py-4 px-6">$2999</td>
-            </tr>
-            <tr className="bg-white border-b ">
-              <th
-                scope="row"
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap "
-              >
-                Microsoft Surface Pro
-              </th>
-
-              <td className="py-4 px-6">$1999</td>
-            </tr>
-            <tr className="bg-white ">
-              <th
-                scope="row"
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap "
-              >
-                Magic Mouse 2
-              </th>
-
-              <td className="py-4 px-6">$99</td>
-            </tr>
-          </tbody> */}
-        </table>
+      <CartHeader />
+      <form className="mt-12 max-w-screen-lg md:mx-auto">
+        <CartFormHeader />
+        {userCartItems &&
+          userCartItems.map((item) => {
+            return <CartFormBody key={item.id} {...item} />;
+          })}
       </form>
     </div>
   );

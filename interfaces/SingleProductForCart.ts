@@ -3,7 +3,7 @@ export interface ISingleProductForCart {
   tshirtName: string;
   leauge: string;
   price: number;
-  frontSmall: string;
+  frontLarge: string;
   amount: number;
   size: string;
 }

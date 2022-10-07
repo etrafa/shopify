@@ -31,7 +31,7 @@ const SingleProduct = (props: IProduct) => {
           tshirtName={props.tshirtName}
           leauge={props.leauge}
           price={props.price}
-          frontSmall={props.frontSmall}
+          frontLarge={props.frontLarge}
           amount={value.amount}
           size={value.size}
         />

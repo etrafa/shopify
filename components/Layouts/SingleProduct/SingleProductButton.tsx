@@ -2,7 +2,7 @@ import { useAuth } from "../../../firebase/firabaseConfig";
 import { ADD_ITEM_TO_DB } from "../../../firebase/FirebaseCartFunctions/ADD_ITEM_TO_DB";
 import { ISingleProductForCart } from "../../../interfaces/SingleProductForCart";
 import { addItemToCart } from "../../../src/features/cartSlicer";
-import { useAppDispatch, useAppSelector } from "../../../src/store";
+import { useAppDispatch } from "../../../src/store";
 
 const SingleProductButton = (props: ISingleProductForCart) => {
   const dispatch = useAppDispatch();
