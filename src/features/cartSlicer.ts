@@ -5,10 +5,12 @@ import { ISingleProductForCart } from "../../interfaces/SingleProductForCart";
 
 interface CartState {
   cartItems: ISingleProductForCart[];
+  totalAmount: number;
 }
 
 const initialState: CartState = {
   cartItems: [],
+  totalAmount: 0,
 };
 
 const cartSlicer = createSlice({
@@ -35,6 +37,18 @@ const cartSlicer = createSlice({
           product.amount = 1;
         }
       }
+    },
+    CALCULATE_AMOUNTS: (state) => {
+      let amount = 0;
+      let total = 0;
+
+      state.cartItems.forEach((item) => {
+        amount += item.amount;
+        total += item.amount * item.price;
+        console.log(item.price);
+        console.log(total);
+        state.totalAmount = total;
+      });
     },
   },
   extraReducers: (builder) => {
@@ -65,5 +79,8 @@ export const getCartItems = createAsyncThunk(
 );
 
 export default cartSlicer.reducer;
-export const { INCREASE_QUANTITY_ON_CART, DECREASE_QUANTITY_ON_CART } =
-  cartSlicer.actions;
+export const {
+  INCREASE_QUANTITY_ON_CART,
+  DECREASE_QUANTITY_ON_CART,
+  CALCULATE_AMOUNTS,
+} = cartSlicer.actions;
