@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import CartFormBody from "../../components/Layouts/Cart/CartFormBody";
 import CartFormHeader from "../../components/Layouts/Cart/CartFormHeader";
 import CartHeader from "../../components/Layouts/Cart/CartHeader";
+import SubTotal from "../../components/Layouts/Cart/SubTotal";
 import { useAuth } from "../../firebase/firabaseConfig";
 import { getCartItems } from "../../src/features/cartSlicer";
 import { useAppDispatch, useAppSelector } from "../../src/store";
@@ -28,6 +29,7 @@ const Cart = () => {
             return <CartFormBody key={item.id} {...item} />;
           })}
       </form>
+      <SubTotal />
     </div>
   );
 };
