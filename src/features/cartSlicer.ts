@@ -16,10 +16,6 @@ const cartSlicer = createSlice({
   initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getCartItems.pending, (state, action) => {
-      console.log("loading...");
-    });
-
     builder.addCase(getCartItems.fulfilled, (state, action) => {
       state.cartItems = action.payload;
     });
