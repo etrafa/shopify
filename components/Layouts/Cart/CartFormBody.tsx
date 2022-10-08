@@ -1,7 +1,11 @@
 import Image from "next/image";
 import { ISingleProductForCart } from "../../../interfaces/SingleProductForCart";
+import { INCREASE_QUANTITY_ON_CART } from "../../../src/features/cartSlicer";
+import { useAppDispatch } from "../../../src/store";
 
 const CartFormBody = (props: ISingleProductForCart) => {
+  const dispatch = useAppDispatch();
+
   return (
     <div>
       <div key={props.id} className="flex mt-12">
@@ -29,7 +33,13 @@ const CartFormBody = (props: ISingleProductForCart) => {
             Size: <span className="pl-0.5">{props.size}</span>
           </p>
           <div className="w-8/12 md:w-6/12 max-w-xs h-10 border flex items-center my-3 mx-6 md:mx-auto">
-            <button className="w-3/12 h-10 text-button-text font-bold text-xl">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(INCREASE_QUANTITY_ON_CART(props.id));
+              }}
+              className="w-3/12 h-10 text-button-text font-bold text-xl"
+            >
               -
             </button>
             <input
@@ -38,7 +48,7 @@ const CartFormBody = (props: ISingleProductForCart) => {
               name="quantity"
               min={1}
               max={10}
-              value={1}
+              value={props.amount}
             />
             <button className="w-3/12 h-10 text-button-text font-bold">
               +

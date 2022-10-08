@@ -14,7 +14,18 @@ const initialState: CartState = {
 const cartSlicer = createSlice({
   name: "cart",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    INCREASE_QUANTITY_ON_CART: (state, action) => {
+      const productID = action.payload;
+      const product = state.cartItems.find((item) => item.id === productID);
+      if (product) {
+        product.amount = product.amount + 1;
+        if (product.amount >= 10) {
+          product.amount = 10;
+        }
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getCartItems.fulfilled, (state, action) => {
       state.cartItems = action.payload;
@@ -43,3 +54,4 @@ export const getCartItems = createAsyncThunk(
 );
 
 export default cartSlicer.reducer;
+export const { INCREASE_QUANTITY_ON_CART } = cartSlicer.actions;
