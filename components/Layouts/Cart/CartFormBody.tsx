@@ -66,7 +66,7 @@ const CartFormBody = (props: ISingleProductForCart) => {
         </div>
         <div className="w-2/12 h-32 text-right pt-4">
           <p className="text-sm pr-4 tracking-widest">
-            ${props.price.toFixed(2)}
+            ${(props.amount * props.price).toFixed(2)}
           </p>
         </div>
       </div>
