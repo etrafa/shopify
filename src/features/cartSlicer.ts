@@ -45,3 +45,5 @@ export const getCartItems = createAsyncThunk(
     }
   }
 );
+
+export default cartSlicer.reducer;
