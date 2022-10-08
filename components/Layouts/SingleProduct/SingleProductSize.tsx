@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { changeSize } from "../../../src/features/cartSlicer";
+import { changeSize } from "../../../src/features/productSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 
 const SingleProductSize = () => {
   const dispatch = useAppDispatch();
 
-  const { value } = useAppSelector((store) => store.cart);
+  const { value } = useAppSelector((store) => store.product);
 
   const [activeSize, setActiveSize] = useState(value.size);
 

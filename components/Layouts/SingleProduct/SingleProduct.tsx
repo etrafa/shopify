@@ -8,7 +8,7 @@ import SingleProductQuantity from "./SingleProductQuantity";
 import SingleProductSize from "./SingleProductSize";
 
 const SingleProduct = (props: IProduct) => {
-  const { value } = useAppSelector((store) => store.cart);
+  const { value } = useAppSelector((store) => store.product);
 
   return (
     <div className="md:flex md:justify-center">

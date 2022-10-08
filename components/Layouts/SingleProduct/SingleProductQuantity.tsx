@@ -1,11 +1,11 @@
 import {
   decreaseQuantity,
   increaseQuantity,
-} from "../../../src/features/cartSlicer";
+} from "../../../src/features/productSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 
 const SingleProductQuantity = () => {
-  const { value } = useAppSelector((store) => store.cart);
+  const { value } = useAppSelector((store) => store.product);
   const dispatch = useAppDispatch();
 
   return (
