@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { ISingleProductForCart } from "../../../interfaces/SingleProductForCart";
-import { INCREASE_QUANTITY_ON_CART } from "../../../src/features/cartSlicer";
+import {
+  DECREASE_QUANTITY_ON_CART,
+  INCREASE_QUANTITY_ON_CART,
+} from "../../../src/features/cartSlicer";
 import { useAppDispatch } from "../../../src/store";
 
 const CartFormBody = (props: ISingleProductForCart) => {
@@ -36,7 +39,7 @@ const CartFormBody = (props: ISingleProductForCart) => {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                dispatch(INCREASE_QUANTITY_ON_CART(props.id));
+                dispatch(DECREASE_QUANTITY_ON_CART(props.id));
               }}
               className="w-3/12 h-10 text-button-text font-bold text-xl"
             >
@@ -50,7 +53,13 @@ const CartFormBody = (props: ISingleProductForCart) => {
               max={10}
               value={props.amount}
             />
-            <button className="w-3/12 h-10 text-button-text font-bold">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(INCREASE_QUANTITY_ON_CART(props.id));
+              }}
+              className="w-3/12 h-10 text-button-text font-bold"
+            >
               +
             </button>
           </div>
