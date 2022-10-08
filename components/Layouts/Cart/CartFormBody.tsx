@@ -1,13 +1,16 @@
 import Image from "next/image";
+import { useAuth } from "../../../firebase/firabaseConfig";
 import { ISingleProductForCart } from "../../../interfaces/SingleProductForCart";
 import {
   DECREASE_QUANTITY_ON_CART,
+  deleteCartItem,
   INCREASE_QUANTITY_ON_CART,
 } from "../../../src/features/cartSlicer";
 import { useAppDispatch } from "../../../src/store";
 
 const CartFormBody = (props: ISingleProductForCart) => {
   const dispatch = useAppDispatch();
+  const currentUser = useAuth();
 
   return (
     <div>
@@ -40,6 +43,16 @@ const CartFormBody = (props: ISingleProductForCart) => {
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(DECREASE_QUANTITY_ON_CART(props.id));
+                if (props.amount === 1) {
+                  if (currentUser) {
+                    dispatch(
+                      deleteCartItem({
+                        userID: currentUser?.uid,
+                        productID: props.id,
+                      })
+                    );
+                  }
+                }
               }}
               className="w-3/12 h-10 text-button-text font-bold text-xl"
             >

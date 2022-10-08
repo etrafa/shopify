@@ -1,5 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { collection, DocumentData, getDocs } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  DocumentData,
+  getDocs,
+} from "firebase/firestore";
 import { db } from "../../firebase/firabaseConfig";
 import { ISingleProductForCart } from "../../interfaces/SingleProductForCart";
 
@@ -55,6 +61,12 @@ const cartSlicer = createSlice({
     builder.addCase(getCartItems.fulfilled, (state, action) => {
       state.cartItems = action.payload;
     });
+
+    builder.addCase(deleteCartItem.fulfilled, (state, action) => {
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== action.payload
+      );
+    });
   },
 });
 
@@ -73,6 +85,23 @@ export const getCartItems = createAsyncThunk(
 
       return data;
     } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const deleteCartItem = createAsyncThunk(
+  "delete/productItem",
+  async (
+    { userID, productID }: { userID: string; productID: string },
+    { rejectWithValue }
+  ) => {
+    const docRef = doc(db, "users", userID, "cart", productID);
+    try {
+      await deleteDoc(docRef);
+      console.log(userID, productID);
+    } catch (err) {
+      console.log(err);
       return rejectWithValue(err);
     }
   }
