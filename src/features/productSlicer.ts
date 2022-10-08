@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ISingleProductForCart } from "../../interfaces/SingleProductForCart";
 
-interface CartState {
+interface ProductState {
   value: ISingleProductForCart;
 }
 
-const initialState: CartState = {
+const initialState: ProductState = {
   value: {
     tshirtName: "",
     id: "",
@@ -17,8 +17,8 @@ const initialState: CartState = {
   },
 };
 
-const cartSlice = createSlice({
-  name: "cart",
+const productSlice = createSlice({
+  name: "product",
   initialState,
   reducers: {
     addItemToCart: (state, { payload }) => {
@@ -43,6 +43,6 @@ const cartSlice = createSlice({
   },
 });
 
-export default cartSlice.reducer;
+export default productSlice.reducer;
 export const { addItemToCart, increaseQuantity, decreaseQuantity, changeSize } =
-  cartSlice.actions;
+  productSlice.actions;
