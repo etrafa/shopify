@@ -7,6 +7,7 @@ import {
   INCREASE_QUANTITY_ON_CART,
 } from "../../../src/features/cartSlicer";
 import { useAppDispatch } from "../../../src/store";
+import { DeleteIcon } from "../../../Utilities/Icons/Icons";
 
 const CartFormBody = (props: ISingleProductForCart) => {
   const dispatch = useAppDispatch();
@@ -38,43 +39,48 @@ const CartFormBody = (props: ISingleProductForCart) => {
           <p className="text-xs px-6 py-2 opacity-70 md:hidden">
             Size: <span className="pl-0.5">{props.size}</span>
           </p>
-          <div className="w-8/12 md:w-6/12 max-w-xs h-10 border flex items-center my-3 mx-6 md:mx-auto">
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(DECREASE_QUANTITY_ON_CART(props.id));
-                if (props.amount === 1) {
-                  if (currentUser) {
-                    dispatch(
-                      deleteCartItem({
-                        userID: currentUser?.uid,
-                        productID: props.id,
-                      })
-                    );
+          <div className="w-8/12 md:w-6/12 max-w-xs  my-3 mx-6 md:mx-auto h-10 relative">
+            <div className="border flex items-center">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(DECREASE_QUANTITY_ON_CART(props.id));
+                  if (props.amount === 1) {
+                    if (currentUser) {
+                      dispatch(
+                        deleteCartItem({
+                          userID: currentUser?.uid,
+                          productID: props.id,
+                        })
+                      );
+                    }
                   }
-                }
-              }}
-              className="w-3/12 h-10 text-button-text font-bold text-xl"
-            >
-              -
-            </button>
-            <input
-              className="w-6/12 text-center h-full"
-              type="number"
-              name="quantity"
-              min={1}
-              max={10}
-              value={props.amount}
-            />
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(INCREASE_QUANTITY_ON_CART(props.id));
-              }}
-              className="w-3/12 h-10 text-button-text font-bold"
-            >
-              +
-            </button>
+                }}
+                className="w-3/12 h-10 text-button-text font-bold text-xl"
+              >
+                -
+              </button>
+              <input
+                className="w-6/12 text-center h-full"
+                type="number"
+                name="quantity"
+                min={1}
+                max={10}
+                value={props.amount}
+              />
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(INCREASE_QUANTITY_ON_CART(props.id));
+                }}
+                className="w-3/12 h-10 text-button-text font-bold"
+              >
+                +
+              </button>
+            </div>
+            <span className="absolute top-3 -right-10 cursor-pointer opacity-60 hover:opacity-40">
+              <DeleteIcon />
+            </span>
           </div>
         </div>
         <div className="w-2/12 h-32 text-right pt-4">
