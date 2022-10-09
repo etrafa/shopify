@@ -220,9 +220,14 @@ export const LogoutIcon = () => {
   );
 };
 
-export const DeleteIcon = () => {
+interface DeleteIconProps {
+  clickHandler: () => void;
+}
+
+export const DeleteIcon = ({ clickHandler }: DeleteIconProps) => {
   return (
     <svg
+      onClick={clickHandler}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

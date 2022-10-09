@@ -79,7 +79,18 @@ const CartFormBody = (props: ISingleProductForCart) => {
               </button>
             </div>
             <span className="absolute top-3 -right-10 cursor-pointer opacity-60 hover:opacity-40">
-              <DeleteIcon />
+              <DeleteIcon
+                clickHandler={() => {
+                  if (currentUser) {
+                    dispatch(
+                      deleteCartItem({
+                        productID: props.id,
+                        userID: currentUser?.uid,
+                      })
+                    );
+                  }
+                }}
+              />
             </span>
           </div>
         </div>
