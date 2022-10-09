@@ -1,5 +1,5 @@
 //react
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //image && icons
 import SearchIcon, {
@@ -11,9 +11,14 @@ import SearchIcon, {
 import Image from "next/image";
 import Logo from "../../public/logo.png";
 import Link from "next/link";
+import { useAppSelector } from "../../src/store";
 
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(true); //check if navbar is open.
+
+  const { cartItems } = useAppSelector((store) => store.cart);
+
+  useEffect(() => {}, [cartItems.length]);
 
   return (
     <nav>
@@ -97,7 +102,15 @@ const Navbar = () => {
         <div className="flex gap-x-4">
           <SearchIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110" />
           <UserIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110 hidden lg:block" />
-          <BagIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110" />
+
+          <Link href="/account/cart">
+            <div className="relative">
+              <BagIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110" />
+              <span className="w-4 h-4 absolute -bottom-1.5 -right-1 bg-light-gray inline-block text-center rounded-full text-[10px]">
+                {cartItems.length}
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
     </nav>
