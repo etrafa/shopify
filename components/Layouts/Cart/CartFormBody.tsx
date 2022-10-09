@@ -4,6 +4,7 @@ import { ISingleProductForCart } from "../../../interfaces/SingleProductForCart"
 import {
   DECREASE_QUANTITY_ON_CART,
   deleteCartItem,
+  DELETE_ITEM_ON_CART,
   INCREASE_QUANTITY_ON_CART,
 } from "../../../src/features/cartSlicer";
 import { useAppDispatch } from "../../../src/store";
@@ -82,10 +83,11 @@ const CartFormBody = (props: ISingleProductForCart) => {
               <DeleteIcon
                 clickHandler={() => {
                   if (currentUser) {
+                    dispatch(DELETE_ITEM_ON_CART(props.id));
                     dispatch(
                       deleteCartItem({
                         productID: props.id,
-                        userID: currentUser?.uid,
+                        userID: currentUser.uid,
                       })
                     );
                   }

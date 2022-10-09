@@ -44,6 +44,12 @@ const cartSlicer = createSlice({
         }
       }
     },
+
+    DELETE_ITEM_ON_CART: (state, { payload }) => {
+      const productID = payload;
+      state.cartItems = state.cartItems.filter((item) => item.id !== productID);
+    },
+
     CALCULATE_AMOUNTS: (state) => {
       let amount = 0;
       let total = 0;
@@ -99,9 +105,7 @@ export const deleteCartItem = createAsyncThunk(
     const docRef = doc(db, "users", userID, "cart", productID);
     try {
       await deleteDoc(docRef);
-      console.log(userID, productID);
     } catch (err) {
-      console.log(err);
       return rejectWithValue(err);
     }
   }
@@ -111,5 +115,6 @@ export default cartSlicer.reducer;
 export const {
   INCREASE_QUANTITY_ON_CART,
   DECREASE_QUANTITY_ON_CART,
+  DELETE_ITEM_ON_CART,
   CALCULATE_AMOUNTS,
 } = cartSlicer.actions;
