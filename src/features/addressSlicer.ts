@@ -1,5 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+} from "firebase/firestore";
 import { string } from "yup";
 import { db } from "../../firebase/firabaseConfig";
 
@@ -38,7 +44,17 @@ export const getUserAddress = createAsyncThunk(
 
 export const addUserAddress = createAsyncThunk(
   "add/userAddress",
-  async (userID: string, { rejectWithValue }) => {}
+  async (
+    { userID, address }: { userID: string; address: AddressProps },
+    { rejectWithValue }
+  ) => {
+    const docRef = collection(db, "users", userID, "address");
+    try {
+      await addDoc(docRef, { ...address });
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
 );
 
 export const deleteUserAddress = createAsyncThunk(
