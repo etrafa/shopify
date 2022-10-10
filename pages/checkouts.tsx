@@ -3,7 +3,7 @@ import CheckoutRight from "../components/Checkout/CheckoutRight/CheckoutRight";
 
 const checkout = () => {
   return (
-    <div className="w-full max-w-7xl mx-auto flex min-h-[50vh]">
+    <div className="w-full mx-auto flex min-h-[80vh]">
       <CheckoutLeft />
       <CheckoutRight />
     </div>

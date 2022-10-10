@@ -1,4 +1,4 @@
 const CheckoutLeft = () => {
-  return <div className="w-6/12 bg-blue-200">A</div>;
+  return <div className="w-full">A</div>;
 };
 export default CheckoutLeft;

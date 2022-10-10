@@ -21,6 +21,7 @@ module.exports = {
         "light-gray": "#F8F5EF",
         "button-text": "#4D4D4D",
         "main-red": "#ff0000",
+        "dark-gray": "#808080",
       },
     },
   },
