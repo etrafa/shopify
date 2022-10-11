@@ -4,11 +4,13 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 //reducers
 import productReducer from "./features/productSlicer";
 import cartReducer from "./features/cartSlicer";
+import addressReducer from "./features/addressSlicer";
 
 export const store = configureStore({
   reducer: {
     product: productReducer,
     cart: cartReducer,
+    address: addressReducer,
   },
 });
 

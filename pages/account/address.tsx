@@ -1,8 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddressForm from "../../components/Address/AddressForm";
+import { useAuth } from "../../firebase/firabaseConfig";
+import { getUserAddress } from "../../src/features/addressSlicer";
+import { useAppDispatch, useAppSelector } from "../../src/store";
 
 const Address = () => {
   const [isAddressOpen, setIsAddressOpen] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const { addressList } = useAppSelector((store) => store.address);
+  const currentUser = useAuth();
+
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(getUserAddress(currentUser.uid));
+    }
+
+    console.log(addressList);
+  }, [currentUser, dispatch]);
 
   return (
     <div className="w-full mt-14 min-h-[50vh]">

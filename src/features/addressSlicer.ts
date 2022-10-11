@@ -4,6 +4,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  DocumentData,
   getDocs,
 } from "firebase/firestore";
 import { string } from "yup";
@@ -14,31 +15,64 @@ interface AddressProps {
   lastName: string;
   address: string;
   city: string;
-  states: string;
+  state: string;
   zipCode: string;
   phone: string;
 }
 
 interface AddressState {
-  addressList: AddressProps[] | null;
+  addressList: AddressProps[];
+  singleAddress: AddressProps;
 }
 
-const initialState: AddressState = { addressList: [] };
+const initialState: AddressState = {
+  addressList: [],
+  singleAddress: {
+    address: "",
+    city: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+    state: "",
+    zipCode: "",
+  },
+};
 
 const addressSlicer = createSlice({
   name: "address",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    ADD_USER_ADDRESS: (state, action) => {
+      state.addressList.push(action.payload);
+    },
+  },
+
+  extraReducers(builder) {
+    builder.addCase(getUserAddress.fulfilled, (state, action) => {
+      state.addressList = action.payload;
+    });
+  },
+
+  //   builder.addCase(addUserAddress.fulfilled, (state, action) => {
+  //     const singleAddress = action.payload;
+  //   });
+  // },
 });
 
 export const getUserAddress = createAsyncThunk(
   "get/userAdress",
   async (userID: string, { rejectWithValue }) => {
-    const cartRef = collection(db, "users", userID, "address");
-    const res = await getDocs(cartRef);
-    const data = res.docs.map((address) => {
-      return { ...address.data(), id: address.id };
-    });
+    try {
+      const cartRef = collection(db, "users", userID, "address");
+      const res = await getDocs(cartRef);
+      const data = res.docs.map((address: DocumentData) => {
+        return { ...address.data(), id: address.id };
+      });
+
+      return data;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
   }
 );
 
@@ -71,4 +105,7 @@ export const deleteUserAddress = createAsyncThunk(
     }
   }
 );
+
+export const { ADD_USER_ADDRESS } = addressSlicer.actions;
+
 export default addressSlicer.reducer;

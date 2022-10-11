@@ -4,15 +4,23 @@ import * as yup from "yup";
 import { useState } from "react";
 import { USA_STATE_LIST } from "./usStateLists";
 
+import { useAuth } from "../../firebase/firabaseConfig";
+import { useAppDispatch } from "../../src/store";
+import {
+  addUserAddress,
+  ADD_USER_ADDRESS,
+} from "../../src/features/addressSlicer";
+
 const AddressForm = () => {
   const [firstNameInputClicked, setFirstNameInputClicked] = useState(false);
   const [lastNameInputClicked, setLastNameInputClicked] = useState(false);
   const [addressInputClicked, setAddressInputClicked] = useState(false);
   const [cityInputClicked, setCityInputClicked] = useState(false);
-  const [countryInputClicked, setCountryInputClicked] = useState(false);
-  const [provinceInputClicked, setProvinceInputClicked] = useState(false);
   const [zipCodeInputClicked, setZipCodeInputClicked] = useState(false);
   const [phoneInputClicked, setPhoneInputClicked] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const currentUser = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -36,7 +44,10 @@ const AddressForm = () => {
 
     onSubmit: async (values) => {
       //*on submit create a new address.
-      console.log(values);
+      if (currentUser) {
+        dispatch(ADD_USER_ADDRESS(values));
+        dispatch(addUserAddress({ userID: currentUser?.uid, address: values }));
+      }
     },
   });
 
