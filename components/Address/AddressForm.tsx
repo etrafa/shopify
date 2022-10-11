@@ -41,7 +41,7 @@ const AddressForm = () => {
   });
 
   return (
-    <form className="my-6" onSubmit={formik.handleSubmit}>
+    <form className="my-6 w-11/12 mx-auto" onSubmit={formik.handleSubmit}>
       <div className="flex mx-auto max-w-[26rem] gap-x-4">
         <CustomInput
           inputName="firstName"
