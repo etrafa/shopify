@@ -9,6 +9,7 @@ import { useAppDispatch } from "../../src/store";
 import {
   addUserAddress,
   ADD_USER_ADDRESS,
+  CLOSE_NEW_ADDRESS,
 } from "../../src/features/addressSlicer";
 
 const AddressForm = () => {
@@ -47,6 +48,7 @@ const AddressForm = () => {
       if (currentUser) {
         dispatch(ADD_USER_ADDRESS(values));
         dispatch(addUserAddress({ userID: currentUser?.uid, address: values }));
+        dispatch(CLOSE_NEW_ADDRESS());
       }
     },
   });
@@ -157,7 +159,8 @@ const AddressForm = () => {
           Add address
         </button>
         <button
-          type="submit"
+          onClick={() => dispatch(CLOSE_NEW_ADDRESS())}
+          type="reset"
           className="border w-44 h-12 border-black text-sm tracking-widest hover:scale-105 ease-in-out text-button-text block mx-auto mt-6"
         >
           Cancel

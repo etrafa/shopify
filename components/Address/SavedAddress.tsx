@@ -18,7 +18,7 @@ const SavedAddress = () => {
   }, [currentUser, dispatch, addressList.length]);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 w-full mt-6 max-w-screen-lg md:mx-auto">
+    <div className="grid grid-cols-2 md:grid-cols-3 w-full mt-6 max-w-screen-lg md:mx-auto gap-y-4">
       {addressList &&
         addressList.map((address) => {
           return (
