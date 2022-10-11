@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import { useAuth } from "../../firebase/firabaseConfig";
-import { getUserAddress } from "../../src/features/addressSlicer";
+import {
+  deleteUserAddress,
+  DELETE_USER_ADDRESS,
+  getUserAddress,
+} from "../../src/features/addressSlicer";
 import { useAppDispatch, useAppSelector } from "../../src/store";
 import { DeleteIcon } from "../../Utilities/Icons/Icons";
 
@@ -22,7 +26,7 @@ const SavedAddress = () => {
       {addressList &&
         addressList.map((address) => {
           return (
-            <div className="border mx-auto w-11/12" key={address?.address}>
+            <div className="border mx-auto w-11/12" key={address.id}>
               <h2 className="opacity-70 text-center my-4 font-bold">
                 {address.firstName + " " + address.lastName}
               </h2>
@@ -36,7 +40,19 @@ const SavedAddress = () => {
                 {address.phone}
               </p>
               <div className=" ml-auto w-full flex justify-end pr-6 opacity-70 hover:opacity-60 cursor-pointer my-4">
-                <DeleteIcon clickHandler={() => {}} />
+                <DeleteIcon
+                  clickHandler={() => {
+                    if (currentUser) {
+                      dispatch(DELETE_USER_ADDRESS(address.id));
+                      dispatch(
+                        deleteUserAddress({
+                          userID: currentUser?.uid,
+                          addressID: address.id,
+                        })
+                      );
+                    }
+                  }}
+                />
               </div>
             </div>
           );

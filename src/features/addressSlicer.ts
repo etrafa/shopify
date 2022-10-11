@@ -18,6 +18,7 @@ interface AddressProps {
   state: string;
   zipCode: string;
   phone: string;
+  id: string;
 }
 
 interface AddressState {
@@ -36,6 +37,7 @@ const initialState: AddressState = {
     phone: "",
     state: "",
     zipCode: "",
+    id: "",
   },
   isNewAddressOpen: false,
 };
@@ -46,6 +48,12 @@ const addressSlicer = createSlice({
   reducers: {
     ADD_USER_ADDRESS: (state, action) => {
       state.addressList.push(action.payload);
+    },
+    DELETE_USER_ADDRESS: (state, action) => {
+      const addressID = action.payload;
+      state.addressList = state.addressList.filter(
+        (address) => address.id !== addressID
+      );
     },
     OPEN_NEW_ADDRESS: (state) => {
       state.isNewAddressOpen = true;
@@ -110,7 +118,11 @@ export const deleteUserAddress = createAsyncThunk(
   }
 );
 
-export const { ADD_USER_ADDRESS, OPEN_NEW_ADDRESS, CLOSE_NEW_ADDRESS } =
-  addressSlicer.actions;
+export const {
+  ADD_USER_ADDRESS,
+  OPEN_NEW_ADDRESS,
+  CLOSE_NEW_ADDRESS,
+  DELETE_USER_ADDRESS,
+} = addressSlicer.actions;
 
 export default addressSlicer.reducer;
