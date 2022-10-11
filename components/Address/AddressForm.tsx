@@ -20,22 +20,20 @@ const AddressForm = () => {
       lastName: "",
       address: "",
       city: "",
-      country: "",
-      province: "",
+      state: "Alabama",
       zipCode: "",
       phone: "",
     },
+
     validationSchema: yup.object({
-      firstName: yup.string().required("Enter your first name"),
-      lastName: yup.string().required("Enter your last name"),
-      email: yup.string().email().required("Enter your email address."),
-      address: yup.string().required("Enter your address"),
-      city: yup.string().required("Enter your city"),
-      country: yup.string().required("Enter your country."),
-      province: yup.string().required("Enter your province."),
-      zipCode: yup.number().required("Only digits are allowed.").max(5),
-      phone: yup.string().required("Enter your phone."),
+      firstName: yup.string().required("This area is required"),
+      lastName: yup.string().required("This area is required"),
+      address: yup.string().required("This area is required"),
+      city: yup.string().required("This area is required"),
+      zipCode: yup.string().required("This area is required").min(3).max(5),
+      phone: yup.number().required("This area is required"),
     }),
+
     onSubmit: async (values) => {
       //*on submit create a new address.
       console.log(values);
@@ -43,7 +41,7 @@ const AddressForm = () => {
   });
 
   return (
-    <form>
+    <form className="my-6" onSubmit={formik.handleSubmit}>
       <div className="flex mx-auto max-w-[26rem] gap-x-4">
         <CustomInput
           inputName="firstName"
@@ -104,6 +102,8 @@ const AddressForm = () => {
           className="border h-12 border-black pl-2"
           name="state"
           id="state"
+          value={formik.values.state}
+          onChange={formik.handleChange}
         >
           {USA_STATE_LIST.map((state) => (
             <option key={state} value={state}>
