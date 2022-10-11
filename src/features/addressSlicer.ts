@@ -52,25 +52,21 @@ const addressSlicer = createSlice({
       state.addressList = action.payload;
     });
   },
-
-  //   builder.addCase(addUserAddress.fulfilled, (state, action) => {
-  //     const singleAddress = action.payload;
-  //   });
-  // },
 });
 
 export const getUserAddress = createAsyncThunk(
   "get/userAdress",
   async (userID: string, { rejectWithValue }) => {
     try {
-      const cartRef = collection(db, "users", userID, "address");
-      const res = await getDocs(cartRef);
+      const addressRef = collection(db, "users", userID, "address");
+      const res = await getDocs(addressRef);
       const data = res.docs.map((address: DocumentData) => {
         return { ...address.data(), id: address.id };
       });
 
       return data;
     } catch (err) {
+      console.log(err);
       return rejectWithValue(err);
     }
   }
