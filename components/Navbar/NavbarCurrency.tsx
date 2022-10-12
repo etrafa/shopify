@@ -2,7 +2,8 @@ import US_FLAG from "../../public/us-flag.png";
 import CANADA_FLAG from "../../public/canada-flag.png";
 import MEXICO_FLAG from "../../public/mexico-flag.png";
 import Image from "next/image";
-import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../src/store";
+import { TOGGLE_CURRENCY_MODAL } from "../../src/features/currencySlicer";
 
 const flagsAndCurrencies = [
   {
@@ -20,8 +21,11 @@ const flagsAndCurrencies = [
 ];
 
 const NavbarCurrency = () => {
+  const { isCurrencyModalOpen } = useAppSelector((store) => store.currency);
+  const dispatch = useAppDispatch();
+
   return (
-    <div className="relative">
+    <div onClick={() => dispatch(TOGGLE_CURRENCY_MODAL())} className="relative">
       <span className="inline-block w-8 h-8 pt-2 cursor-pointer">
         <Image
           src={US_FLAG}
@@ -30,23 +34,24 @@ const NavbarCurrency = () => {
           objectFit="contain"
         />
       </span>
-
-      <div className="absolute w-32 h-32 bg-white z-50">
-        {flagsAndCurrencies.map((country) => (
-          <div
-            className="flex py-2 pl-2 cursor-pointer hover:opacity-70"
-            key={country.currency}
-          >
-            <Image
-              src={country.flag}
-              alt={country + "flag"}
-              width={45}
-              height={25}
-            />
-            <p className="text-sm pl-2 pt-1">{country.currency}</p>
-          </div>
-        ))}
-      </div>
+      {isCurrencyModalOpen && (
+        <div className="absolute w-32 h-32 bg-white z-50">
+          {flagsAndCurrencies.map((country) => (
+            <div
+              className="flex py-2 pl-2 cursor-pointer hover:opacity-70"
+              key={country.currency}
+            >
+              <Image
+                src={country.flag}
+                alt={country + "flag"}
+                width={45}
+                height={25}
+              />
+              <p className="text-sm pl-2 pt-1">{country.currency}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

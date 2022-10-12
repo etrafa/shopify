@@ -5,12 +5,14 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import productReducer from "./features/productSlicer";
 import cartReducer from "./features/cartSlicer";
 import addressReducer from "./features/addressSlicer";
+import currencyReducer from "./features/currencySlicer";
 
 export const store = configureStore({
   reducer: {
     product: productReducer,
     cart: cartReducer,
     address: addressReducer,
+    currency: currencyReducer,
   },
 });
 
