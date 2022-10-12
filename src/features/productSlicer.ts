@@ -3,6 +3,7 @@ import { ISingleProductForCart } from "../../interfaces/SingleProductForCart";
 
 interface ProductState {
   value: ISingleProductForCart;
+  isCartModalOpen: boolean;
 }
 
 const initialState: ProductState = {
@@ -15,6 +16,7 @@ const initialState: ProductState = {
     size: "S",
     frontLarge: "",
   },
+  isCartModalOpen: false,
 };
 
 const productSlice = createSlice({
@@ -39,6 +41,12 @@ const productSlice = createSlice({
     changeSize: (state, { payload }) => {
       const selectedSize = payload;
       state.value.size = selectedSize;
+    },
+    OPEN_CART_MODAL: (state) => {
+      state.isCartModalOpen = true;
+    },
+    CLOSE_CART_MODAL: (state) => {
+      state.isCartModalOpen = false;
     },
   },
 });
