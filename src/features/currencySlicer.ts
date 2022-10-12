@@ -9,7 +9,7 @@ interface CurrencyState {
 const initialState: CurrencyState = {
   currentCurrency: "USD",
   isCurrencyModalOpen: false,
-  isCurrencyWarningOpen: false,
+  isCurrencyWarningOpen: true,
 };
 
 const currencySlicer = createSlice({

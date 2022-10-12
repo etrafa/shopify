@@ -1,0 +1,12 @@
+.currencyWarning {
+  animation: currencyWarningAnimation 0.3s forwards;
+}
+
+@keyframes currencyWarningAnimation {
+  from {
+    right: 0rem;
+  }
+  to {
+    right: 2rem;
+  }
+}
