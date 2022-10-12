@@ -9,7 +9,7 @@ import SingleProductQuantity from "./SingleProductQuantity";
 import SingleProductSize from "./SingleProductSize";
 
 const SingleProduct = (props: IProduct) => {
-  const { value } = useAppSelector((store) => store.product);
+  const { value, isCartModalOpen } = useAppSelector((store) => store.product);
 
   return (
     <div className="relative">
@@ -40,11 +40,13 @@ const SingleProduct = (props: IProduct) => {
           <SingleProductDetails description={props.description} />
         </div>
       </div>
-      <AddItemToCartModal
-        frontLarge={props.frontLarge}
-        size={value.size}
-        tshirtName={props.tshirtName}
-      />
+      {isCartModalOpen && (
+        <AddItemToCartModal
+          frontLarge={props.frontLarge}
+          size={value.size}
+          tshirtName={props.tshirtName}
+        />
+      )}
     </div>
   );
 };

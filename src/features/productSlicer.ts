@@ -25,6 +25,7 @@ const productSlice = createSlice({
   reducers: {
     addItemToCart: (state, { payload }) => {
       state.value = { ...payload };
+      state.isCartModalOpen = true;
     },
     increaseQuantity: (state) => {
       state.value.amount = state.value.amount + 1;
@@ -52,5 +53,11 @@ const productSlice = createSlice({
 });
 
 export default productSlice.reducer;
-export const { addItemToCart, increaseQuantity, decreaseQuantity, changeSize } =
-  productSlice.actions;
+export const {
+  addItemToCart,
+  increaseQuantity,
+  decreaseQuantity,
+  changeSize,
+  OPEN_CART_MODAL,
+  CLOSE_CART_MODAL,
+} = productSlice.actions;

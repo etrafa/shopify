@@ -1,0 +1,32 @@
+.cartModal {
+  animation: CartModalAnimation 0.5s forwards;
+}
+
+@keyframes CartModalAnimation {
+  from {
+    top: -5rem;
+    width: 100%;
+  }
+  to {
+    width: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+  }
+}
+
+@keyframes CartModalAnimationLargeScreen {
+  from {
+    top: -5rem;
+    width: 100%;
+  }
+  to {
+    top: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .cartModal {
+    animation: CartModalAnimationLargeScreen 0.5s forwards;
+  }
+}

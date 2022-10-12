@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ISingleProductForCart } from "../../../interfaces/SingleProductForCart";
+import { CLOSE_CART_MODAL } from "../../../src/features/productSlicer";
+import { useAppDispatch } from "../../../src/store";
 import { CloseIcon } from "../../../Utilities/Icons/Icons";
+import styles from "./CartModal.module.css";
 
 interface AddItemToCartModalProps {
   tshirtName: string;
@@ -10,12 +13,19 @@ interface AddItemToCartModalProps {
 }
 
 const AddItemToCartModal = (props: AddItemToCartModalProps) => {
+  const dispatch = useAppDispatch();
+
   return (
-    <div className="w-full max-w-[768px] md:max-w-sm min-h-screen md:min-h-[24rem] md:left-3/4 md:top-0 bg-white border-2 md:pb-6 z-50 rounded-md absolute left-1/2 transform -translate-x-1/2 -top-10">
+    <div
+      className={`${styles.cartModal} w-full max-w-[768px] md:max-w-sm min-h-screen md:min-h-[24rem] md:left-3/4 md:top-0 bg-white border-2 md:pb-6 z-50 rounded-md absolute left-1/2 transform -translate-x-1/2 -top-10`}
+    >
       <p className="text-sm py-10 pl-24 opacity-80">
         <span className="text-xs">✔️</span> Item added to your cart
       </p>
-      <CloseIcon iconStyle="w-6 h-6 absolute top-2 right-2 opacity-60 cursor-pointer hover:scale-110" />
+      <CloseIcon
+        navbarClickHandler={() => dispatch(CLOSE_CART_MODAL())}
+        iconStyle="w-6 h-6 absolute top-2 right-2 opacity-60 cursor-pointer hover:scale-110"
+      />
       <div className="flex">
         <span className="pt-6 pl-4">
           <Image
@@ -36,7 +46,10 @@ const AddItemToCartModal = (props: AddItemToCartModalProps) => {
             Go to cart
           </button>
         </Link>
-        <p className="underline underline-offset-2 text-center mt-4 cursor-pointer">
+        <p
+          onClick={() => dispatch(CLOSE_CART_MODAL())}
+          className="underline underline-offset-2 text-center mt-4 cursor-pointer"
+        >
           Continue shopping
         </p>
       </div>
