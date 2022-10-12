@@ -7,6 +7,7 @@ import {
   SET_CURRENT_CURRENCY,
   TOGGLE_CURRENCY_MODAL,
 } from "../../src/features/currencySlicer";
+import { useState } from "react";
 
 const flagsAndCurrencies = [
   {
@@ -26,12 +27,13 @@ const flagsAndCurrencies = [
 const NavbarCurrency = () => {
   const { isCurrencyModalOpen } = useAppSelector((store) => store.currency);
   const dispatch = useAppDispatch();
+  const [currentFlag, setCurrentFlag] = useState(US_FLAG);
 
   return (
     <div onClick={() => dispatch(TOGGLE_CURRENCY_MODAL())} className="relative">
       <span className="inline-block w-8 h-8 pt-2 cursor-pointer">
         <Image
-          src={US_FLAG}
+          src={currentFlag}
           alt="currency-flag"
           layout="responsive"
           objectFit="contain"
@@ -41,7 +43,10 @@ const NavbarCurrency = () => {
         <div className="absolute w-32 h-32 bg-white z-50">
           {flagsAndCurrencies.map((country) => (
             <div
-              onClick={() => dispatch(SET_CURRENT_CURRENCY(country.currency))}
+              onClick={() => {
+                setCurrentFlag(country.flag);
+                dispatch(SET_CURRENT_CURRENCY(country.currency));
+              }}
               className="flex py-2 pl-2 cursor-pointer hover:opacity-70"
               key={country.currency}
             >
