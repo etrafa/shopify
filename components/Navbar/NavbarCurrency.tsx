@@ -3,7 +3,10 @@ import CANADA_FLAG from "../../public/canada-flag.png";
 import MEXICO_FLAG from "../../public/mexico-flag.png";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "../../src/store";
-import { TOGGLE_CURRENCY_MODAL } from "../../src/features/currencySlicer";
+import {
+  SET_CURRENT_CURRENCY,
+  TOGGLE_CURRENCY_MODAL,
+} from "../../src/features/currencySlicer";
 
 const flagsAndCurrencies = [
   {
@@ -38,6 +41,7 @@ const NavbarCurrency = () => {
         <div className="absolute w-32 h-32 bg-white z-50">
           {flagsAndCurrencies.map((country) => (
             <div
+              onClick={() => dispatch(SET_CURRENT_CURRENCY(country.currency))}
               className="flex py-2 pl-2 cursor-pointer hover:opacity-70"
               key={country.currency}
             >

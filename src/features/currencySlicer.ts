@@ -21,8 +21,12 @@ const currencySlicer = createSlice({
         state.isCurrencyModalOpen = true;
       }
     },
+    SET_CURRENT_CURRENCY: (state, action) => {
+      state.currentCurrency = action.payload;
+    },
   },
 });
 
 export default currencySlicer.reducer;
-export const { TOGGLE_CURRENCY_MODAL } = currencySlicer.actions;
+export const { TOGGLE_CURRENCY_MODAL, SET_CURRENT_CURRENCY } =
+  currencySlicer.actions;
