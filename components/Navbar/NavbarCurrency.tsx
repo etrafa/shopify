@@ -4,6 +4,7 @@ import MEXICO_FLAG from "../../public/mexico-flag.png";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "../../src/store";
 import {
+  OPEN_CURRENCY_WARNING,
   SET_CURRENT_CURRENCY,
   TOGGLE_CURRENCY_MODAL,
 } from "../../src/features/currencySlicer";
@@ -49,6 +50,7 @@ const NavbarCurrency = () => {
               onClick={() => {
                 setCurrentFlag(country.flag);
                 dispatch(SET_CURRENT_CURRENCY(country.currency));
+                dispatch(OPEN_CURRENCY_WARNING());
               }}
               className="flex py-2 pl-2 cursor-pointer hover:opacity-70"
               key={country.currency}
