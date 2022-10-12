@@ -11,7 +11,7 @@ interface AddItemToCartModalProps {
 
 const AddItemToCartModal = (props: AddItemToCartModalProps) => {
   return (
-    <div className="w-full min-h-screen bg-white z-50 rounded-md absolute left-1/2 transform -translate-x-1/2 -top-10">
+    <div className="w-full max-w-[768px] md:max-w-sm min-h-screen md:min-h-[24rem] md:left-3/4 md:top-0 bg-white border-2 md:pb-6 z-50 rounded-md absolute left-1/2 transform -translate-x-1/2 -top-10">
       <p className="text-sm py-10 pl-24 opacity-80">
         <span className="text-xs">✔️</span> Item added to your cart
       </p>
