@@ -101,8 +101,11 @@ const Navbar = () => {
         </div>
         <div className="flex gap-x-4">
           <SearchIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110" />
-          <UserIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110 hidden lg:block" />
-
+          <Link href="/account">
+            <span>
+              <UserIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110 hidden lg:block" />
+            </span>
+          </Link>
           <Link href="/account/cart">
             <div className="relative">
               <BagIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110" />

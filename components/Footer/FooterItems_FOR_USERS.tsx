@@ -12,7 +12,7 @@ const FooterItems_FOR_USERS = () => {
       <Link href="/account/cart">
         <li className="mt-2 cursor-pointer hover:underline">My Cart</li>
       </Link>
-      <Link href="/account/profile">
+      <Link href="/account">
         <li className="mt-2 cursor-pointer hover:underline">My Profile</li>
       </Link>
     </ul>
