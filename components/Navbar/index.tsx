@@ -12,6 +12,7 @@ import Image from "next/image";
 import Logo from "../../public/logo.png";
 import Link from "next/link";
 import { useAppSelector } from "../../src/store";
+import NavbarCurrency from "./NavbarCurrency";
 
 const Navbar = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(true); //check if navbar is open.
@@ -99,8 +100,8 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="flex gap-x-4">
-          <SearchIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110" />
+        <div className="flex gap-x-4 items-center">
+          <NavbarCurrency />
           <Link href="/account">
             <span>
               <UserIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110 hidden lg:block" />
