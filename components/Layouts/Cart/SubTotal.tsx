@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../../src/store";
 const SubTotal = () => {
   const dispatch = useAppDispatch();
   const { cartItems, totalAmount } = useAppSelector((store) => store.cart);
+  const { currentCurrency } = useAppSelector((store) => store.currency);
 
   useEffect(() => {
     dispatch(CALCULATE_AMOUNTS());
@@ -17,9 +18,21 @@ const SubTotal = () => {
         <h3 className="inline opacity-70 text-sm tracking-wider font-bold">
           Subtotal
         </h3>
-        <p className="inline tracking-widest pl-6 opacity-95">
-          ${totalAmount} USD
-        </p>
+        {currentCurrency === "USD" && (
+          <p className="inline tracking-widest pl-6 opacity-95">
+            ${totalAmount} USD
+          </p>
+        )}
+        {currentCurrency === "CAD" && (
+          <p className="inline tracking-widest pl-6 opacity-95">
+            ${(totalAmount * 1.38).toFixed(2)} CAD
+          </p>
+        )}
+        {currentCurrency === "MXN" && (
+          <p className="inline tracking-widest pl-6 opacity-95">
+            ${Math.round(totalAmount * 20.04).toFixed(2)} MXN
+          </p>
+        )}
         <Link href="/checkouts">
           <button
             type="submit"

@@ -12,6 +12,7 @@ type CheckoutProps = {
 const CheckoutItems = () => {
   const dispatch = useAppDispatch();
   const { cartItems } = useAppSelector((store) => store.cart);
+  const { currentCurrency } = useAppSelector((store) => store.currency);
   const currentUser = useAuth();
 
   useEffect(() => {
@@ -19,8 +20,6 @@ const CheckoutItems = () => {
       dispatch(getCartItems(currentUser?.uid));
     }
   }, [dispatch, currentUser]);
-
-  console.log(cartItems);
 
   return (
     <div className="w-full flex flex-col m-12">
@@ -57,7 +56,21 @@ const CheckoutItems = () => {
                     </h3>
                   </td>
                   <td className="py-2">
-                    <p className="font-semibold text-sm">${price.toFixed(2)}</p>
+                    {currentCurrency === "USD" && (
+                      <p className="font-semibold text-sm">
+                        ${price.toFixed(2)}
+                      </p>
+                    )}
+                    {currentCurrency === "CAD" && (
+                      <p className="font-semibold text-sm">
+                        ${(price * 1.38).toFixed(2)}
+                      </p>
+                    )}
+                    {currentCurrency === "MXN" && (
+                      <p className="font-semibold text-sm">
+                        ${Math.round(price * 20.04).toFixed(2)}
+                      </p>
+                    )}
                   </td>
                 </tr>
               );

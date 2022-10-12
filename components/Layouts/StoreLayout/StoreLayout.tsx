@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { IProduct } from "../../../interfaces/ProductInterface";
+import { useAppSelector } from "../../../src/store";
 
 const StoreLayout = (props: IProduct) => {
+  const { currentCurrency } = useAppSelector((store) => store.currency);
+
   return (
     <Link href={"/products/" + props.leauge + "/" + props.id}>
       <div className="py-8 flex flex-col justify-between items-center group">
@@ -34,9 +37,21 @@ const StoreLayout = (props: IProduct) => {
           {props.tshirtName?.toUpperCase()}
         </span>
         <div className="my-2 w-full">
-          <span className="text-button-text text-sm font-bold px-7">
-            ${props.price.toFixed(2)}
-          </span>
+          {currentCurrency === "USD" && (
+            <span className="text-button-text text-sm font-bold px-7">
+              ${props.price.toFixed(2)}
+            </span>
+          )}
+          {currentCurrency === "CAD" && (
+            <span className="text-button-text text-sm font-bold px-7">
+              ${(props.price * 1.38).toFixed(2)} CAD
+            </span>
+          )}
+          {currentCurrency === "MXN" && (
+            <span className="text-button-text text-sm font-bold px-7">
+              $ {Math.round(props.price * 20.04).toFixed(2)} MXN
+            </span>
+          )}
         </div>
       </div>
     </Link>

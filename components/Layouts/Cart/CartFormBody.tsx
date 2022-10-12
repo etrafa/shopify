@@ -7,12 +7,13 @@ import {
   DELETE_ITEM_ON_CART,
   INCREASE_QUANTITY_ON_CART,
 } from "../../../src/features/cartSlicer";
-import { useAppDispatch } from "../../../src/store";
+import { useAppDispatch, useAppSelector } from "../../../src/store";
 import { DeleteIcon } from "../../../Utilities/Icons/Icons";
 
 const CartFormBody = (props: ISingleProductForCart) => {
   const dispatch = useAppDispatch();
   const currentUser = useAuth();
+  const { currentCurrency } = useAppSelector((store) => store.currency);
 
   return (
     <div>
@@ -97,9 +98,21 @@ const CartFormBody = (props: ISingleProductForCart) => {
           </div>
         </div>
         <div className="w-2/12 h-32 text-right pt-4">
-          <p className="text-sm pr-4 tracking-widest">
-            ${(props.amount * props.price).toFixed(2)}
-          </p>
+          {currentCurrency === "USD" && (
+            <p className="text-sm pr-4 tracking-widest">
+              ${(props.amount * props.price).toFixed(2)}
+            </p>
+          )}
+          {currentCurrency === "CAD" && (
+            <p className="text-sm pr-4 tracking-widest">
+              ${(props.amount * props.price * 1.38).toFixed(2)} CAD
+            </p>
+          )}
+          {currentCurrency === "MXN" && (
+            <p className="text-sm pr-4 tracking-widest">
+              ${Math.round(props.amount * props.price * 20.04).toFixed(2)} MXN
+            </p>
+          )}
         </div>
       </div>
       <hr className="mt-8 w-11/12 mx-auto md:w-full" />

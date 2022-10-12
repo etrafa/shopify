@@ -23,12 +23,6 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Store: NextPage<{ data: IProduct[] }> = ({ data }) => {
-  console.log(data.map((item) => item.id));
-
-  return (
-    <div>
-      <h2>hey</h2>
-    </div>
-  );
+  return <div></div>;
 };
 export default Store;
