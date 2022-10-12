@@ -13,14 +13,17 @@ const flagsAndCurrencies = [
   {
     flag: US_FLAG,
     currency: "USD",
+    country: "United States",
   },
   {
     flag: CANADA_FLAG,
     currency: "CAD",
+    country: "Canada",
   },
   {
     flag: MEXICO_FLAG,
     currency: "MXN",
+    country: "Mexico",
   },
 ];
 
@@ -52,7 +55,7 @@ const NavbarCurrency = () => {
             >
               <Image
                 src={country.flag}
-                alt={country + "flag"}
+                alt={country.country + "flag"}
                 width={45}
                 height={25}
               />
