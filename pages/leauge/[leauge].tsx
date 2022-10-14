@@ -1,68 +1,89 @@
-import { collection, getDocs } from "firebase/firestore";
-import { GetStaticProps, NextPage } from "next";
+import {
+  collection,
+  DocumentData,
+  getDocs,
+  limit,
+  orderBy,
+  query,
+  QueryDocumentSnapshot,
+  startAfter,
+} from "firebase/firestore";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import StoreLayout from "../../components/Layouts/StoreLayout/StoreLayout";
 import { db } from "../../firebase/firabaseConfig";
 import { IProduct } from "../../interfaces/ProductInterface";
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { params } = context;
-  const leaugeID = params?.leauge;
+const LeaugeStore = () => {
+  const params = useRouter();
+  const [products, setProducts] = useState<IProduct[] | null>(null);
+  const [lastDoc, setLastDoc] = useState<QueryDocumentSnapshot | null>(null);
 
-  const colRef = collection(db, `${leaugeID}`);
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      const colRef = collection(db, `${params.query.leauge}`);
 
-  const res = await getDocs(colRef);
+      const qu = query(colRef, orderBy("uid"), limit(10));
 
-  const data = res.docs.map((item) => {
-    return {
-      ...item.data(),
-      id: item.id,
+      const res = await getDocs(qu);
+
+      const data = res.docs.map((product: DocumentData) => {
+        return {
+          ...product.data(),
+          id: product.id,
+        };
+      });
+
+      const lastVisible = res.docs[res.docs.length - 1];
+
+      setLastDoc(lastVisible);
+
+      setProducts(data);
     };
-  });
 
-  return {
-    props: {
-      data,
-      params,
-    },
+    fetchInitialData();
+  }, [params.query.leauge]);
+
+  const fetchMoreData = async () => {
+    const colRef = collection(db, `${params.query.leauge}`);
+    const qu = query(colRef, orderBy("uid"), startAfter(lastDoc), limit(2));
+
+    const res = await getDocs(qu);
+
+    const data = res.docs.map((product: DocumentData) => {
+      return {
+        ...product.data(),
+        id: product.id,
+      };
+    });
+    const lastVisible = res.docs[res.docs.length - 1];
+    setProducts((prev) => (prev ? [...prev, ...data] : null));
+    setLastDoc(lastVisible);
   };
-};
 
-export const getStaticPaths = () => {
-  return {
-    paths: [
-      "/leauge/national-teams",
-      "/leauge/premier-leauge",
-      "/leauge/bundesliga",
-      "/leauge/seriea-leauge",
-      "/leauge/la-liga",
-      "/leauge/ligue-one",
-      "/leauge/other-clubs",
-    ],
-    fallback: true,
-  };
-};
-
-const LeaugeStore: NextPage<{ data: IProduct[] }> = ({ data }) => {
   return (
-    <div className="grid grid-cols-2 px-4 mt-12 md:grid-cols-3 lg:grid-cols-4 lg:mx-36 xl:grid-cols-5">
-      {data.map((tshirt) => {
-        return (
-          <StoreLayout
-            backLarge={tshirt.backLarge}
-            backSmall={tshirt.backLarge}
-            description={tshirt.description}
-            frontLarge={tshirt.frontLarge}
-            frontSmall={tshirt.frontSmall}
-            id={tshirt.id}
-            isBestSeller={tshirt.isBestSeller}
-            isStock={tshirt.isStock}
-            leauge={tshirt.leauge}
-            price={tshirt.price}
-            tshirtName={tshirt.tshirtName}
-            key={tshirt.id}
-          />
-        );
-      })}
+    <div>
+      <div className="grid grid-cols-2 px-4 mt-12 md:grid-cols-3 lg:grid-cols-4 lg:mx-36 xl:grid-cols-5">
+        {products &&
+          products.map((tshirt) => {
+            return (
+              <StoreLayout
+                backLarge={tshirt.backLarge}
+                backSmall={tshirt.backLarge}
+                description={tshirt.description}
+                frontLarge={tshirt.frontLarge}
+                frontSmall={tshirt.frontSmall}
+                id={tshirt.id}
+                isBestSeller={tshirt.isBestSeller}
+                isStock={tshirt.isStock}
+                leauge={tshirt.leauge}
+                price={tshirt.price}
+                tshirtName={tshirt.tshirtName}
+                key={tshirt.id}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 };
