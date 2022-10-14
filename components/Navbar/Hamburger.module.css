@@ -1,0 +1,12 @@
+.hamburgerMenu {
+  animation: MenuAnimation 0.5s forwards;
+}
+
+@keyframes MenuAnimation {
+  from {
+    left: -5rem;
+  }
+  to {
+    left: 0;
+  }
+}

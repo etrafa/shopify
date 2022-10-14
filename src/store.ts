@@ -6,6 +6,7 @@ import productReducer from "./features/productSlicer";
 import cartReducer from "./features/cartSlicer";
 import addressReducer from "./features/addressSlicer";
 import currencyReducer from "./features/currencySlicer";
+import navbarReducer from "./features/navbarSlicer";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     cart: cartReducer,
     address: addressReducer,
     currency: currencyReducer,
+    navbar: navbarReducer,
   },
 });
 

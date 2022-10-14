@@ -11,13 +11,15 @@ import SearchIcon, {
 import Image from "next/image";
 import Logo from "../../public/logo.png";
 import Link from "next/link";
-import { useAppSelector } from "../../src/store";
+import { useAppDispatch, useAppSelector } from "../../src/store";
 import NavbarCurrency from "./NavbarCurrency";
+import styles from "./Hamburger.module.css";
+import { TOGGLE_NAVBAR } from "../../src/features/navbarSlicer";
 
 const Navbar = () => {
-  const [isNavbarOpen, setIsNavbarOpen] = useState(true); //check if navbar is open.
-
   const { cartItems } = useAppSelector((store) => store.cart);
+  const { isNavbarOpen } = useAppSelector((store) => store.navbar);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {}, [cartItems.length]);
 
@@ -26,13 +28,13 @@ const Navbar = () => {
       <div className="flex justify-between items-center mx-6 mt-12 lg:justify-center lg:gap-x-12">
         {!isNavbarOpen && (
           <HamburgerIcon
-            navbarClickHandler={() => setIsNavbarOpen(!isNavbarOpen)}
+            navbarClickHandler={() => dispatch(TOGGLE_NAVBAR())}
             iconStyle="w-7 h-7 cursor-pointer lg:hidden cursor-pointer hover:scale-110"
           />
         )}
         {isNavbarOpen && (
           <CloseIcon
-            navbarClickHandler={() => setIsNavbarOpen(!isNavbarOpen)}
+            navbarClickHandler={() => dispatch(TOGGLE_NAVBAR())}
             iconStyle="w-7 h-7 cursor-pointer lg:hidden cursor-pointer hover:scale-110"
           />
         )}
@@ -48,7 +50,7 @@ const Navbar = () => {
         <div
           className={
             isNavbarOpen
-              ? "absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto"
+              ? `${styles.hamburgerMenu} absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto z-50 bg-white min-h-screen`
               : "hidden lg:block absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto"
           }
         >
