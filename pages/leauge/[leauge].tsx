@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import StoreLayout from "../../components/Layouts/StoreLayout/StoreLayout";
 import { db } from "../../firebase/firabaseConfig";
 import { IProduct } from "../../interfaces/ProductInterface";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const LeaugeStore = () => {
   const params = useRouter();
@@ -62,7 +63,13 @@ const LeaugeStore = () => {
   };
 
   return (
-    <div>
+    <InfiniteScroll
+      dataLength={products ? products.length : 0}
+      next={fetchMoreData}
+      hasMore={true}
+      loader={null}
+      endMessage={null}
+    >
       <div className="grid grid-cols-2 px-4 mt-12 md:grid-cols-3 lg:grid-cols-4 lg:mx-36 xl:grid-cols-5">
         {products &&
           products.map((tshirt) => {
@@ -84,7 +91,7 @@ const LeaugeStore = () => {
             );
           })}
       </div>
-    </div>
+    </InfiniteScroll>
   );
 };
 export default LeaugeStore;
