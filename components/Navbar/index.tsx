@@ -24,8 +24,8 @@ const Navbar = () => {
   useEffect(() => {}, [cartItems.length]);
 
   return (
-    <nav>
-      <div className="flex justify-between items-center mx-6 mt-12 lg:justify-center lg:gap-x-12">
+    <nav className="relative">
+      <div className="flex justify-between items-center mx-6 lg:justify-center lg:gap-x-12">
         {!isNavbarOpen && (
           <HamburgerIcon
             navbarClickHandler={() => dispatch(TOGGLE_NAVBAR())}
@@ -50,7 +50,7 @@ const Navbar = () => {
         <div
           className={
             isNavbarOpen
-              ? `${styles.hamburgerMenu} absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto z-50 bg-white min-h-screen`
+              ? `${styles.hamburgerMenu} absolute top-24 lg:relative lg:top-0 w-full left-0 lg:w-auto z-50 bg-white min-h-screen`
               : "hidden lg:block absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto"
           }
         >

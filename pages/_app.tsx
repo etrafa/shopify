@@ -4,13 +4,14 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer/Footer";
 import { Provider } from "react-redux";
 import { store } from "../src/store";
+import Layout from "../components/Layouts/Layout";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <Navbar />
-      <Component {...pageProps} />
-      <Footer />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </Provider>
   );
 }
