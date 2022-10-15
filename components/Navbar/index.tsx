@@ -9,7 +9,7 @@ import SearchIcon, {
   CloseIcon,
 } from "../../Utilities/Icons/Icons";
 import Image from "next/image";
-import Logo from "../../public/logo.png";
+import Logo from "../../public/image.jpg";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "../../src/store";
 import NavbarCurrency from "./NavbarCurrency";
@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav className="">
-      <div className="flex justify-between items-center mx-6 lg:justify-center lg:gap-x-12">
+      <div className="flex justify-between items-center mx-6 lg:justify-center lg:gap-x-12 lg:mt-12">
         {!isNavbarOpen && (
           <HamburgerIcon
             navbarClickHandler={() => dispatch(TOGGLE_NAVBAR())}
