@@ -24,7 +24,7 @@ const Navbar = () => {
   useEffect(() => {}, [cartItems.length]);
 
   return (
-    <nav className="relative">
+    <nav className="">
       <div className="flex justify-between items-center mx-6 lg:justify-center lg:gap-x-12">
         {!isNavbarOpen && (
           <HamburgerIcon
@@ -50,7 +50,7 @@ const Navbar = () => {
         <div
           className={
             isNavbarOpen
-              ? `${styles.hamburgerMenu} absolute top-24 lg:relative lg:top-0 w-full left-0 lg:w-auto z-50 bg-white min-h-screen`
+              ? `${styles.hamburgerMenu} absolute top-24 lg:relative lg:top-0 w-full left-0 lg:w-auto z-50 bg-white h-3/4 overflow-y-scroll`
               : "hidden lg:block absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto"
           }
         >
@@ -102,6 +102,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
+
         <div className="flex gap-x-4 items-center">
           <NavbarCurrency />
           <Link href="/account">

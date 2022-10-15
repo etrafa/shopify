@@ -20,7 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
   }, [isNavbarOpen]);
 
   return (
-    <div className="etem-senel">
+    <div>
       <Navbar />
       {children}
       <Footer />
