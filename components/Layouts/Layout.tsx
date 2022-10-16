@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useAppSelector } from "../../src/store";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar";
+import CurrencyWarningMessage from "../CurrencyWarning/CurrencyWarningMessage";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -21,6 +22,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div>
+      <CurrencyWarningMessage />
       <Navbar />
       {children}
       <Footer />

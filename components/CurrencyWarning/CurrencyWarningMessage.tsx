@@ -21,7 +21,7 @@ const CurrencyModal = () => {
     <>
       {isCurrencyWarningOpen && (
         <div
-          className={`${styles.currencyWarning} w-80 h-12 bg-green-400 text-white absolute right-8 rounded-xl z-50 mt-2 lg:mt-0`}
+          className={`${styles.currencyWarning} w-2/4 max-w-[320px] h-12 bg-light-gray text-black absolute right-8 top-24 rounded-xl z-50 mt-2 lg:mt-0`}
         >
           <p className="text-sm text-center pt-2 font-semibold pl-2">
             Currency has changed to {currentCurrency}
