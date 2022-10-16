@@ -1,6 +1,6 @@
 import US_FLAG from "../../public/us-flag.png";
 import CANADA_FLAG from "../../public/canada-flag.png";
-import MEXICO_FLAG from "../../public/mexico-flag.png";
+import MEXICO_FLAG from "../../public/euro-flag.png";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "../../src/store";
 import {
@@ -23,8 +23,8 @@ const flagsAndCurrencies = [
   },
   {
     flag: MEXICO_FLAG,
-    currency: "MXN",
-    country: "Mexico",
+    currency: "EUR",
+    country: "Europe",
   },
 ];
 

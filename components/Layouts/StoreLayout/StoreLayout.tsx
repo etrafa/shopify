@@ -47,9 +47,9 @@ const StoreLayout = (props: IProduct) => {
               ${(props.price * 1.38).toFixed(2)} CAD
             </span>
           )}
-          {currentCurrency === "MXN" && (
+          {currentCurrency === "EUR" && (
             <span className="text-button-text text-sm font-bold px-7">
-              $ {Math.round(props.price * 20.04).toFixed(2)} MXN
+              {Math.round(props.price * 1.03).toFixed(2)} €
             </span>
           )}
         </div>

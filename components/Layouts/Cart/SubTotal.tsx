@@ -28,9 +28,9 @@ const SubTotal = () => {
             ${(totalAmount * 1.38).toFixed(2)} CAD
           </p>
         )}
-        {currentCurrency === "MXN" && (
+        {currentCurrency === "EUR" && (
           <p className="inline tracking-widest pl-6 opacity-95">
-            ${Math.round(totalAmount * 20.04).toFixed(2)} MXN
+            {Math.round(totalAmount * 1.03).toFixed(2)} €
           </p>
         )}
         <Link href="/checkouts">

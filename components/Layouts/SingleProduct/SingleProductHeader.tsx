@@ -26,9 +26,9 @@ const SingleProductHeader = ({
           ${(price * 1.38).toFixed(2)} CAD
         </p>
       )}
-      {currentCurrency === "MXN" && (
+      {currentCurrency === "EUR" && (
         <p className="italic mt-4 px-5 font-semibold text-button-text tracking-widest">
-          $ {Math.round(price * 20.04).toFixed(2)} MXN
+          {Math.round(price * 1.03).toFixed(2)} €
         </p>
       )}
     </div>
