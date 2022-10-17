@@ -21,7 +21,7 @@ const Cart = () => {
   }, [dispatch, currentUser]);
 
   return (
-    <div className="w-full mt-14 min-h-[50vh]">
+    <div className="w-full mt-14 lg:mb-40 min-h-[50vh]">
       {cartItems.length === 0 && <NoItemFound />}
       {cartItems && cartItems.length > 0 && (
         <>
@@ -32,8 +32,8 @@ const Cart = () => {
               cartItems.map((item) => {
                 return <CartFormBody key={item.id} {...item} />;
               })}
+            <SubTotal />
           </form>
-          <SubTotal />
         </>
       )}
     </div>
