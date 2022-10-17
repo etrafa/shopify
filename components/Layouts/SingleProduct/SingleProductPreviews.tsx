@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface SingleProductPreviewsProps {
   frontLarge: string;
@@ -17,6 +17,12 @@ const SingleProductPreviews = ({
   tshirtName,
 }: SingleProductPreviewsProps) => {
   const [currentImage, setCurrentImage] = useState(frontLarge);
+
+  useEffect(() => {
+    if (!currentImage) {
+      setCurrentImage(frontLarge);
+    }
+  }, [currentImage, frontLarge]);
 
   return (
     <div className="mt-16 text-center">

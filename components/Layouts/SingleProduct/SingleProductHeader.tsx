@@ -18,17 +18,17 @@ const SingleProductHeader = ({
       </header>
       {currentCurrency === "USD" && (
         <p className="italic mt-4 px-5 font-semibold text-button-text tracking-widest">
-          ${price.toFixed(2)}
+          ${price && price.toFixed(2)}
         </p>
       )}
       {currentCurrency === "CAD" && (
         <p className="italic mt-4 px-5 font-semibold text-button-text tracking-widest">
-          ${(price * 1.38).toFixed(2)} CAD
+          ${(price && price * 1.38).toFixed(2)} CAD
         </p>
       )}
       {currentCurrency === "EUR" && (
         <p className="italic mt-4 px-5 font-semibold text-button-text tracking-widest">
-          {Math.round(price * 1.03).toFixed(2)} €
+          {Math.round(price && price * 1.03).toFixed(2)} €
         </p>
       )}
     </div>

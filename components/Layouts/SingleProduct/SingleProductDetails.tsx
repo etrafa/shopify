@@ -10,13 +10,14 @@ const SingleProductDetails = ({ description }: SingleProductDetailsProps) => {
       </h2>
 
       <ul className="list-disc  list-inside">
-        {description.map((description) => (
-          <>
-            <li key={description} className="text-sm px-4 py-2">
-              {description}
-            </li>
-          </>
-        ))}
+        {description &&
+          description.map((description) => (
+            <>
+              <li key={description} className="text-sm px-4 py-2">
+                {description}
+              </li>
+            </>
+          ))}
       </ul>
     </div>
   );
