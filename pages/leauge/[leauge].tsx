@@ -62,36 +62,48 @@ const LeaugeStore = () => {
     setLastDoc(lastVisible);
   };
 
+  const headerName = String(params.query.leauge)
+    .replace("-", " ")
+    .toUpperCase();
+  console.log(headerName);
+
   return (
-    <InfiniteScroll
-      dataLength={products ? products.length : 0}
-      next={fetchMoreData}
-      hasMore={true}
-      loader={null}
-      endMessage={null}
-    >
-      <div className="grid grid-cols-2 px-4 mt-12 md:grid-cols-3 lg:grid-cols-4 lg:mx-36 xl:grid-cols-5">
-        {products &&
-          products.map((tshirt) => {
-            return (
-              <StoreLayout
-                backLarge={tshirt.backLarge}
-                backSmall={tshirt.backLarge}
-                description={tshirt.description}
-                frontLarge={tshirt.frontLarge}
-                frontSmall={tshirt.frontSmall}
-                id={tshirt.id}
-                isBestSeller={tshirt.isBestSeller}
-                isStock={tshirt.isStock}
-                leauge={tshirt.leauge}
-                price={tshirt.price}
-                tshirtName={tshirt.tshirtName}
-                key={tshirt.id}
-              />
-            );
-          })}
-      </div>
-    </InfiniteScroll>
+    <div>
+      <header className="w-full flex justify-center pt-12">
+        <h2 className="w-60 h-12 bg-light-gray text-button-text font-semibold tracking-widest text-center underline underline-offset-8 pt-2">
+          {headerName}
+        </h2>
+      </header>
+      <InfiniteScroll
+        dataLength={products ? products.length : 0}
+        next={fetchMoreData}
+        hasMore={true}
+        loader={null}
+        endMessage={null}
+      >
+        <div className="grid grid-cols-2 px-4 mt-12 md:grid-cols-3 lg:grid-cols-4 lg:mx-36 xl:grid-cols-5">
+          {products &&
+            products.map((tshirt) => {
+              return (
+                <StoreLayout
+                  backLarge={tshirt.backLarge}
+                  backSmall={tshirt.backLarge}
+                  description={tshirt.description}
+                  frontLarge={tshirt.frontLarge}
+                  frontSmall={tshirt.frontSmall}
+                  id={tshirt.id}
+                  isBestSeller={tshirt.isBestSeller}
+                  isStock={tshirt.isStock}
+                  leauge={tshirt.leauge}
+                  price={tshirt.price}
+                  tshirtName={tshirt.tshirtName}
+                  key={tshirt.id}
+                />
+              );
+            })}
+        </div>
+      </InfiniteScroll>
+    </div>
   );
 };
 export default LeaugeStore;
