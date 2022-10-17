@@ -65,7 +65,6 @@ const LeaugeStore = () => {
   const headerName = String(params.query.leauge)
     .replace("-", " ")
     .toUpperCase();
-  console.log(headerName);
 
   return (
     <div>

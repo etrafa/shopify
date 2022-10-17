@@ -46,7 +46,7 @@ const Navbar = () => {
 
   return (
     <nav className={visible ? "sticky top-0 z-50 bg-white" : ""}>
-      <div className="flex justify-between items-center mx-6 lg:justify-center lg:gap-x-12 lg:mt-12">
+      <div className="flex justify-between items-center mx-6 lg:justify-center lg:gap-x-12 mt-6 lg:mt-12">
         {!isNavbarOpen && (
           <HamburgerIcon
             navbarClickHandler={() => dispatch(TOGGLE_NAVBAR())}
@@ -63,12 +63,13 @@ const Navbar = () => {
         <Link href="/">
           <Image
             src={Logo}
-            width={70}
-            height={70}
+            width={40}
+            height={40}
             alt={"logo"}
             className="cursor-pointer"
           />
         </Link>
+
         <CurrencyWarningMessage />
 
         <div
@@ -80,7 +81,11 @@ const Navbar = () => {
         >
           <ul
             className="flex ml-4 flex-col lg:flex-row"
-            onClick={() => dispatch(TOGGLE_NAVBAR())}
+            onClick={() => {
+              if (window.innerWidth <= 991) {
+                dispatch(TOGGLE_NAVBAR());
+              }
+            }}
           >
             <Link href="/">
               <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
