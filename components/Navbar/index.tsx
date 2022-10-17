@@ -60,13 +60,15 @@ const Navbar = () => {
           />
         )}
 
-        <Image
-          src={Logo}
-          width={70}
-          height={70}
-          alt={"logo"}
-          className="cursor-pointer"
-        />
+        <Link href="/">
+          <Image
+            src={Logo}
+            width={70}
+            height={70}
+            alt={"logo"}
+            className="cursor-pointer"
+          />
+        </Link>
         <CurrencyWarningMessage />
 
         <div
