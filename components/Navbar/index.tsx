@@ -19,12 +19,32 @@ import { TOGGLE_NAVBAR } from "../../src/features/navbarSlicer";
 const Navbar = () => {
   const { cartItems } = useAppSelector((store) => store.cart);
   const { isNavbarOpen } = useAppSelector((store) => store.navbar);
+
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  const handleScroll = () => {
+    const currentScrollPos = window.scrollY;
+
+    if (currentScrollPos > prevScrollPos) {
+      setVisible(false);
+    } else {
+      setVisible(true);
+    }
+
+    setPrevScrollPos(currentScrollPos);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
   const dispatch = useAppDispatch();
 
-  useEffect(() => {}, [cartItems.length]);
-
   return (
-    <nav className="">
+    <nav className={visible ? "lg:sticky lg:top-0 lg:z-50 lg:bg-white" : ""}>
       <div className="flex justify-between items-center mx-6 lg:justify-center lg:gap-x-12 lg:mt-12">
         {!isNavbarOpen && (
           <HamburgerIcon
