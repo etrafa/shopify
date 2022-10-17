@@ -76,7 +76,10 @@ const Navbar = () => {
               : "hidden lg:block absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto"
           }
         >
-          <ul className="flex ml-4 flex-col lg:flex-row">
+          <ul
+            className="flex ml-4 flex-col lg:flex-row"
+            onClick={() => dispatch(TOGGLE_NAVBAR())}
+          >
             <Link href="/">
               <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline">
                 Home
