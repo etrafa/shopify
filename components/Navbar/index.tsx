@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from "../../src/store";
 import NavbarCurrency from "./NavbarCurrency";
 import styles from "./Hamburger.module.css";
 import { TOGGLE_NAVBAR } from "../../src/features/navbarSlicer";
+import CurrencyWarningMessage from "../CurrencyWarning/CurrencyWarningMessage";
 
 const Navbar = () => {
   const { cartItems } = useAppSelector((store) => store.cart);
@@ -44,7 +45,7 @@ const Navbar = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <nav className={visible ? "lg:sticky lg:top-0 lg:z-50 lg:bg-white" : ""}>
+    <nav className={visible ? "sticky top-0 z-50 bg-white" : ""}>
       <div className="flex justify-between items-center mx-6 lg:justify-center lg:gap-x-12 lg:mt-12">
         {!isNavbarOpen && (
           <HamburgerIcon
@@ -66,6 +67,7 @@ const Navbar = () => {
           alt={"logo"}
           className="cursor-pointer"
         />
+        <CurrencyWarningMessage />
 
         <div
           className={

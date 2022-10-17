@@ -22,7 +22,6 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div>
-      <CurrencyWarningMessage />
       <Navbar />
       {children}
       <Footer />
