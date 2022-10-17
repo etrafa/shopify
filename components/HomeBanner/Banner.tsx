@@ -15,7 +15,7 @@ import styles from "./Banner.module.css";
 
 const Banner = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-11/12 max-w-screen-xl lg:mx-auto gap-4 mt-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-11/12 max-w-screen-xl mx-auto gap-4 mt-8">
       <Link href="/leauge/national-teams">
         <Image
           className={styles.zoomAnimation}
