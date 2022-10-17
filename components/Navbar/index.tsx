@@ -7,6 +7,7 @@ import SearchIcon, {
   UserIcon,
   HamburgerIcon,
   CloseIcon,
+  LogoutIcon,
 } from "../../Utilities/Icons/Icons";
 import Image from "next/image";
 import Logo from "../../public/image.jpg";
@@ -16,10 +17,14 @@ import NavbarCurrency from "./NavbarCurrency";
 import styles from "./Hamburger.module.css";
 import { TOGGLE_NAVBAR } from "../../src/features/navbarSlicer";
 import CurrencyWarningMessage from "../CurrencyWarning/CurrencyWarningMessage";
+import { useAuth } from "../../firebase/firabaseConfig";
+import { firebaseLogout } from "../../firebase/FirebaseAuthFunctions/firebaseLogout";
 
 const Navbar = () => {
   const { cartItems } = useAppSelector((store) => store.cart);
   const { isNavbarOpen } = useAppSelector((store) => store.navbar);
+
+  const currentUser = useAuth();
 
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -75,7 +80,7 @@ const Navbar = () => {
         <div
           className={
             isNavbarOpen
-              ? `${styles.hamburgerMenu} absolute top-24 lg:relative lg:top-0 w-full left-0 lg:w-auto z-50 bg-white h-full min-h-[80vh] overflow-y-scroll`
+              ? `${styles.hamburgerMenu} absolute top-16 lg:relative lg:top-0 w-full left-0 lg:w-auto z-50 bg-white h-full min-h-[80vh] overflow-y-scroll`
               : "hidden lg:block absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto"
           }
         >
@@ -128,10 +133,22 @@ const Navbar = () => {
                 Other Clubs
               </li>
             </Link>
-            <li className="lg:hidden uppercase text-sm p-4 cursor-pointer hover:underline">
-              Sign up
-              <UserIcon iconStyle="w-5 h-5 cursor-pointer hover:scale-110 lg:hidden inline-block" />
-            </li>
+            {currentUser ? (
+              <li
+                onClick={() => firebaseLogout()}
+                className="lg:hidden uppercase text-sm py-4 px-2.5 cursor-pointer hover:underline"
+              >
+                <LogoutIcon />
+                <span className="pl-2">Log out</span>
+              </li>
+            ) : (
+              <Link href="/account/login">
+                <li className="lg:hidden uppercase text-sm p-4 cursor-pointer hover:underline">
+                  Sign up
+                  <UserIcon iconStyle="w-5 h-5 cursor-pointer hover:scale-110 lg:hidden inline-block" />
+                </li>
+              </Link>
+            )}
           </ul>
         </div>
 
