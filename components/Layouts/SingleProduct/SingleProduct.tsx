@@ -40,13 +40,12 @@ const SingleProduct = (props: IProduct) => {
           <SingleProductDetails description={props.description} />
         </div>
       </div>
-      {isCartModalOpen && (
-        <AddItemToCartModal
-          frontLarge={props.frontLarge}
-          size={value.size}
-          tshirtName={props.tshirtName}
-        />
-      )}
+
+      <AddItemToCartModal
+        frontLarge={props.frontLarge}
+        size={value.size}
+        tshirtName={props.tshirtName}
+      />
     </div>
   );
 };
