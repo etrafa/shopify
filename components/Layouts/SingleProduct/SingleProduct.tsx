@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { IProduct } from "../../../interfaces/ProductInterface";
 import { useAppSelector } from "../../../src/store";
 import AddItemToCartModal from "./AddItemToCartModal";
@@ -9,10 +10,24 @@ import SingleProductQuantity from "./SingleProductQuantity";
 import SingleProductSize from "./SingleProductSize";
 
 const SingleProduct = (props: IProduct) => {
-  const { value, isCartModalOpen } = useAppSelector((store) => store.product);
+  const { value } = useAppSelector((store) => store.product);
 
   return (
     <div className="relative">
+      <Head>
+        <title>
+          {props.tshirtName
+            .split(" ")
+            .map(
+              (char) =>
+                char.substring(0, 1).toUpperCase() +
+                char.substring(1).toLowerCase()
+            )
+            .join(" ")}
+          - EL FOOTBALL STORE
+        </title>
+        <meta property="og:title" content={props.tshirtName} key="title" />
+      </Head>
       <div className="md:flex md:justify-center">
         <SingleProductPreviews
           backLarge={props.backLarge}
