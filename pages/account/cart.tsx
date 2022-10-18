@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useEffect, useState } from "react";
 
 import CartFormBody from "../../components/Layouts/Cart/CartFormBody";
@@ -22,6 +23,9 @@ const Cart = () => {
 
   return (
     <div className="w-full mt-14 lg:mb-40 min-h-[50vh]">
+      <Head>
+        <title>My Cart - EL FOOTBALL STORE</title>
+      </Head>
       {cartItems.length === 0 && <NoItemFound />}
       {cartItems && cartItems.length > 0 && (
         <>

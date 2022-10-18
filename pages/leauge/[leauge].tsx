@@ -69,6 +69,19 @@ const LeaugeStore = () => {
 
   return (
     <div>
+      <Head>
+        <title>
+          {headerName
+            .split(" ")
+            .map(
+              (char) =>
+                char.substring(0, 1).toUpperCase() +
+                char.substring(1).toLowerCase()
+            )
+            .join(" ")}{" "}
+          - EL FOOTBALL STORE
+        </title>
+      </Head>
       <header className="w-full flex justify-center pt-12">
         <h2 className="w-60 h-12 bg-light-gray text-button-text font-semibold tracking-widest text-center underline underline-offset-8 pt-2">
           {headerName}

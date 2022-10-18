@@ -1,6 +1,11 @@
+import Head from "next/head";
+
 const PrivacyPolicy = () => {
   return (
     <div className="mt-14 min-h-[50vh] text-center">
+      <Head>
+        <title>Privacy Policy - EL FOOTBALL STORE</title>
+      </Head>
       <h1 className="text-border text-2xl font-bold text-zinc-700">
         Privacy Policy
       </h1>

@@ -1,8 +1,12 @@
+import Head from "next/head";
 import FaqDropdown from "../components/FAQ/FaqDropdown";
 
 const Faq = () => {
   return (
     <div className="mt-14 min-h-[50vh] text-center">
+      <Head>
+        <title>F.A.Q - EL FOOTBALL STORE</title>
+      </Head>
       <h1 className="text-border text-2xl font-bold text-zinc-700">
         Frequently Asked Questions (FAQ)
       </h1>

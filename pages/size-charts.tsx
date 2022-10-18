@@ -1,4 +1,5 @@
 //react
+import Head from "next/head";
 import { useState } from "react";
 import KidJersey from "../components/SizeCharts/KidJersey";
 import MenJersey from "../components/SizeCharts/MenJersey";
@@ -12,6 +13,9 @@ const SizeCharts = () => {
 
   return (
     <div className="w-full mt-14 min-h-[50vh]">
+      <Head>
+        <title>Size Chart - EL FOOTBALL STORE</title>
+      </Head>
       <h1 className="text-border text-2xl font-bold text-zinc-700 text-center">
         Size Chart
       </h1>

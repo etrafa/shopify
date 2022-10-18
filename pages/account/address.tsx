@@ -1,3 +1,4 @@
+import Head from "next/head";
 import AddressForm from "../../components/Address/AddressForm";
 import SavedAddress from "../../components/Address/SavedAddress";
 import { OPEN_NEW_ADDRESS } from "../../src/features/addressSlicer";
@@ -11,6 +12,9 @@ const Address = () => {
 
   return (
     <div className="w-full mt-14 min-h-[50vh]">
+      <Head>
+        <title>My Addresses - EL FOOTBALL STORE</title>
+      </Head>
       <h1 className="text-border text-2xl font-bold text-zinc-700 text-center">
         Addresses ({addressList.length})
       </h1>

@@ -1,6 +1,11 @@
+import Head from "next/head";
+
 const aboutUs = () => {
   return (
     <div className="mt-14 min-h-[50vh] text-center">
+      <Head>
+        <title>About Us - EL FOOTBALL STORE</title>
+      </Head>
       <h1 className="text-border text-2xl font-bold text-zinc-700">About Us</h1>
       <div className="px-8 mt-4 py-4 w-11/12 mx-auto md:w-8/12 lg:w-6/12">
         <p className="pt-2 pb-4 text-sm leading-7 text-zinc-700">

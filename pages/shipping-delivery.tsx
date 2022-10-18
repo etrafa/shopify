@@ -1,6 +1,11 @@
+import Head from "next/head";
+
 const shippingDelivery = () => {
   return (
     <div className="mt-14 min-h-[50vh]">
+      <Head>
+        <title>Shipping & Delivery - EL FOOTBALL STORE</title>
+      </Head>
       <h1 className="text-border text-2xl font-bold text-zinc-700 text-center">
         Shipping Policy
       </h1>
