@@ -14,6 +14,7 @@ import StoreLayout from "../../components/Layouts/StoreLayout/StoreLayout";
 import { db } from "../../firebase/firabaseConfig";
 import { IProduct } from "../../interfaces/ProductInterface";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Head from "next/head";
 
 const LeaugeStore = () => {
   const params = useRouter();
