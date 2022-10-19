@@ -67,6 +67,14 @@ const cartSlicerTwo = createSlice({
 
       state.total = total;
     },
+
+    toggleCartModal: (state) => {
+      if (state.isCartModalOpen) {
+        state.isCartModalOpen = false;
+      } else {
+        state.isCartModalOpen = true;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getCartItems.fulfilled, (state, action) => {
@@ -82,8 +90,14 @@ const cartSlicerTwo = createSlice({
 });
 
 export default cartSlicerTwo.reducer;
-export const { addItem, calculateTotals, decrease, increase, removeItem } =
-  cartSlicerTwo.actions;
+export const {
+  addItem,
+  calculateTotals,
+  decrease,
+  increase,
+  removeItem,
+  toggleCartModal,
+} = cartSlicerTwo.actions;
 
 export const getCartItems = createAsyncThunk(
   "cart/getCartItems",
