@@ -9,58 +9,63 @@ import {
 import { db } from "../../firebase/firabaseConfig";
 import { ISingleProductForCart } from "../../interfaces/SingleProductForCart";
 
-interface CartState {
+interface CartSlicerState {
   cartItems: ISingleProductForCart[];
-  totalAmount: number;
+  amount: number;
+  total: number;
+  isCartModalOpen: boolean;
 }
 
-const initialState: CartState = {
+const initialState: CartSlicerState = {
+  amount: 0,
   cartItems: [],
-  totalAmount: 0,
+  total: 0,
+  isCartModalOpen: false,
 };
 
-const cartSlicer = createSlice({
-  name: "cart",
+const cartSlicerTwo = createSlice({
+  name: "cartSlicerTwo",
   initialState: initialState,
   reducers: {
-    INCREASE_QUANTITY_ON_CART: (state, action) => {
-      const productID = action.payload;
-      const product = state.cartItems.find((item) => item.id === productID);
-      if (product) {
-        product.amount = product.amount + 1;
-        if (product.amount >= 10) {
-          product.amount = 10;
-        }
-      }
+    addItem: (state, action) => {
+      const product = action.payload;
+      state.cartItems = [...state.cartItems, product];
     },
 
-    DECREASE_QUANTITY_ON_CART: (state, action) => {
+    removeItem: (state, action) => {
       const productID = action.payload;
-      const product = state.cartItems.find((item) => item.id === productID);
-      if (product) {
-        product.amount = product.amount - 1;
-        if (product.amount <= 1) {
-          product.amount = 1;
-        }
-      }
-    },
-
-    DELETE_ITEM_ON_CART: (state, { payload }) => {
-      const productID = payload;
       state.cartItems = state.cartItems.filter((item) => item.id !== productID);
     },
+    increase: (state, { payload }) => {
+      const productID = payload;
+      const selectedProduct = state.cartItems.find(
+        (item) => item.id === productID
+      );
 
-    CALCULATE_AMOUNTS: (state) => {
-      let amount = 0;
+      if (selectedProduct) {
+        selectedProduct.amount = selectedProduct.amount + 1;
+      }
+    },
+    decrease: (state, { payload }) => {
+      const productID = payload;
+      const selectedProduct = state.cartItems.find(
+        (item) => item.id === productID
+      );
+
+      if (selectedProduct) {
+        selectedProduct.amount = selectedProduct.amount - 1;
+      }
+    },
+    calculateTotals: (state) => {
+      state.amount = state.cartItems.length;
+
       let total = 0;
 
       state.cartItems.forEach((item) => {
-        amount += item.amount;
         total += item.amount * item.price;
-        console.log(item.price);
-        console.log(total);
-        state.totalAmount = total;
       });
+
+      state.total = total;
     },
   },
   extraReducers: (builder) => {
@@ -75,6 +80,10 @@ const cartSlicer = createSlice({
     });
   },
 });
+
+export default cartSlicerTwo.reducer;
+export const { addItem, calculateTotals, decrease, increase, removeItem } =
+  cartSlicerTwo.actions;
 
 export const getCartItems = createAsyncThunk(
   "cart/getCartItems",
@@ -110,11 +119,3 @@ export const deleteCartItem = createAsyncThunk(
     }
   }
 );
-
-export default cartSlicer.reducer;
-export const {
-  INCREASE_QUANTITY_ON_CART,
-  DECREASE_QUANTITY_ON_CART,
-  DELETE_ITEM_ON_CART,
-  CALCULATE_AMOUNTS,
-} = cartSlicer.actions;
