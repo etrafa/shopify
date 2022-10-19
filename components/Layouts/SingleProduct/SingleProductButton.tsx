@@ -1,7 +1,7 @@
 import { useAuth } from "../../../firebase/firabaseConfig";
 import { ADD_ITEM_TO_DB } from "../../../firebase/FirebaseCartFunctions/ADD_ITEM_TO_DB";
 import { ISingleProductForCart } from "../../../interfaces/SingleProductForCart";
-import { addItemToCart } from "../../../src/features/productSlicer";
+// import { addItemToCart } from "../../../src/features/productSlicer";
 import { useAppDispatch } from "../../../src/store";
 
 const SingleProductButton = (props: ISingleProductForCart) => {
@@ -12,7 +12,7 @@ const SingleProductButton = (props: ISingleProductForCart) => {
     <button
       onClick={(e) => {
         e.preventDefault();
-        dispatch(addItemToCart(props));
+        // dispatch(addItemToCart(props));
         if (currentUser) {
           ADD_ITEM_TO_DB(props, currentUser.uid);
         }

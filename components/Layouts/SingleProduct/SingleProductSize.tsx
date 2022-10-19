@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { changeSize } from "../../../src/features/productSlicer";
+// import { changeSize } from "../../../src/features/productSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 
 const SingleProductSize = () => {
   const dispatch = useAppDispatch();
 
-  const { value } = useAppSelector((store) => store.product);
+  // const { value } = useAppSelector((store) => store.product);
 
-  const [activeSize, setActiveSize] = useState(value.size);
+  // const [activeSize, setActiveSize] = useState(value.size);
 
   return (
     <div>
@@ -15,7 +15,7 @@ const SingleProductSize = () => {
       <ul className="flex gap-x-4 p-4">
         <li
           className={
-            activeSize === "S"
+            "S" === "S"
               ? "h-7 w-7 border border-light-gray text-center cursor-pointer bg-gray-300"
               : "h-7 w-7 border border-light-gray text-center cursor-pointer"
           }
@@ -24,8 +24,8 @@ const SingleProductSize = () => {
             S
             <input
               onChange={(e) => {
-                dispatch(changeSize(e.target.value));
-                setActiveSize(e.target.value);
+                // dispatch(changeSize(e.target.value));
+                // setActiveSize(e.target.value);
               }}
               type="radio"
               name="size"
@@ -36,7 +36,7 @@ const SingleProductSize = () => {
         </li>
         <li
           className={
-            activeSize === "M"
+            "M" === "M"
               ? "h-7 w-7 border border-light-gray text-center cursor-pointer bg-gray-300"
               : "h-7 w-7 border border-light-gray text-center cursor-pointer"
           }
@@ -45,8 +45,8 @@ const SingleProductSize = () => {
             M
             <input
               onChange={(e) => {
-                dispatch(changeSize(e.target.value));
-                setActiveSize(e.target.value);
+                // dispatch(changeSize(e.target.value));
+                // setActiveSize(e.target.value);
               }}
               type="radio"
               name="size"
@@ -57,7 +57,7 @@ const SingleProductSize = () => {
         </li>
         <li
           className={
-            activeSize === "L"
+            "L" === "L"
               ? "h-7 w-7 border border-light-gray text-center cursor-pointer bg-gray-300"
               : "h-7 w-7 border border-light-gray text-center cursor-pointer"
           }
@@ -66,8 +66,8 @@ const SingleProductSize = () => {
             L
             <input
               onChange={(e) => {
-                dispatch(changeSize(e.target.value));
-                setActiveSize(e.target.value);
+                // dispatch(changeSize(e.target.value));
+                // setActiveSize(e.target.value);
               }}
               type="radio"
               name="size"
@@ -78,7 +78,7 @@ const SingleProductSize = () => {
         </li>
         <li
           className={
-            activeSize === "XL"
+            "XL" === "XL"
               ? "h-7 w-7 border border-light-gray text-center cursor-pointer bg-gray-300"
               : "h-7 w-7 border border-light-gray text-center cursor-pointer"
           }
@@ -87,8 +87,8 @@ const SingleProductSize = () => {
             XL
             <input
               onChange={(e) => {
-                dispatch(changeSize(e.target.value));
-                setActiveSize(e.target.value);
+                // dispatch(changeSize(e.target.value));
+                // setActiveSize(e.target.value);
               }}
               type="radio"
               name="size"

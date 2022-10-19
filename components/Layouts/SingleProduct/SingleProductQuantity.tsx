@@ -1,11 +1,11 @@
-import {
-  decreaseQuantity,
-  increaseQuantity,
-} from "../../../src/features/productSlicer";
+// import {
+//   decreaseQuantity,
+//   increaseQuantity,
+// } from "../../../src/features/productSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 
 const SingleProductQuantity = () => {
-  const { value } = useAppSelector((store) => store.product);
+  // const { value } = useAppSelector((store) => store.product);
   const dispatch = useAppDispatch();
 
   return (
@@ -15,7 +15,7 @@ const SingleProductQuantity = () => {
         <button
           onClick={(e) => {
             e.preventDefault();
-            dispatch(decreaseQuantity());
+            // dispatch(decreaseQuantity());
           }}
           className="w-3/12 h-10 text-button-text font-bold text-xl"
         >
@@ -27,12 +27,12 @@ const SingleProductQuantity = () => {
           name="quantity"
           min={1}
           max={10}
-          value={value.amount}
+          value={0}
         />
         <button
           onClick={(e) => {
             e.preventDefault();
-            dispatch(increaseQuantity());
+            // dispatch(increaseQuantity());
           }}
           className="w-3/12 h-10 text-button-text font-bold"
         >
