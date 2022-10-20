@@ -47,32 +47,35 @@ const cartSlicerTwo = createSlice({
       state.cartItems = state.cartItems.filter((item) => item.id !== productID);
     },
     increase: (state) => {
-      // const productID = payload;
-      // const selectedProduct = state.cartItems.find(
-      //   (item) => item.id === productID
-      // );
-
-      // if (selectedProduct) {
-      //   selectedProduct.amount = selectedProduct.amount + 1;
-      // }
-
       state.value.amount = state.value.amount + 1;
       if (state.value.amount >= 10) {
         state.value.amount = 10;
       }
     },
-    decrease: (state) => {
-      // const productID = payload;
-      // const selectedProduct = state.cartItems.find(
-      //   (item) => item.id === productID
-      // );
+    increaseOnCart: (state, { payload }) => {
+      const productID = payload;
+      const selectedProduct = state.cartItems.find(
+        (item) => item.id === productID
+      );
 
-      // if (selectedProduct) {
-      //   selectedProduct.amount = selectedProduct.amount - 1;
-      // }
+      if (selectedProduct) {
+        selectedProduct.amount = selectedProduct.amount + 1;
+      }
+    },
+    decrease: (state) => {
       state.value.amount = state.value.amount - 1;
       if (state.value.amount <= 1) {
         state.value.amount = 1;
+      }
+    },
+    decreaseOnCart: (state, { payload }) => {
+      const productID = payload;
+      const selectedProduct = state.cartItems.find(
+        (item) => item.id === productID
+      );
+
+      if (selectedProduct) {
+        selectedProduct.amount = selectedProduct.amount - 1;
       }
     },
     calculateTotals: (state) => {
