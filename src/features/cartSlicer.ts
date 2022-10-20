@@ -98,6 +98,17 @@ const cartSlicerTwo = createSlice({
     changeSize: (state, { payload }) => {
       state.value.size = payload;
     },
+    setDefaultValue: (state) => {
+      state.value = {
+        amount: 1,
+        frontLarge: "",
+        id: "",
+        leauge: "",
+        price: 0,
+        size: "S",
+        tshirtName: "",
+      };
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getCartItems.fulfilled, (state, action) => {
@@ -121,6 +132,7 @@ export const {
   removeItem,
   toggleCartModal,
   changeSize,
+  setDefaultValue,
 } = cartSlicerTwo.actions;
 
 export const getCartItems = createAsyncThunk(

@@ -1,6 +1,8 @@
 import Head from "next/head";
+import { useEffect } from "react";
 import { IProduct } from "../../../interfaces/ProductInterface";
-import { useAppSelector } from "../../../src/store";
+import { setDefaultValue } from "../../../src/features/cartSlicer";
+import { useAppDispatch, useAppSelector } from "../../../src/store";
 import AddItemToCartModal from "./AddItemToCartModal";
 import SingleProductButton from "./SingleProductButton";
 import SingleProductDetails from "./SingleProductDetails";
@@ -11,6 +13,13 @@ import SingleProductSize from "./SingleProductSize";
 
 const SingleProduct = (props: IProduct) => {
   const { value } = useAppSelector((store) => store.cart);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    return () => {
+      dispatch(setDefaultValue());
+    };
+  }, []);
 
   return (
     <div className="relative">
