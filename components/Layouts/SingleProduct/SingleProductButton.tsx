@@ -8,11 +8,13 @@ const SingleProductButton = (props: ISingleProductForCart) => {
   const dispatch = useAppDispatch();
   const currentUser = useAuth();
 
+  console.log(props);
+
   return (
     <button
       onClick={(e) => {
         e.preventDefault();
-        // dispatch(addItemToCart(props));
+
         if (currentUser) {
           ADD_ITEM_TO_DB(props, currentUser.uid);
         }

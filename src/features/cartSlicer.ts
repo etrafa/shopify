@@ -14,6 +14,7 @@ interface CartSlicerState {
   amount: number;
   total: number;
   isCartModalOpen: boolean;
+  value: ISingleProductForCart;
 }
 
 const initialState: CartSlicerState = {
@@ -21,6 +22,15 @@ const initialState: CartSlicerState = {
   cartItems: [],
   total: 0,
   isCartModalOpen: false,
+  value: {
+    amount: 1,
+    frontLarge: "",
+    id: "",
+    leauge: "",
+    price: 0,
+    size: "S",
+    tshirtName: "",
+  },
 };
 
 const cartSlicerTwo = createSlice({
@@ -36,24 +46,33 @@ const cartSlicerTwo = createSlice({
       const productID = action.payload;
       state.cartItems = state.cartItems.filter((item) => item.id !== productID);
     },
-    increase: (state, { payload }) => {
-      const productID = payload;
-      const selectedProduct = state.cartItems.find(
-        (item) => item.id === productID
-      );
+    increase: (state) => {
+      // const productID = payload;
+      // const selectedProduct = state.cartItems.find(
+      //   (item) => item.id === productID
+      // );
 
-      if (selectedProduct) {
-        selectedProduct.amount = selectedProduct.amount + 1;
+      // if (selectedProduct) {
+      //   selectedProduct.amount = selectedProduct.amount + 1;
+      // }
+
+      state.value.amount = state.value.amount + 1;
+      if (state.value.amount >= 10) {
+        state.value.amount = 10;
       }
     },
-    decrease: (state, { payload }) => {
-      const productID = payload;
-      const selectedProduct = state.cartItems.find(
-        (item) => item.id === productID
-      );
+    decrease: (state) => {
+      // const productID = payload;
+      // const selectedProduct = state.cartItems.find(
+      //   (item) => item.id === productID
+      // );
 
-      if (selectedProduct) {
-        selectedProduct.amount = selectedProduct.amount - 1;
+      // if (selectedProduct) {
+      //   selectedProduct.amount = selectedProduct.amount - 1;
+      // }
+      state.value.amount = state.value.amount - 1;
+      if (state.value.amount <= 1) {
+        state.value.amount = 1;
       }
     },
     calculateTotals: (state) => {

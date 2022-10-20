@@ -2,9 +2,15 @@
 //   decreaseQuantity,
 //   increaseQuantity,
 // } from "../../../src/features/productSlicer";
+import { ISingleProductForCart } from "../../../interfaces/SingleProductForCart";
+import { decrease, increase } from "../../../src/features/cartSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 
-const SingleProductQuantity = () => {
+interface SingleProductQuantityProps {
+  amount: number;
+}
+
+const SingleProductQuantity = (props: SingleProductQuantityProps) => {
   // const { value } = useAppSelector((store) => store.product);
   const dispatch = useAppDispatch();
 
@@ -15,7 +21,7 @@ const SingleProductQuantity = () => {
         <button
           onClick={(e) => {
             e.preventDefault();
-            // dispatch(decreaseQuantity());
+            dispatch(decrease());
           }}
           className="w-3/12 h-10 text-button-text font-bold text-xl"
         >
@@ -27,12 +33,12 @@ const SingleProductQuantity = () => {
           name="quantity"
           min={1}
           max={10}
-          value={0}
+          value={props.amount}
         />
         <button
           onClick={(e) => {
             e.preventDefault();
-            // dispatch(increaseQuantity());
+            dispatch(increase());
           }}
           className="w-3/12 h-10 text-button-text font-bold"
         >

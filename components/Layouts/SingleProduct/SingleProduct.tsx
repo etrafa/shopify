@@ -10,7 +10,7 @@ import SingleProductQuantity from "./SingleProductQuantity";
 import SingleProductSize from "./SingleProductSize";
 
 const SingleProduct = (props: IProduct) => {
-  // const { value } = useAppSelector((store) => store.product);
+  const { value } = useAppSelector((store) => store.cart);
 
   return (
     <div className="relative">
@@ -42,14 +42,14 @@ const SingleProduct = (props: IProduct) => {
             price={props.price}
           />
           <SingleProductSize />
-          <SingleProductQuantity />
+          <SingleProductQuantity amount={value.amount} />
           <SingleProductButton
             id={props.id}
             tshirtName={props.tshirtName}
             leauge={props.leauge}
             price={props.price}
             frontLarge={props.frontLarge}
-            amount={0}
+            amount={value.amount}
             size={"S"}
           />
           <SingleProductDetails description={props.description} />
