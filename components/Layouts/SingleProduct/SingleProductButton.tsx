@@ -8,16 +8,14 @@ const SingleProductButton = (props: ISingleProductForCart) => {
   const dispatch = useAppDispatch();
   const currentUser = useAuth();
 
-  console.log(props);
-
   return (
     <button
       onClick={(e) => {
         e.preventDefault();
-
-        if (currentUser) {
-          ADD_ITEM_TO_DB(props, currentUser.uid);
-        }
+        console.log(props);
+        // if (currentUser) {
+        //   ADD_ITEM_TO_DB(props, currentUser.uid);
+        // }
       }}
       className="mt-12 w-11/12 h-12 block mx-auto border rounded-sm bg-light-gray text-sm tracking-widest hover:scale-105 ease-in-out text-button-text"
     >

@@ -50,7 +50,7 @@ const SingleProduct = (props: IProduct) => {
             price={props.price}
             frontLarge={props.frontLarge}
             amount={value.amount}
-            size={"S"}
+            size={value.size}
           />
           <SingleProductDetails description={props.description} />
         </div>
@@ -58,7 +58,7 @@ const SingleProduct = (props: IProduct) => {
 
       <AddItemToCartModal
         frontLarge={props.frontLarge}
-        size={"S"}
+        size={value.size}
         tshirtName={props.tshirtName}
       />
     </div>

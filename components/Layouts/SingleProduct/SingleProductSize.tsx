@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
+import { changeSize } from "../../../src/features/cartSlicer";
 // import { changeSize } from "../../../src/features/productSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 
 const SingleProductSize = () => {
   const dispatch = useAppDispatch();
 
-  // const { value } = useAppSelector((store) => store.product);
+  const { value } = useAppSelector((store) => store.cart);
 
-  // const [activeSize, setActiveSize] = useState(value.size);
+  const [activeSize, setActiveSize] = useState(value.size);
+
+  const handleSizeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(changeSize(e.target.value));
+    setActiveSize(e.target.value);
+  };
 
   return (
     <div>
@@ -15,7 +21,7 @@ const SingleProductSize = () => {
       <ul className="flex gap-x-4 p-4">
         <li
           className={
-            "S" === "S"
+            activeSize === "S"
               ? "h-7 w-7 border border-light-gray text-center cursor-pointer bg-gray-300"
               : "h-7 w-7 border border-light-gray text-center cursor-pointer"
           }
@@ -23,10 +29,7 @@ const SingleProductSize = () => {
           <label className="text-sm inline-block w-full h-full cursor-pointer">
             S
             <input
-              onChange={(e) => {
-                // dispatch(changeSize(e.target.value));
-                // setActiveSize(e.target.value);
-              }}
+              onChange={handleSizeChange}
               type="radio"
               name="size"
               value="S"
@@ -36,7 +39,7 @@ const SingleProductSize = () => {
         </li>
         <li
           className={
-            "M" === "M"
+            activeSize === "M"
               ? "h-7 w-7 border border-light-gray text-center cursor-pointer bg-gray-300"
               : "h-7 w-7 border border-light-gray text-center cursor-pointer"
           }
@@ -44,10 +47,7 @@ const SingleProductSize = () => {
           <label className="text-sm inline-block w-full h-full cursor-pointer">
             M
             <input
-              onChange={(e) => {
-                // dispatch(changeSize(e.target.value));
-                // setActiveSize(e.target.value);
-              }}
+              onChange={handleSizeChange}
               type="radio"
               name="size"
               value="M"
@@ -57,7 +57,7 @@ const SingleProductSize = () => {
         </li>
         <li
           className={
-            "L" === "L"
+            activeSize === "L"
               ? "h-7 w-7 border border-light-gray text-center cursor-pointer bg-gray-300"
               : "h-7 w-7 border border-light-gray text-center cursor-pointer"
           }
@@ -65,10 +65,7 @@ const SingleProductSize = () => {
           <label className="text-sm inline-block w-full h-full cursor-pointer">
             L
             <input
-              onChange={(e) => {
-                // dispatch(changeSize(e.target.value));
-                // setActiveSize(e.target.value);
-              }}
+              onChange={handleSizeChange}
               type="radio"
               name="size"
               value="L"
@@ -78,7 +75,7 @@ const SingleProductSize = () => {
         </li>
         <li
           className={
-            "XL" === "XL"
+            activeSize === "XL"
               ? "h-7 w-7 border border-light-gray text-center cursor-pointer bg-gray-300"
               : "h-7 w-7 border border-light-gray text-center cursor-pointer"
           }
@@ -86,10 +83,7 @@ const SingleProductSize = () => {
           <label className="text-sm inline-block w-full h-full cursor-pointer">
             XL
             <input
-              onChange={(e) => {
-                // dispatch(changeSize(e.target.value));
-                // setActiveSize(e.target.value);
-              }}
+              onChange={handleSizeChange}
               type="radio"
               name="size"
               value="XL"

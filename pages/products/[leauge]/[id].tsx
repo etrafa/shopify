@@ -60,8 +60,6 @@ const SingleProductComp: NextPage<{
   QUERY_COL_REF: string;
   QUERY_DOC_REF: string;
 }> = ({ params, data, QUERY_COL_REF, QUERY_DOC_REF }) => {
-  console.log(QUERY_COL_REF, QUERY_DOC_REF);
-
   return <SingleProduct {...data} />;
 };
 export default SingleProductComp;

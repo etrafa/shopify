@@ -94,6 +94,10 @@ const cartSlicerTwo = createSlice({
         state.isCartModalOpen = true;
       }
     },
+
+    changeSize: (state, { payload }) => {
+      state.value.size = payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getCartItems.fulfilled, (state, action) => {
@@ -116,6 +120,7 @@ export const {
   increase,
   removeItem,
   toggleCartModal,
+  changeSize,
 } = cartSlicerTwo.actions;
 
 export const getCartItems = createAsyncThunk(
