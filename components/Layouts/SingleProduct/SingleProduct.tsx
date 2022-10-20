@@ -17,8 +17,8 @@ const SingleProduct = (props: IProduct) => {
       <Head>
         <title>
           {props.tshirtName
-            .split(" ")
-            .map(
+            ?.split(" ")
+            ?.map(
               (char) =>
                 char.substring(0, 1).toUpperCase() +
                 char.substring(1).toLowerCase()
