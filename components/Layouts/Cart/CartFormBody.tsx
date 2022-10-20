@@ -2,10 +2,11 @@ import Image from "next/image";
 import { useAuth } from "../../../firebase/firabaseConfig";
 import { ISingleProductForCart } from "../../../interfaces/SingleProductForCart";
 import {
-  DECREASE_QUANTITY_ON_CART,
+  decrease,
+  decreaseOnCart,
   deleteCartItem,
-  DELETE_ITEM_ON_CART,
-  INCREASE_QUANTITY_ON_CART,
+  increase,
+  increaseOnCart,
 } from "../../../src/features/cartSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 import { DeleteIcon } from "../../../Utilities/Icons/Icons";
@@ -46,17 +47,18 @@ const CartFormBody = (props: ISingleProductForCart) => {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  dispatch(DECREASE_QUANTITY_ON_CART(props.id));
-                  if (props.amount === 1) {
-                    if (currentUser) {
-                      dispatch(
-                        deleteCartItem({
-                          userID: currentUser?.uid,
-                          productID: props.id,
-                        })
-                      );
-                    }
-                  }
+                  // dispatch(DECREASE_QUANTITY_ON_CART(props.id));
+                  dispatch(decreaseOnCart(props.id));
+                  // if (props.amount === 1) {
+                  //   if (currentUser) {
+                  //     dispatch(
+                  //       deleteCartItem({
+                  //         userID: currentUser?.uid,
+                  //         productID: props.id,
+                  //       })
+                  //     );
+                  //   }
+                  // }
                 }}
                 className="w-3/12 h-10 text-button-text font-bold text-xl"
               >
@@ -73,7 +75,9 @@ const CartFormBody = (props: ISingleProductForCart) => {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  dispatch(INCREASE_QUANTITY_ON_CART(props.id));
+                  dispatch(increaseOnCart(props.id));
+
+                  // dispatch(INCREASE_QUANTITY_ON_CART(props.id));
                 }}
                 className="w-3/12 h-10 text-button-text font-bold"
               >
@@ -84,7 +88,7 @@ const CartFormBody = (props: ISingleProductForCart) => {
               <DeleteIcon
                 clickHandler={() => {
                   if (currentUser) {
-                    dispatch(DELETE_ITEM_ON_CART(props.id));
+                    // dispatch(DELETE_ITEM_ON_CART(props.id));
                     dispatch(
                       deleteCartItem({
                         productID: props.id,

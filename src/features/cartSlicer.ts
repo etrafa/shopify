@@ -59,7 +59,9 @@ const cartSlicerTwo = createSlice({
       );
 
       if (selectedProduct) {
-        selectedProduct.amount = selectedProduct.amount + 1;
+        selectedProduct.amount = selectedProduct?.amount + 1;
+
+        if (selectedProduct.amount >= 10) selectedProduct.amount = 10;
       }
     },
     decrease: (state) => {
@@ -75,7 +77,9 @@ const cartSlicerTwo = createSlice({
       );
 
       if (selectedProduct) {
-        selectedProduct.amount = selectedProduct.amount - 1;
+        selectedProduct.amount = selectedProduct?.amount - 1;
+
+        if (selectedProduct.amount <= 1) selectedProduct.amount = 1;
       }
     },
     calculateTotals: (state) => {
@@ -136,6 +140,8 @@ export const {
   toggleCartModal,
   changeSize,
   setDefaultValue,
+  increaseOnCart,
+  decreaseOnCart,
 } = cartSlicerTwo.actions;
 
 export const getCartItems = createAsyncThunk(
