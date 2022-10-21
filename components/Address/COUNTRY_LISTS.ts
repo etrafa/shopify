@@ -61,10 +61,10 @@ export const USA_STATE_LIST = [
 ];
 
 export const COUNTRY_LIST = [
+  "United States",
   "Germany",
   "Belgium",
   "United Kingdom",
-  "United States",
   "Canada",
   "Spain",
   "Italy",

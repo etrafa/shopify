@@ -6,6 +6,7 @@ import {
   USA_STATE_LIST,
   CANADA_PROVINCES,
   COUNTRY_LIST,
+  GERMANY_STATES,
 } from "./COUNTRY_LISTS";
 
 import { useAuth } from "../../firebase/firabaseConfig";
@@ -33,6 +34,7 @@ const AddressForm = () => {
       lastName: "",
       address: "",
       city: "",
+      country: "United States",
       state: "Alabama",
       zipCode: "",
       phone: "",
@@ -115,20 +117,65 @@ const AddressForm = () => {
         setIsInputClicked={setCityInputClicked}
       />
       <div className=" w-full max-w-[26rem]  mx-auto flex flex-col">
-        <label className="text-button-text pl-2">States</label>
+        <label className="text-button-text py-2">Country/Region</label>
         <select
           className="border h-12 border-black pl-2"
-          name="state"
-          id="state"
-          value={formik.values.state}
+          name="country"
+          id="country"
+          value={formik.values.country}
           onChange={formik.handleChange}
         >
-          {USA_STATE_LIST.map((state) => (
-            <option key={state} value={state}>
-              {state}
+          {COUNTRY_LIST.map((country) => (
+            <option key={country} value={country}>
+              {country}
             </option>
           ))}
         </select>
+        {formik.values.country === "United States" && (
+          <select
+            className="border h-12 border-black pl-2 mt-4"
+            name="state"
+            id="state"
+            value={formik.values.state}
+            onChange={formik.handleChange}
+          >
+            {USA_STATE_LIST.map((state) => (
+              <option key={state} value={state}>
+                {state}
+              </option>
+            ))}
+          </select>
+        )}
+        {formik.values.country === "Canada" && (
+          <select
+            className="border h-12 border-black pl-2 mt-4"
+            name="state"
+            id="state"
+            value={formik.values.state}
+            onChange={formik.handleChange}
+          >
+            {CANADA_PROVINCES.map((state) => (
+              <option key={state} value={state}>
+                {state}
+              </option>
+            ))}
+          </select>
+        )}
+        {formik.values.country === "Germany" && (
+          <select
+            className="border h-12 border-black pl-2 mt-4"
+            name="state"
+            id="state"
+            value={formik.values.state}
+            onChange={formik.handleChange}
+          >
+            {GERMANY_STATES.map((state) => (
+              <option key={state} value={state}>
+                {state}
+              </option>
+            ))}
+          </select>
+        )}
       </div>
       <CustomInput
         inputName="zipCode"
