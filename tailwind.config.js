@@ -22,6 +22,7 @@ module.exports = {
         "button-text": "#4D4D4D",
         "main-red": "#ff0000",
         "dark-gray": "#808080",
+        "border-gray": "#DDD0B2",
       },
     },
   },

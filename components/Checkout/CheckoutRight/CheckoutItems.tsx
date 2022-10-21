@@ -63,7 +63,7 @@ const CheckoutItems = () => {
                     )}
                     {currentCurrency === "CAD" && (
                       <p className="font-semibold text-sm">
-                        ${(amount * price * 1.38).toFixed(2)}
+                        ${(amount * price * 1.38).toFixed(2)} CAD
                       </p>
                     )}
                     {currentCurrency === "EUR" && (
