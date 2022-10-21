@@ -58,17 +58,17 @@ const CheckoutItems = () => {
                   <td className="py-2">
                     {currentCurrency === "USD" && (
                       <p className="font-semibold text-sm">
-                        ${price.toFixed(2)}
+                        ${(amount * price).toFixed(2)}
                       </p>
                     )}
                     {currentCurrency === "CAD" && (
                       <p className="font-semibold text-sm">
-                        ${(price * 1.38).toFixed(2)}
+                        ${(amount * price * 1.38).toFixed(2)}
                       </p>
                     )}
-                    {currentCurrency === "MXN" && (
+                    {currentCurrency === "EUR" && (
                       <p className="font-semibold text-sm">
-                        ${Math.round(price * 20.04).toFixed(2)}
+                        {Math.round(amount * price * 1.03).toFixed(2)} €
                       </p>
                     )}
                   </td>
