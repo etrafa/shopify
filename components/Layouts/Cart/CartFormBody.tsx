@@ -5,6 +5,7 @@ import {
   decreaseOnCart,
   deleteCartItem,
   increaseOnCart,
+  removeItem,
 } from "../../../src/features/cartSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 import { DeleteIcon } from "../../../Utilities/Icons/Icons";
@@ -85,15 +86,16 @@ const CartFormBody = (props: ISingleProductForCart) => {
             <span className="absolute top-3 -right-10 cursor-pointer opacity-60 hover:opacity-40">
               <DeleteIcon
                 clickHandler={() => {
-                  if (currentUser) {
-                    // dispatch(DELETE_ITEM_ON_CART(props.id));
-                    dispatch(
-                      deleteCartItem({
-                        productID: props.id,
-                        userID: currentUser.uid,
-                      })
-                    );
-                  }
+                  dispatch(removeItem(props.id));
+                  // if (currentUser) {
+                  //   // dispatch(DELETE_ITEM_ON_CART(props.id));
+                  //   dispatch(
+                  //     deleteCartItem({
+                  //       productID: props.id,
+                  //       userID: currentUser.uid,
+                  //     })
+                  //   );
+                  // }
                 }}
               />
             </span>

@@ -91,8 +91,6 @@ const cartSlicerTwo = createSlice({
         total += item.amount * item.price;
       });
 
-      console.log(state.total);
-
       state.total = total;
     },
 
