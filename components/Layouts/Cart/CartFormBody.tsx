@@ -2,10 +2,8 @@ import Image from "next/image";
 import { useAuth } from "../../../firebase/firabaseConfig";
 import { ISingleProductForCart } from "../../../interfaces/SingleProductForCart";
 import {
-  decrease,
   decreaseOnCart,
   deleteCartItem,
-  increase,
   increaseOnCart,
 } from "../../../src/features/cartSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
@@ -114,7 +112,7 @@ const CartFormBody = (props: ISingleProductForCart) => {
           )}
           {currentCurrency === "EUR" && (
             <p className="text-sm pr-4 tracking-widest">
-              {Math.round(props.price * 1.03).toFixed(2)} €
+              {Math.round(props.amount * props.price * 1.03).toFixed(2)} €
             </p>
           )}
         </div>

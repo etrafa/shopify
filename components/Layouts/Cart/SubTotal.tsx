@@ -1,16 +1,17 @@
 import Link from "next/link";
 import { useEffect } from "react";
+import { calculateTotals } from "../../../src/features/cartSlicer";
 
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 
 const SubTotal = () => {
   const dispatch = useAppDispatch();
-  const { cartItems, amount } = useAppSelector((store) => store.cart);
+  const { cartItems, total } = useAppSelector((store) => store.cart);
   const { currentCurrency } = useAppSelector((store) => store.currency);
 
-  // useEffect(() => {
-  //   dispatch(CALCULATE_AMOUNTS());
-  // }, [cartItems]);
+  useEffect(() => {
+    dispatch(calculateTotals());
+  }, [cartItems, currentCurrency, dispatch]);
 
   return (
     <div>
@@ -19,18 +20,16 @@ const SubTotal = () => {
           Subtotal
         </h3>
         {currentCurrency === "USD" && (
-          <p className="inline tracking-widest pl-6 opacity-95">
-            ${amount} USD
-          </p>
+          <p className="inline tracking-widest pl-6 opacity-95">${total} USD</p>
         )}
         {currentCurrency === "CAD" && (
           <p className="inline tracking-widest pl-6 opacity-95">
-            ${(amount * 1.38).toFixed(2)} CAD
+            ${(total * 1.38).toFixed(2)} CAD
           </p>
         )}
         {currentCurrency === "EUR" && (
           <p className="inline tracking-widest pl-6 opacity-95">
-            {Math.round(amount * 1.03).toFixed(2)} €
+            {Math.round(total * 1.03).toFixed(2)} €
           </p>
         )}
         <Link href="/checkouts">
