@@ -98,3 +98,21 @@ export const CANADA_PROVINCES = [
   "Saskatchewan",
   "Yukon Territory",
 ];
+export const GERMANY_STATES = [
+  "Berlin",
+  "Bayern",
+  "Niedersachsen",
+  "Baden-Württemberg",
+  "Rheinland-Pfalz",
+  "Sachsen",
+  "Thüringen",
+  "Hessen",
+  "Nordrhein-Westfalen",
+  "Sachsen-Anhalt",
+  "Brandenburg",
+  "Mecklenburg",
+  "Hamburg",
+  "Schleswig-Holstein",
+  "Saarland",
+  "Bremen",
+];
