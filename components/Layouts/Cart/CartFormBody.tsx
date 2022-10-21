@@ -1,5 +1,8 @@
+import { AnyAction } from "@reduxjs/toolkit";
 import Image from "next/image";
+import { MouseEvent } from "react";
 import { useAuth } from "../../../firebase/firabaseConfig";
+import { UPDATE_CART_PRODUCT_AMOUNT } from "../../../firebase/FirebaseCartFunctions/UPDATE_CART_PRODUCT_AMOUNT";
 import { ISingleProductForCart } from "../../../interfaces/SingleProductForCart";
 import {
   decreaseOnCart,
@@ -14,6 +17,29 @@ const CartFormBody = (props: ISingleProductForCart) => {
   const dispatch = useAppDispatch();
   const currentUser = useAuth();
   const { currentCurrency } = useAppSelector((store) => store.currency);
+
+  enum QUANTITY_TYPE {
+    DECREASE = "DECREASE",
+    INCREASE = "INCREASE",
+  }
+
+  const handleUpdateCartProductAmount = (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+    type: string
+  ) => {
+    e.preventDefault();
+    if (currentUser) {
+      if (type === QUANTITY_TYPE.DECREASE) {
+        dispatch(decreaseOnCart(props.id));
+        if (props.amount > 1)
+          UPDATE_CART_PRODUCT_AMOUNT(currentUser.uid, props, props.amount - 1);
+      }
+      if (type === QUANTITY_TYPE.INCREASE) {
+        dispatch(increaseOnCart(props.id));
+        UPDATE_CART_PRODUCT_AMOUNT(currentUser.uid, props, props.amount + 1);
+      }
+    }
+  };
 
   return (
     <div>
@@ -44,20 +70,9 @@ const CartFormBody = (props: ISingleProductForCart) => {
           <div className="w-8/12 md:w-6/12 max-w-xs  my-3 mx-6 md:mx-auto h-10 relative">
             <div className="border flex items-center">
               <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  dispatch(decreaseOnCart(props.id));
-                  // if (props.amount === 1) {
-                  //   if (currentUser) {
-                  //     dispatch(
-                  //       deleteCartItem({
-                  //         userID: currentUser?.uid,
-                  //         productID: props.id,
-                  //       })
-                  //     );
-                  //   }
-                  // }
-                }}
+                onClick={(e) =>
+                  handleUpdateCartProductAmount(e, QUANTITY_TYPE.DECREASE)
+                }
                 className="w-3/12 h-10 text-button-text font-bold text-xl"
               >
                 -
@@ -71,10 +86,9 @@ const CartFormBody = (props: ISingleProductForCart) => {
                 value={props.amount}
               />
               <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  dispatch(increaseOnCart(props.id));
-                }}
+                onClick={(e) =>
+                  handleUpdateCartProductAmount(e, QUANTITY_TYPE.INCREASE)
+                }
                 className="w-3/12 h-10 text-button-text font-bold"
               >
                 +
