@@ -1,9 +1,10 @@
 import { NextPage } from "next";
 import { useEffect } from "react";
-import { useAppSelector } from "../../src/store";
+import { useAuth } from "../../firebase/firabaseConfig";
+import { getCartItems } from "../../src/features/cartSlicer";
+import { useAppDispatch, useAppSelector } from "../../src/store";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar";
-import CurrencyWarningMessage from "../CurrencyWarning/CurrencyWarningMessage";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -11,6 +12,8 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const { isNavbarOpen } = useAppSelector((store) => store.navbar);
+  const dispatch = useAppDispatch();
+  const currentUser = useAuth();
 
   useEffect(() => {
     if (isNavbarOpen) {
@@ -18,7 +21,11 @@ const Layout = ({ children }: LayoutProps) => {
     } else {
       document.body.classList.remove("overflow-hidden");
     }
-  }, [isNavbarOpen]);
+
+    if (currentUser) {
+      dispatch(getCartItems(currentUser?.uid));
+    }
+  }, [isNavbarOpen, dispatch, currentUser]);
 
   return (
     <div>
