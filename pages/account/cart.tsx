@@ -15,11 +15,11 @@ const Cart = () => {
   const dispatch = useAppDispatch();
   const { cartItems } = useAppSelector((store) => store.cart);
 
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     dispatch(getCartItems(currentUser?.uid));
-  //   }
-  // }, [dispatch, currentUser]);
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(getCartItems(currentUser?.uid));
+    }
+  }, [dispatch, currentUser]);
 
   return (
     <div className="w-full mt-14 lg:mb-40 min-h-[50vh]">

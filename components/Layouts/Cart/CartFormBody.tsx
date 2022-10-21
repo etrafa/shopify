@@ -46,7 +46,6 @@ const CartFormBody = (props: ISingleProductForCart) => {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  // dispatch(DECREASE_QUANTITY_ON_CART(props.id));
                   dispatch(decreaseOnCart(props.id));
                   // if (props.amount === 1) {
                   //   if (currentUser) {
@@ -75,8 +74,6 @@ const CartFormBody = (props: ISingleProductForCart) => {
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch(increaseOnCart(props.id));
-
-                  // dispatch(INCREASE_QUANTITY_ON_CART(props.id));
                 }}
                 className="w-3/12 h-10 text-button-text font-bold"
               >
@@ -87,15 +84,14 @@ const CartFormBody = (props: ISingleProductForCart) => {
               <DeleteIcon
                 clickHandler={() => {
                   dispatch(removeItem(props.id));
-                  // if (currentUser) {
-                  //   // dispatch(DELETE_ITEM_ON_CART(props.id));
-                  //   dispatch(
-                  //     deleteCartItem({
-                  //       productID: props.id,
-                  //       userID: currentUser.uid,
-                  //     })
-                  //   );
-                  // }
+                  if (currentUser) {
+                    dispatch(
+                      deleteCartItem({
+                        productID: props.id,
+                        userID: currentUser.uid,
+                      })
+                    );
+                  }
                 }}
               />
             </span>
