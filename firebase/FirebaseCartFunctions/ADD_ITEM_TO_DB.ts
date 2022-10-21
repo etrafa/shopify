@@ -9,8 +9,7 @@ export const ADD_ITEM_TO_DB = async (
   const collectionRef = doc(db, "users", userID, "cart", `${item.id}`);
   try {
     const res = await setDoc(collectionRef, { ...item });
-    console.log("added");
-  } catch (err) {
-    console.log(err);
+  } catch (err: any) {
+    throw new Error(err);
   }
 };
