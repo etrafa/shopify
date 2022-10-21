@@ -59,3 +59,42 @@ export const USA_STATE_LIST = [
   "Wisconsin",
   "Wyoming",
 ];
+
+export const COUNTRY_LIST = [
+  "Germany",
+  "Belgium",
+  "United Kingdom",
+  "United States",
+  "Canada",
+  "Spain",
+  "Italy",
+  "France",
+  "Portugal",
+  "Greece",
+  "Estonia",
+  "Denmark",
+  "Sweden",
+  "Norway",
+  "Switzerland",
+  "Ukraine",
+  "Serbia",
+  "Poland",
+  "Crotia",
+  "Austria",
+];
+
+export const CANADA_PROVINCES = [
+  "Alberta",
+  "British Columbia",
+  "Manitoba",
+  "New Brunswick",
+  "Newfoundland and Labrador",
+  "Northwest Territories",
+  "Nova Scotia",
+  "Nunavut",
+  "Ontario",
+  "Prince Edward Island",
+  "Quebec",
+  "Saskatchewan",
+  "Yukon Territory",
+];

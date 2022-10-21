@@ -2,7 +2,11 @@ import CustomInput from "../../Utilities/Input/CustomInput";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useState } from "react";
-import { USA_STATE_LIST } from "./usStateLists";
+import {
+  USA_STATE_LIST,
+  CANADA_PROVINCES,
+  COUNTRY_LIST,
+} from "./COUNTRY_LISTS";
 
 import { useAuth } from "../../firebase/firabaseConfig";
 import { useAppDispatch } from "../../src/store";

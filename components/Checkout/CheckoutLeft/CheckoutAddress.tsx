@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CustomInput from "../../../Utilities/Input/CustomInput";
-import { USA_STATE_LIST } from "../../Address/usStateLists";
+import { USA_STATE_LIST } from "../../Address/COUNTRY_LISTS";
 
 const CheckoutAddress = () => {
   const [isAddressInputClicked, setIsAddressInputClicked] = useState(false);
