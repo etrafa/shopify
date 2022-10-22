@@ -29,21 +29,17 @@ const addressChangeHandler = (
 
 const CheckoutDropDown = (props: CheckoutDropDownProps) => {
   return (
-    <div>
-      <h2 className="text-center mt-12">Shipping Address</h2>
-      <select
-        // onChange={(e) => props.setCurrentAddress(JSON.parse(e.target.value))}
-        onChange={(e) => addressChangeHandler(e, props.setCurrentAddress)}
-        className="border h-12 border-black pl-2 w-full"
-      >
-        {props.addresslist.map((address) => (
-          <option key={address.id} value={JSON.stringify(address)}>
-            {address.address}, {address.city}, {address.country}
-          </option>
-        ))}
-        <option value="new-address">Use a new address</option>
-      </select>
-    </div>
+    <select
+      onChange={(e) => addressChangeHandler(e, props.setCurrentAddress)}
+      className="border h-12 border-gray-300 pl-2 w-full"
+    >
+      {props.addresslist.map((address) => (
+        <option key={address.id} value={JSON.stringify(address)}>
+          {address.address}, {address.city}, {address.country}
+        </option>
+      ))}
+      <option value="new-address">Use a new address</option>
+    </select>
   );
 };
 export default CheckoutDropDown;

@@ -3,16 +3,22 @@ import { useAuth } from "../../../firebase/firabaseConfig";
 import { getUserAddress } from "../../../src/features/addressSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 import CustomInput from "../../../Utilities/Input/CustomInput";
+import {
+  CANADA_PROVINCES,
+  COUNTRY_LIST,
+  GERMANY_STATES,
+  USA_STATE_LIST,
+} from "../../Address/COUNTRY_LISTS";
 import CheckoutDropDown from "./CheckoutDropDown";
 
 const CheckoutAddress = () => {
-  const [isFirstNameClicked, setIsFirstNameClicked] = useState(false);
-  const [isLastNameClicked, setIsLastNameClicked] = useState(false);
-  const [isAddressClicked, setIsAddressClicked] = useState(false);
-  const [isCityClicked, setIsCityClicked] = useState(false);
-  const [isZipCodeClicked, setIsZipCodeClicked] = useState(false);
-  const [isStateClicked, setIsStateClicked] = useState(false);
-  const [isPhoneClicked, setIsPhoneClicked] = useState(false);
+  const [isFirstNameClicked, setIsFirstNameClicked] = useState(true);
+  const [isLastNameClicked, setIsLastNameClicked] = useState(true);
+  const [isAddressClicked, setIsAddressClicked] = useState(true);
+  const [isCityClicked, setIsCityClicked] = useState(true);
+  const [isZipCodeClicked, setIsZipCodeClicked] = useState(true);
+  const [isStateClicked, setIsStateClicked] = useState(true);
+  const [isPhoneClicked, setIsPhoneClicked] = useState(true);
 
   const { addressList } = useAppSelector((store) => store.address);
   const dispatch = useAppDispatch();
@@ -24,85 +30,81 @@ const CheckoutAddress = () => {
   }, [currentUser, dispatch]);
 
   return (
-    <div className="w-full bg-red-200">
+    <div className="w-8/12 ml-auto mr-20">
+      <h2 className="text-center mb-6 opacity-60 text-lg font-bold">
+        Shipping Address
+      </h2>
       <CheckoutDropDown
         addresslist={addressList}
         setCurrentAddress={setCurrentAddress}
       />
-      <div className="w-full mx-auto max-w-[26rem]">
-        <div className="flex gap-x-4">
-          <CustomInput
-            type="text"
-            changeHandler={() => {}}
-            isInputClicked={isFirstNameClicked}
-            setIsInputClicked={setIsFirstNameClicked}
-            placeholderText="First Name"
-            inputName="firstName"
-            labelText="First Name"
-            labelHTMLForTag="firstName"
-            value={currentAddress.firstName}
+      <div className="flex gap-x-4">
+        <div className="relative h-12 w-6/12 border border-gray-400 pl-4 mt-4 rounded-sm">
+          <label className="absolute top-0 text-xs text-gray-500">
+            First Name
+          </label>
+          <input
+            disabled
+            className="mt-4 text-base w-full"
+            value={currentAddress?.firstName}
           />
-          <CustomInput
-            type="text"
-            changeHandler={() => {}}
-            isInputClicked={isLastNameClicked}
-            setIsInputClicked={setIsLastNameClicked}
-            placeholderText="Last Name"
-            inputName="lastName"
-            labelText="Last Name"
-            labelHTMLForTag="lastName"
-            value={currentAddress.lastName}
+        </div>
+        <div className="relative h-12 w-6/12 border border-gray-400 pl-4 mt-4 rounded-sm">
+          <label className="absolute top-0 text-xs text-gray-500">
+            Last Name
+          </label>
+          <input
+            disabled
+            className="mt-4 text-base w-full"
+            value={currentAddress?.lastName}
           />
         </div>
       </div>
-
-      <CustomInput
-        type="text"
-        changeHandler={() => {}}
-        isInputClicked={isAddressClicked}
-        setIsInputClicked={setIsAddressClicked}
-        placeholderText="Address"
-        inputName="address"
-        labelText="Address"
-        labelHTMLForTag="address"
-        value={currentAddress.address}
-      />
-
-      <div>
-        <CustomInput
-          type="text"
-          changeHandler={() => {}}
-          isInputClicked={isCityClicked}
-          setIsInputClicked={setIsCityClicked}
-          placeholderText="City"
-          inputName="city"
-          labelText="City"
-          labelHTMLForTag="city"
-          value={currentAddress.city}
-        />
-        <CustomInput
-          type="text"
-          changeHandler={() => {}}
-          isInputClicked={isZipCodeClicked}
-          setIsInputClicked={setIsZipCodeClicked}
-          placeholderText="ZIP code"
-          inputName="zipCode"
-          labelText="ZIP code"
-          labelHTMLForTag="zipCode"
-          value={currentAddress.zipCode}
+      <div className="relative h-12 w-full border border-gray-400 pl-4 mt-4 rounded-sm">
+        <label className="absolute top-0 text-xs text-gray-500">Address</label>
+        <input
+          disabled
+          className="mt-4 text-base w-full"
+          value={currentAddress?.address}
         />
       </div>
+      <div className="flex gap-x-4">
+        <div className="relative h-12 w-6/12 border border-gray-400 pl-4 mt-4 rounded-sm">
+          <label className="absolute top-0 text-xs text-gray-500">City</label>
+          <input
+            disabled
+            className="mt-4 text-base w-full"
+            value={currentAddress?.city}
+          />
+        </div>
 
-      <CustomInput
-        type="text"
-        changeHandler={() => {}}
-        isInputClicked={isPhoneClicked}
-        setIsInputClicked={setIsPhoneClicked}
-        placeholderText="First Name"
-        inputName="firstName"
-        labelText="First Name"
-        labelHTMLForTag="firstName"
-      />
+        <div className="relative h-12 w-6/12 border border-gray-400 pl-4 mt-4 rounded-sm">
+          <label className="absolute top-0 text-xs text-gray-500">State</label>
+          <input
+            disabled
+            className="mt-5 text-xs w-full"
+            value={currentAddress?.state}
+          />
+        </div>
+        <div className="relative h-12 w-6/12 border border-gray-400 pl-4 mt-4 rounded-sm">
+          <label className="absolute top-0 text-xs text-gray-500">
+            ZIP code
+          </label>
+          <input
+            disabled
+            className="mt-4 text-base w-full"
+            value={currentAddress?.zipCode}
+          />
+        </div>
+      </div>
+      <div className="relative h-12 w-full border border-gray-400 pl-4 mt-4 rounded-sm">
+        <label className="absolute top-0 text-xs text-gray-500">Phone</label>
+        <input
+          disabled
+          className="mt-4 text-base w-full"
+          value={currentAddress?.phone}
+        />
+      </div>
     </div>
   );
 };
