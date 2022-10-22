@@ -10,7 +10,7 @@ import {
 import { string } from "yup";
 import { db } from "../../firebase/firabaseConfig";
 
-interface AddressProps {
+export interface AddressProps {
   firstName: string;
   lastName: string;
   address: string;
@@ -19,6 +19,7 @@ interface AddressProps {
   zipCode: string;
   phone: string;
   id: string;
+  country: string;
 }
 
 interface AddressState {
@@ -38,6 +39,7 @@ const initialState: AddressState = {
     state: "",
     zipCode: "",
     id: "",
+    country: "",
   },
   isNewAddressOpen: false,
 };
