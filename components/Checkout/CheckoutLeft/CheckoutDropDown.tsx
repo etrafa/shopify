@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { AddressProps } from "../../../src/features/addressSlicer";
 
 interface CheckoutDropDownProps {
@@ -10,9 +10,12 @@ const CheckoutDropDown = (props: CheckoutDropDownProps) => {
   return (
     <div>
       <h2 className="text-center mt-12">Shipping Address</h2>
-      <select className="border h-12 border-black pl-2 w-full">
+      <select
+        onChange={(e) => props.setCurrentAddress(JSON.parse(e.target.value))}
+        className="border h-12 border-black pl-2 w-full"
+      >
         {props.addresslist.map((address) => (
-          <option key={address.id}>
+          <option key={address.id} value={JSON.stringify(address)}>
             {address.address}, {address.city}, {address.country}
           </option>
         ))}
