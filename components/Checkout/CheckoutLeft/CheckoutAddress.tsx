@@ -10,6 +10,7 @@ import {
   USA_STATE_LIST,
 } from "../../Address/COUNTRY_LISTS";
 import CheckoutDropDown from "./CheckoutDropDown";
+import ShippingOptions from "./ShippingOptions";
 
 const CheckoutAddress = () => {
   const [isFirstNameClicked, setIsFirstNameClicked] = useState(true);
@@ -31,6 +32,7 @@ const CheckoutAddress = () => {
 
   return (
     <div className="w-11/12 max-w-lg mx-auto md:mx-0 lg:ml-auto lg:mr-12">
+      <ShippingOptions />
       <h2 className="text-center mb-6 opacity-60 text-lg font-bold">
         Shipping Address
       </h2>
