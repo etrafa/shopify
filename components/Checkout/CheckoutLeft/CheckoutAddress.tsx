@@ -13,14 +13,6 @@ import CheckoutDropDown from "./CheckoutDropDown";
 import ShippingOptions from "./ShippingOptions";
 
 const CheckoutAddress = () => {
-  const [isFirstNameClicked, setIsFirstNameClicked] = useState(true);
-  const [isLastNameClicked, setIsLastNameClicked] = useState(true);
-  const [isAddressClicked, setIsAddressClicked] = useState(true);
-  const [isCityClicked, setIsCityClicked] = useState(true);
-  const [isZipCodeClicked, setIsZipCodeClicked] = useState(true);
-  const [isStateClicked, setIsStateClicked] = useState(true);
-  const [isPhoneClicked, setIsPhoneClicked] = useState(true);
-
   const { addressList } = useAppSelector((store) => store.address);
   const dispatch = useAppDispatch();
   const currentUser = useAuth();
@@ -38,24 +30,24 @@ const CheckoutAddress = () => {
         addresslist={addressList}
         setCurrentAddress={setCurrentAddress}
       />
-      <div className="flex gap-x-4">
-        <div className="relative h-12 w-6/12 border border-gray-400 pl-4 mt-4 rounded-sm">
+      <div className="flex flex-col md:flex-row md:gap-x-4">
+        <div className="relative w-full md:w-6/12 h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
           <label className="absolute top-0 text-xs text-gray-500">
             First Name
           </label>
           <input
             disabled
-            className="mt-4 text-base w-full"
+            className="mt-4 text-base w-full bg-white"
             value={currentAddress?.firstName}
           />
         </div>
-        <div className="relative h-12 w-6/12 border border-gray-400 pl-4 mt-4 rounded-sm">
+        <div className="relative w-full md:w-6/12 h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
           <label className="absolute top-0 text-xs text-gray-500">
             Last Name
           </label>
           <input
             disabled
-            className="mt-4 text-base w-full"
+            className="mt-4 text-base w-full bg-white"
             value={currentAddress?.lastName}
           />
         </div>
@@ -64,47 +56,55 @@ const CheckoutAddress = () => {
         <label className="absolute top-0 text-xs text-gray-500">Address</label>
         <input
           disabled
-          className="mt-4 text-base w-full"
+          className="mt-4 text-base w-full bg-white"
           value={currentAddress?.address}
         />
       </div>
-      <div className="flex gap-x-4">
-        <div className="relative h-12 w-6/12 border border-gray-400 pl-4 mt-4 rounded-sm">
+
+      <div className="flex flex-col md:flex-row md:gap-x-4">
+        <div className="relative w-full md:w-6/12 h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
           <label className="absolute top-0 text-xs text-gray-500">City</label>
           <input
             disabled
-            className="mt-4 text-base w-full"
+            className="mt-4 text-base w-full bg-white"
             value={currentAddress?.city}
           />
         </div>
 
-        <div className="relative h-12 w-6/12 border border-gray-400 pl-4 mt-4 rounded-sm">
+        <div className="relative w-full md:w-6/12 h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
           <label className="absolute top-0 text-xs text-gray-500">State</label>
           <input
             disabled
-            className="mt-5 text-xs w-full"
+            className="mt-5 text-base md:text-sm lg:text-base w-full bg-white"
             value={currentAddress?.state}
           />
         </div>
-        <div className="relative h-12 w-6/12 border border-gray-400 pl-4 mt-4 rounded-sm">
+        <div className="relative w-full md:w-6/12 h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
           <label className="absolute top-0 text-xs text-gray-500">
             ZIP code
           </label>
           <input
             disabled
-            className="mt-4 text-base w-full"
+            className="mt-4 text-base w-full bg-white"
             value={currentAddress?.zipCode}
           />
         </div>
       </div>
-      <div className="relative h-12 w-full border border-gray-400 pl-4 mt-4 rounded-sm">
+
+      <div className="relative w-full h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
         <label className="absolute top-0 text-xs text-gray-500">Phone</label>
         <input
           disabled
-          className="mt-4 text-base w-full"
+          className="mt-4 text-base w-full bg-white"
           value={currentAddress?.phone}
         />
       </div>
+      <button
+        type="submit"
+        className="border w-44 h-12 bg-light-gray text-sm tracking-widest hover:scale-105 ease-in-out text-button-text mt-6 float-right"
+      >
+        Buy
+      </button>
     </div>
   );
 };
