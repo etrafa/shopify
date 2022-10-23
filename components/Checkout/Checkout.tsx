@@ -4,7 +4,7 @@ import ShowOrderSummary from "./CheckoutRight/ShowOrderSummary";
 
 const Checkout = () => {
   return (
-    <div className="w-full flex flex-col-reverse md:flex-row md:min-h-screen">
+    <div className="w-full flex flex-col-reverse md:flex-row md:min-h-screen mt-12 mb-24">
       <div className="w-full">
         <CheckoutAddress />
       </div>

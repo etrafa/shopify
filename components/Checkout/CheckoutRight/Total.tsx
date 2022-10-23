@@ -5,7 +5,7 @@ const Total = () => {
   const { currentCurrency } = useAppSelector((store) => store.currency);
 
   return (
-    <div className="flex mt-4 justify-between">
+    <div className="flex mt-12 justify-between">
       <h2 className="opacity-80 font-semibold tracking-wider">Total</h2>
       {currentCurrency === "USD" && (
         <p className="font-bold text-lg tracking-widest opacity-80">${total}</p>
