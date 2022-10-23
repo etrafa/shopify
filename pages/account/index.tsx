@@ -31,17 +31,6 @@ const MyAccount = () => {
         </div>
         <div className="w-44 h-16 ">
           <div className="flex mx-auto justify-center">
-            <MyProfileIcon />
-            <h2 className="font-bold text-sm pt-0.5 pl-1.5">My Profile</h2>
-          </div>
-          <Link href="/account/profile">
-            <p className="block mt-2 underline underline-offset-2 cursor-pointer text-button-text hover:text-slate-500 text-center">
-              View
-            </p>
-          </Link>
-        </div>
-        <div className="w-44 h-16 ">
-          <div className="flex mx-auto justify-center">
             <CartIcon />
             <h2 className="font-bold text-sm pt-0.5 pl-1.5">Cart</h2>
           </div>
