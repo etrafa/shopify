@@ -9,6 +9,7 @@ import {
   GERMANY_STATES,
   USA_STATE_LIST,
 } from "../../Address/COUNTRY_LISTS";
+import BuyButton from "./BuyButton";
 import CheckoutDropDown from "./CheckoutDropDown";
 import ShippingOptions from "./ShippingOptions";
 
@@ -99,12 +100,7 @@ const CheckoutAddress = () => {
           value={currentAddress?.phone}
         />
       </div>
-      <button
-        type="submit"
-        className="border w-44 h-12 bg-light-gray text-sm tracking-widest hover:scale-105 ease-in-out text-button-text mt-6 float-right"
-      >
-        Buy
-      </button>
+      <BuyButton />
     </div>
   );
 };
