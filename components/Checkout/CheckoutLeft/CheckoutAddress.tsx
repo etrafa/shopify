@@ -33,9 +33,7 @@ const CheckoutAddress = () => {
   return (
     <div className="w-11/12 max-w-lg mx-auto md:mx-0 lg:ml-auto lg:mr-12">
       <ShippingOptions />
-      <h2 className="text-center mb-6 opacity-60 text-lg font-bold">
-        Shipping Address
-      </h2>
+      <h2 className="font-semibold opacity-80 mb-3">Shipping Address</h2>
       <CheckoutDropDown
         addresslist={addressList}
         setCurrentAddress={setCurrentAddress}
