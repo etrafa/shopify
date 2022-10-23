@@ -4,6 +4,8 @@ const Total = () => {
   const { total } = useAppSelector((store) => store.cart);
   const { currentCurrency } = useAppSelector((store) => store.currency);
 
+  console.log(total);
+
   return (
     <div className="flex mt-12 justify-between">
       <h2 className="opacity-80 font-semibold tracking-wider">Total</h2>

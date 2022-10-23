@@ -4,7 +4,7 @@ const ShippingOptions = () => {
       <h2 className="font-semibold opacity-80 mb-3">Delivery Method</h2>
       <div className="w-full border rounded-md ">
         <div className="border-b h-14 pt-4 pl-2">
-          <input type="radio" name="shipping-option" id="ship" />
+          <input type="radio" name="shipping-option" id="ship" defaultChecked />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
