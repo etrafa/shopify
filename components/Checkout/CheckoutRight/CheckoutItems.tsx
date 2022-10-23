@@ -25,10 +25,13 @@ const CheckoutItems = () => {
     <div className="w-full flex flex-col m-12">
       <table>
         <thead className="w-full">
-          <td className="w-1/12"></td>
-          <td className="w-8/12"></td>
-          <td></td>
+          <tr>
+            <td className="w-1/12"></td>
+            <td className="w-8/12"></td>
+            <td></td>
+          </tr>
         </thead>
+
         <tbody>
           {cartItems &&
             cartItems.map((item) => {
