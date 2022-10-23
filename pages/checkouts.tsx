@@ -1,15 +1,13 @@
 import Head from "next/head";
-import CheckoutLeft from "../components/Checkout/CheckoutLeft/CheckoutLeft";
-import CheckoutRight from "../components/Checkout/CheckoutRight/CheckoutRight";
+import Checkout from "../components/Checkout/Checkout";
 
 const checkout = () => {
   return (
-    <div className="w-full mx-auto flex min-h-[80vh] mt-10">
+    <div>
       <Head>
         <title>Checkout - EL FOOTBALL STORE</title>
       </Head>
-      <CheckoutLeft />
-      <CheckoutRight />
+      <Checkout />
     </div>
   );
 };

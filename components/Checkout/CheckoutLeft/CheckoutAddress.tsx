@@ -30,7 +30,7 @@ const CheckoutAddress = () => {
   }, [currentUser, dispatch]);
 
   return (
-    <div className="w-8/12 ml-auto mr-20">
+    <div className="w-11/12 max-w-lg mx-auto md:mx-0 lg:ml-auto lg:mr-12">
       <h2 className="text-center mb-6 opacity-60 text-lg font-bold">
         Shipping Address
       </h2>

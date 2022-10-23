@@ -5,10 +5,6 @@ import { ISingleProductForCart } from "../../../interfaces/SingleProductForCart"
 import { getCartItems } from "../../../src/features/cartSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
 
-type CheckoutProps = {
-  cartItems: ISingleProductForCart;
-};
-
 const CheckoutItems = () => {
   const dispatch = useAppDispatch();
   const { cartItems } = useAppSelector((store) => store.cart);
@@ -22,7 +18,7 @@ const CheckoutItems = () => {
   }, [dispatch, currentUser]);
 
   return (
-    <div className="w-full flex flex-col m-12">
+    <div className="w-full flex flex-col">
       <table>
         <thead className="w-full">
           <tr>
