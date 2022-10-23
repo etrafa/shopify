@@ -1,5 +1,6 @@
 import CheckoutAddress from "./CheckoutLeft/CheckoutAddress";
 import CheckoutRight from "./CheckoutRight/CheckoutRight";
+import ShowOrderSummary from "./CheckoutRight/ShowOrderSummary";
 
 const Checkout = () => {
   return (
@@ -8,7 +9,9 @@ const Checkout = () => {
         <CheckoutAddress />
       </div>
 
-      <div className="w-full bg-light-gray md:border-l md:border-border-gray">
+      <ShowOrderSummary />
+
+      <div className="hidden md:block w-full bg-light-gray md:border-l md:border-border-gray">
         <CheckoutRight />
       </div>
     </div>
