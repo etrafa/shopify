@@ -64,7 +64,7 @@ const Footer = () => {
           <h2>CONTACT US</h2>
           <hr className="mt-2 w-11/12 border-gray-400 " />
           <p className="mt-3 cursor-pointer hover:underline">
-            companyinfo.gmail.com
+            etemsenel.gmail.com
           </p>
         </div>
       </div>
