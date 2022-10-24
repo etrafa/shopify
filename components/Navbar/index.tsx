@@ -154,11 +154,19 @@ const Navbar = () => {
 
         <div className="flex gap-x-4 items-center">
           <NavbarCurrency />
-          <Link href="/account">
-            <span>
-              <UserIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110 hidden lg:block" />
-            </span>
-          </Link>
+          {currentUser ? (
+            <Link href="/account">
+              <span>
+                <UserIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110 hidden lg:block" />
+              </span>
+            </Link>
+          ) : (
+            <Link href="/account/login">
+              <span>
+                <UserIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110 hidden lg:block" />
+              </span>
+            </Link>
+          )}
           <Link href="/account/cart">
             <div className="relative">
               <BagIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110" />

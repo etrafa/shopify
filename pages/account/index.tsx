@@ -56,13 +56,10 @@ const MyAccount = () => {
           className="w-44 h-16 cursor-pointer"
           onClick={() => {
             firebaseLogout();
-            // Router.push("/");
-            if (Router.asPath === "/account") {
-              Router.push("/");
-              setTimeout(() => {
-                Router.reload();
-              }, 200);
-            }
+            Router.push("/");
+            setTimeout(() => {
+              Router.reload();
+            }, 200);
           }}
         >
           <div className="flex mx-auto justify-center">
