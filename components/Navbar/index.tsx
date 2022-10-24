@@ -167,14 +167,25 @@ const Navbar = () => {
               </span>
             </Link>
           )}
-          <Link href="/account/cart">
-            <div className="relative">
-              <BagIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110" />
-              <span className="w-4 h-4 absolute -bottom-1.5 -right-1 bg-light-gray inline-block text-center rounded-full text-[10px]">
-                {cartItems.length}
-              </span>
-            </div>
-          </Link>
+          {currentUser ? (
+            <Link href="/account/cart">
+              <div className="relative">
+                <BagIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110" />
+                <span className="w-4 h-4 absolute -bottom-1.5 -right-1 bg-light-gray inline-block text-center rounded-full text-[10px]">
+                  {cartItems.length}
+                </span>
+              </div>
+            </Link>
+          ) : (
+            <Link href="/account/login">
+              <div className="relative">
+                <BagIcon iconStyle="w-6 h-6 cursor-pointer hover:scale-110" />
+                <span className="w-4 h-4 absolute -bottom-1.5 -right-1 bg-light-gray inline-block text-center rounded-full text-[10px]">
+                  {cartItems.length}
+                </span>
+              </div>
+            </Link>
+          )}
         </div>
       </div>
     </nav>

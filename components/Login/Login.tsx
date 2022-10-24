@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, MouseEvent, useState } from "react";
 import { firebaseSignIn } from "../../firebase/FirebaseAuthFunctions/signInWithEmail";
@@ -74,9 +75,11 @@ const Login = () => {
           Sign in
         </button>
       </form>
-      <p className="text-xs text-button-text font-bold tracking-widest underline underline-offset-4 cursor-pointer decoration-slate-600 hover:decoration-black hover:decoration-2">
-        Create Account
-      </p>
+      <Link href="/account/register">
+        <p className="text-xs text-button-text font-bold tracking-widest underline underline-offset-4 cursor-pointer decoration-slate-600 hover:decoration-black hover:decoration-2">
+          Create Account
+        </p>
+      </Link>
     </div>
   );
 };
