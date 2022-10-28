@@ -16,22 +16,20 @@ const Layout = ({ children }: LayoutProps) => {
   const currentUser = useAuth();
 
   useEffect(() => {
-    if (isNavbarOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-
     if (currentUser) {
       dispatch(getCartItems(currentUser?.uid));
     }
-  }, [isNavbarOpen, dispatch, currentUser]);
+  }, [dispatch, currentUser]);
 
   return (
     <div>
       <Navbar />
-      {children}
-      <Footer />
+      {isNavbarOpen ? null : (
+        <>
+          {children}
+          <Footer />
+        </>
+      )}
     </div>
   );
 };
