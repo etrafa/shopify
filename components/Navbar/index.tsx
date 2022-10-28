@@ -22,6 +22,8 @@ import styles from "./Hamburger.module.css";
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const { isNavbarOpen } = useAppSelector((store) => store.navbar);
+  const { cartItems } = useAppSelector((store) => store.cart);
+
   const [screenSize, setScreenSize] = useState(0);
 
   const checkSize = () => {
@@ -51,7 +53,14 @@ const Navbar = () => {
           {!isNavbarOpen && <NavbarCurrency />}
 
           {!isNavbarOpen && (
-            <BagIcon iconStyle="w-6 h-6 lg:w-7 lg:h-7 cursor-pointer" />
+            <Link href="/account/cart">
+              <div className="relative">
+                <BagIcon iconStyle="w-6 h-6 lg:w-7 lg:h-7 cursor-pointer" />{" "}
+                <span className="w-4 h-4 absolute -bottom-1.5 -right-1 bg-light-gray inline-block text-center rounded-full text-[10px]">
+                  {cartItems.length}
+                </span>
+              </div>
+            </Link>
           )}
           {isNavbarOpen ? (
             <CloseIcon
@@ -229,7 +238,7 @@ export default Navbar;
 //     const currentScrollPos = window.scrollY;
 
 //     if (currentScrollPos > prevScrollPos) {
-//       setVisible(false);
+// setVisible(false);
 //     } else {
 //       setVisible(true);
 //     }
