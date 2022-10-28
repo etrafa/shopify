@@ -113,7 +113,10 @@ const Navbar = () => {
             : "hidden lg:block absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto"
         }
       >
-        <ul className="flex ml-4 flex-col lg:flex-row lg:justify-center pt-10 lg:pt-0">
+        <ul
+          onClick={() => dispatch(TOGGLE_NAVBAR())}
+          className="flex ml-4 flex-col lg:flex-row lg:justify-center pt-10 lg:pt-0"
+        >
           <Link href="/">
             <div className="bg-light-gray lg:bg-transparent w-11/12 lg:w-auto h-16 rounded-md mb-4 lg:my-0">
               <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline font-bold lg:font-semibold opacity-80 lg:hover:opacity-100 tracking-wider mt-2">
@@ -233,55 +236,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-// //react
-// import { useEffect, useState } from "react";
-
-// //image && icons
-// import SearchIcon, {
-//   BagIcon,
-//   UserIcon,
-//   HamburgerIcon,
-//   CloseIcon,
-//   LogoutIcon,
-// } from "../../Utilities/Icons/Icons";
-// import Image from "next/image";
-// import Logo from "../../public/image.jpg";
-// import Link from "next/link";
-// import { useAppDispatch, useAppSelector } from "../../src/store";
-// import NavbarCurrency from "./NavbarCurrency";
-// import styles from "./Hamburger.module.css";
-// import { TOGGLE_NAVBAR } from "../../src/features/navbarSlicer";
-// import CurrencyWarningMessage from "../CurrencyWarning/CurrencyWarningMessage";
-// import { useAuth } from "../../firebase/firabaseConfig";
-// import { firebaseLogout } from "../../firebase/FirebaseAuthFunctions/firebaseLogout";
-
-// const Navbar = () => {
-//   const { cartItems } = useAppSelector((store) => store.cart);
-//   const { isNavbarOpen } = useAppSelector((store) => store.navbar);
-
-//   const currentUser = useAuth();
-
-//   useEffect(() => {
-
-//   });
-
-//   const dispatch = useAppDispatch();
-
-//   return (
-//     <nav className={visible ? "sticky top-0 z-50 bg-white" : ""}>
-//mt-12 relative"
-//
-
-//
-
-//         <CurrencyWarningMessage />
-
-//
-
-//
-//
-//     </nav>
-//   );
-// };
-// export default Navbar;
