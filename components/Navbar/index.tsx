@@ -1,29 +1,12 @@
-import Image from "next/image";
-import {
-  BagIcon,
-  CloseIcon,
-  HamburgerIcon,
-  UserIcon,
-} from "../../Utilities/Icons/Icons";
-import NavbarCurrency from "./NavbarCurrency";
-import NationalTeamsIcon from "../../public/national-teams.png";
-import PremierLeaugeIcon from "../../public/premier-leauge.png";
-import BundesligaIcon from "../../public/bundesliga.png";
-import SerieAIcon from "../../public/serie-a.png";
-import LaLigaIcon from "../../public/la-liga.png";
-import LigueOneIcon from "../../public/ligue-one.png";
-import OtherClubsIcon from "../../public/other-leauges.png";
-import Link from "next/link";
 import { TOGGLE_NAVBAR } from "../../src/features/navbarSlicer";
 import { useAppDispatch, useAppSelector } from "../../src/store";
 import { useEffect, useState } from "react";
-import { useAuth } from "../../firebase/firabaseConfig";
+import NavbarLinks from "./NavbarLinks";
+import NavbarIconsAndHeader from "./NavbarIconsAndHeader";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const { isNavbarOpen } = useAppSelector((store) => store.navbar);
-  const { cartItems } = useAppSelector((store) => store.cart);
-  const currentUser = useAuth();
   const [screenSize, setScreenSize] = useState(0);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -61,176 +44,12 @@ const Navbar = () => {
     <nav
       className={
         visible
-          ? "sticky top-0 bg-white z-50 mt-12 h-24"
-          : "mt-12 relative h-24 "
+          ? "sticky top-0 bg-white z-50 mt-12 h-12 pt-2"
+          : "mt-12 relative h-12"
       }
     >
-      <section className="flex justify-between flex-nowrap mx-4">
-        <header className="lg:w-full lg:text-center">
-          <Link href="/">
-            <h1 className="font-extrabold text-light-black text-2xl lg:ml-[11.5rem] lg:tracking-[0.4rem] cursor-pointer">
-              EL STORE
-            </h1>
-          </Link>
-        </header>
-        <div className="flex justify-end items-center gap-x-4 lg:gap-x-6 lg:mr-12">
-          {!isNavbarOpen && (
-            <Link href={currentUser ? "/account" : "/account/login"}>
-              <span>
-                <UserIcon iconStyle="w-6 h-6 lg:w-7 lg:h-7 opacity-90 cursor-pointer" />
-              </span>
-            </Link>
-          )}
-          {!isNavbarOpen && <NavbarCurrency />}
-
-          {!isNavbarOpen && (
-            <Link href={currentUser ? "/account/cart" : "/account/login"}>
-              <div className="relative">
-                <BagIcon iconStyle="w-6 h-6 lg:w-7 lg:h-7 cursor-pointer" />{" "}
-                <span className="w-4 h-4 absolute -bottom-1.5 -right-1 bg-light-gray inline-block text-center rounded-full text-[10px]">
-                  {cartItems.length}
-                </span>
-              </div>
-            </Link>
-          )}
-          {isNavbarOpen ? (
-            <CloseIcon
-              iconStyle="h-6 w-6 cursor-pointer"
-              navbarClickHandler={() => dispatch(TOGGLE_NAVBAR())}
-            />
-          ) : (
-            <HamburgerIcon
-              iconStyle="w-7 h-7 cursor-pointer lg:hidden"
-              navbarClickHandler={() => dispatch(TOGGLE_NAVBAR())}
-            />
-          )}
-        </div>
-      </section>
-      <section
-        className={
-          isNavbarOpen
-            ? "absolute top-9 w-full z-50 h-12"
-            : "hidden lg:block absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto"
-        }
-      >
-        <ul
-          onClick={() => dispatch(TOGGLE_NAVBAR())}
-          className="flex ml-4 flex-col lg:flex-row lg:justify-center pt-10 lg:pt-0"
-        >
-          <Link href="/">
-            <div className="bg-light-gray lg:bg-transparent w-11/12 lg:w-auto h-16 rounded-md mb-4 lg:my-0">
-              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline font-bold lg:font-semibold opacity-80 lg:hover:opacity-100 tracking-wider mt-2">
-                Home
-              </li>
-            </div>
-          </Link>
-          <Link href="/leauge/national-teams">
-            <div className="bg-light-gray lg:bg-transparent w-11/12 lg:w-auto h-16 rounded-md mt-2 mb-4 lg:my-0 flex justify-between items-center lg:block">
-              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline font-bold lg:font-semibold opacity-80 lg:hover:opacity-100 tracking-wider mt-2">
-                National Teams
-              </li>
-              <span className="mr-6 lg:hidden">
-                <Image
-                  src={NationalTeamsIcon}
-                  alt="national teams icon"
-                  width={45}
-                  height={45}
-                />
-              </span>
-            </div>
-          </Link>
-          <Link href="/leauge/premier-leauge">
-            <div className="bg-light-gray lg:bg-transparent w-11/12 lg:w-auto h-16 rounded-md mt-2 mb-4 lg:my-0 flex justify-between items-center lg:block">
-              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline font-bold lg:font-semibold opacity-80 lg:hover:opacity-100 tracking-wider mt-2">
-                Premier Leauge
-              </li>
-              <span className="mr-6 lg:hidden">
-                <Image
-                  src={PremierLeaugeIcon}
-                  alt="premier leauge icon"
-                  width={45}
-                  height={45}
-                />
-              </span>
-            </div>
-          </Link>
-          <Link href="/leauge/bundesliga">
-            <div className="bg-light-gray lg:bg-transparent w-11/12 lg:w-auto h-16 rounded-md mt-2 mb-4 lg:my-0 flex justify-between items-center lg:block">
-              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline font-bold lg:font-semibold opacity-80 lg:hover:opacity-100 tracking-wider mt-2">
-                Bundesliga
-              </li>
-              <span className="mr-6 lg:hidden">
-                <Image
-                  src={BundesligaIcon}
-                  alt="bundesliga icon"
-                  width={45}
-                  height={45}
-                />
-              </span>
-            </div>
-          </Link>
-          <Link href="/leauge/seriea-leauge">
-            <div className="bg-light-gray lg:bg-transparent w-11/12 lg:w-auto h-16 rounded-md mt-2 mb-4 lg:my-0 flex justify-between items-center lg:block">
-              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline font-bold lg:font-semibold opacity-80 lg:hover:opacity-100 tracking-wider mt-2">
-                Serie A
-              </li>
-              <span className="mr-6 lg:hidden">
-                <Image
-                  src={SerieAIcon}
-                  alt="serie-a icon"
-                  width={45}
-                  height={45}
-                />
-              </span>
-            </div>
-          </Link>
-          <Link href="/leauge/la-liga">
-            <div className="bg-light-gray lg:bg-transparent w-11/12 lg:w-auto h-16 rounded-md mt-2 mb-4 lg:my-0 flex justify-between items-center lg:block">
-              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline font-bold lg:font-semibold opacity-80 lg:hover:opacity-100 tracking-wider mt-2">
-                La Liga
-              </li>
-              <span className="mr-6 lg:hidden">
-                <Image
-                  src={LaLigaIcon}
-                  alt="la liga icon"
-                  width={45}
-                  height={45}
-                />
-              </span>
-            </div>
-          </Link>
-          <Link href="/leauge/ligue-one">
-            <div className="bg-light-gray lg:bg-transparent w-11/12 lg:w-auto h-16 rounded-md mt-2 mb-4 lg:my-0 flex justify-between items-center lg:block">
-              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline font-bold lg:font-semibold opacity-80 lg:hover:opacity-100 tracking-wider mt-2">
-                Ligue One
-              </li>
-              <span className="mr-6 lg:hidden">
-                <Image
-                  src={LigueOneIcon}
-                  alt="leauge one icon"
-                  width={45}
-                  height={45}
-                />
-              </span>
-            </div>
-          </Link>
-          <Link href="/leauge/other-clubs">
-            <div className="bg-light-gray lg:bg-transparent w-11/12 lg:w-auto h-16 rounded-md mt-2 mb-4 lg:my-0 flex justify-between items-center lg:block">
-              <li className="uppercase text-sm p-4 lg:px-4 cursor-pointer hover:underline font-bold lg:font-semibold opacity-80 lg:hover:opacity-100 tracking-wider mt-2">
-                Other Clubs
-              </li>
-              <span className="mr-6 lg:hidden">
-                <Image
-                  src={OtherClubsIcon}
-                  alt="other leauges icon"
-                  width={45}
-                  height={45}
-                />
-              </span>
-            </div>
-          </Link>
-        </ul>
-      </section>
+      <NavbarIconsAndHeader />
+      <NavbarLinks />
     </nav>
   );
 };
