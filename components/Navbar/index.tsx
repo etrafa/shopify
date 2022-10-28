@@ -25,6 +25,20 @@ const Navbar = () => {
   const { cartItems } = useAppSelector((store) => store.cart);
   const currentUser = useAuth();
   const [screenSize, setScreenSize] = useState(0);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  const handleScroll = () => {
+    const currentScrollPos = window.scrollY;
+
+    if (currentScrollPos > prevScrollPos) {
+      setVisible(false);
+    } else {
+      setVisible(true);
+    }
+
+    setPrevScrollPos(currentScrollPos);
+  };
 
   const checkSize = () => {
     setScreenSize(window.innerWidth);
@@ -35,11 +49,22 @@ const Navbar = () => {
     if (screenSize >= 992 && isNavbarOpen) {
       dispatch(TOGGLE_NAVBAR());
     }
-    return () => window.removeEventListener("resize", checkSize);
-  }, [isNavbarOpen, dispatch, screenSize]);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", checkSize);
+    };
+  }, [isNavbarOpen, dispatch, screenSize, handleScroll]);
 
   return (
-    <nav className="mt-12 relative">
+    <nav
+      className={
+        visible
+          ? "sticky top-0 bg-white z-50 mt-12 h-24"
+          : "mt-12 relative h-24 "
+      }
+    >
       <section className="flex justify-between flex-nowrap mx-4">
         <header className="lg:w-full lg:text-center">
           <Link href="/">
@@ -237,32 +262,15 @@ export default Navbar;
 
 //   const currentUser = useAuth();
 
-//   const [prevScrollPos, setPrevScrollPos] = useState(0);
-//   const [visible, setVisible] = useState(true);
-
-//   const handleScroll = () => {
-//     const currentScrollPos = window.scrollY;
-
-//     if (currentScrollPos > prevScrollPos) {
-// setVisible(false);
-//     } else {
-//       setVisible(true);
-//     }
-
-//     setPrevScrollPos(currentScrollPos);
-//   };
-
 //   useEffect(() => {
-//     window.addEventListener("scroll", handleScroll);
 
-//     return () => window.removeEventListener("scroll", handleScroll);
 //   });
 
 //   const dispatch = useAppDispatch();
 
 //   return (
 //     <nav className={visible ? "sticky top-0 z-50 bg-white" : ""}>
-//
+//mt-12 relative"
 //
 
 //
