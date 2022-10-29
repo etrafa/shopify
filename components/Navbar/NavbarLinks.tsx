@@ -18,8 +18,8 @@ const NavbarLinks = () => {
     <section
       className={
         isNavbarOpen
-          ? "absolute top-9 w-full z-50 h-12"
-          : "hidden lg:block absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto"
+          ? "absolute top-9 w-full z-50 h-12 bg-white"
+          : "hidden lg:block absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto bg-white"
       }
     >
       <ul
