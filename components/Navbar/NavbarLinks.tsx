@@ -9,6 +9,7 @@ import OtherClubsIcon from "../../public/other-leauges.png";
 import { useAppDispatch, useAppSelector } from "../../src/store";
 import { TOGGLE_NAVBAR } from "../../src/features/navbarSlicer";
 import Image from "next/image";
+import styles from "./Hamburger.module.css";
 
 const NavbarLinks = () => {
   const { isNavbarOpen } = useAppSelector((store) => store.navbar);
@@ -18,7 +19,7 @@ const NavbarLinks = () => {
     <section
       className={
         isNavbarOpen
-          ? "absolute top-9 w-full z-50 h-12 bg-white"
+          ? `${styles.hamburgerMenu} absolute top-9 w-full z-50 h-12 bg-white`
           : "hidden lg:block absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto bg-white"
       }
     >
