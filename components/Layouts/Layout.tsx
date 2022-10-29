@@ -22,15 +22,11 @@ const Layout = ({ children }: LayoutProps) => {
   }, [dispatch, currentUser]);
 
   return (
-    <div>
+    <>
       <Navbar />
-      {isNavbarOpen ? null : (
-        <>
-          {children}
-          <Footer />
-        </>
-      )}
-    </div>
+      {isNavbarOpen ? null : <main>{children}</main>}
+      <Footer />
+    </>
   );
 };
 export default Layout;
