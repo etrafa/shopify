@@ -1,4 +1,10 @@
-import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  serverTimestamp,
+} from "firebase/firestore";
 import { MouseEvent } from "react";
 import { db, useAuth } from "../../../firebase/firabaseConfig";
 import { useAppSelector } from "../../../src/store";
@@ -14,6 +20,7 @@ const BuyButton = () => {
     if (currentUser) {
       await addDoc(collection(db, "users", currentUser.uid, "order__history"), {
         cartItems,
+        createdAt: serverTimestamp(),
       });
       cartItems.map(async (item) => {
         const docRef = doc(db, "users", currentUser.uid, "cart", item.id);
