@@ -13,6 +13,8 @@ interface CartSlicerState {
   cartItems: ISingleProductForCart[];
   amount: number;
   total: number;
+  discount: number;
+  isDiscountApplied: boolean;
   isCartModalOpen: boolean;
   value: ISingleProductForCart;
 }
@@ -21,6 +23,8 @@ const initialState: CartSlicerState = {
   amount: 0,
   cartItems: [],
   total: 0,
+  discount: 0,
+  isDiscountApplied: false,
   isCartModalOpen: false,
   value: {
     amount: 1,
