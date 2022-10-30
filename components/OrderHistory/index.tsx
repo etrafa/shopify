@@ -2,6 +2,7 @@ import { collection, DocumentData, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db, useAuth } from "../../firebase/firabaseConfig";
 import { ISingleProductForCart } from "../../interfaces/SingleProductForCart";
+import OrderHistoryTable from "./OrderHistoryTable";
 
 const OrderHistoryMain = () => {
   const currentUser = useAuth();
@@ -38,6 +39,10 @@ const OrderHistoryMain = () => {
 
   console.log(orderHistory);
 
-  return <div>hey</div>;
+  return (
+    <div>
+      <OrderHistoryTable />
+    </div>
+  );
 };
 export default OrderHistoryMain;
