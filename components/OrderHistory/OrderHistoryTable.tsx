@@ -1,4 +1,12 @@
-const OrderHistoryTable = () => {
+import { IOrderHistory } from "../../interfaces/IOrderHistory";
+
+interface OrderHistoryTableProps {
+  orderHistory: IOrderHistory[];
+}
+
+const OrderHistoryTable = ({ orderHistory }: OrderHistoryTableProps) => {
+  console.log(orderHistory);
+
   return (
     <div className="overflow-x-auto relative shadow-md sm:rounded-lg max-w-screen-lg mx-auto">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -21,7 +29,7 @@ const OrderHistoryTable = () => {
         <tbody>
           <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
             <td className="py-4 px-6">12345</td>
-            <td className="py-4 px-6">10.30.22</td>
+            <td className="py-4 px-6"></td>
             <td className="py-4 px-6">$1320</td>
             <td className="py-4 px-6">
               <a

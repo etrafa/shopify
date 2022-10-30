@@ -1,15 +1,15 @@
 import { collection, DocumentData, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db, useAuth } from "../../firebase/firabaseConfig";
-import { ISingleProductForCart } from "../../interfaces/SingleProductForCart";
+import { IOrderHistory } from "../../interfaces/IOrderHistory";
 import OrderHistoryTable from "./OrderHistoryTable";
 
 const OrderHistoryMain = () => {
   const currentUser = useAuth();
 
-  const [orderHistory, setOrderHistory] = useState<
-    ISingleProductForCart[] | null
-  >(null);
+  const [orderHistory, setOrderHistory] = useState<IOrderHistory[] | null>(
+    null
+  );
 
   useEffect(() => {
     const getOrderHistoryData = async () => {
@@ -41,7 +41,7 @@ const OrderHistoryMain = () => {
 
   return (
     <div>
-      <OrderHistoryTable />
+      {orderHistory && <OrderHistoryTable orderHistory={orderHistory} />}
     </div>
   );
 };
