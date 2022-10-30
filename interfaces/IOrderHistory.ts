@@ -6,4 +6,5 @@ export interface IOrderHistory {
     nanoseconds: number;
     seconds: number;
   };
+  id?: string;
 }
