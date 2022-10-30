@@ -109,6 +109,13 @@ const cartSlicerTwo = createSlice({
     changeSize: (state, { payload }) => {
       state.value.size = payload;
     },
+
+    applyDiscount: (state, action) => {
+      state.discount = action.payload;
+      state.total = state.total - state.discount;
+      state.isDiscountApplied = true;
+    },
+
     setDefaultValue: (state) => {
       state.value = {
         amount: 1,
@@ -146,6 +153,7 @@ export const {
   setDefaultValue,
   increaseOnCart,
   decreaseOnCart,
+  applyDiscount,
 } = cartSlicerTwo.actions;
 
 export const getCartItems = createAsyncThunk(
