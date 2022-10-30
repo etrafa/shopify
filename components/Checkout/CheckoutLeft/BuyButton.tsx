@@ -10,6 +10,10 @@ const BuyButton = () => {
 
   const handleBuy = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    // if (currentUser) {
+    //   await addDoc(collection(db, "users", currentUser.uid, "order__history"), {
+    //     cartItems,
+    //   });
 
     if (currentUser) {
       cartItems.map(async (item) => {
