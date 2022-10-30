@@ -1,4 +1,4 @@
-import { deleteDoc, doc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
 import { MouseEvent } from "react";
 import { db, useAuth } from "../../../firebase/firabaseConfig";
 import { useAppSelector } from "../../../src/store";
@@ -8,14 +8,13 @@ const BuyButton = () => {
   const { cartItems } = useAppSelector((store) => store.cart);
   const currentUser = useAuth();
 
-  const handleBuy = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleBuy = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // if (currentUser) {
-    //   await addDoc(collection(db, "users", currentUser.uid, "order__history"), {
-    //     cartItems,
-    //   });
 
     if (currentUser) {
+      await addDoc(collection(db, "users", currentUser.uid, "order__history"), {
+        cartItems,
+      });
       cartItems.map(async (item) => {
         const docRef = doc(db, "users", currentUser.uid, "cart", item.id);
         try {
