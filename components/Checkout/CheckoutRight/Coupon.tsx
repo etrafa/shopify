@@ -7,6 +7,7 @@ const Coupon = () => {
   const [isCouponClicked, setIsCouponClicked] = useState(false);
   const [couponInput, setCouponInput] = useState("");
   const { isDiscountApplied } = useAppSelector((store) => store.cart);
+  const { currentCurrency } = useAppSelector((store) => store.currency);
   const dispatch = useAppDispatch();
 
   const couponHandler = (e: React.MouseEvent) => {

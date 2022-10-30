@@ -14,6 +14,7 @@ interface CartSlicerState {
   amount: number;
   total: number;
   discount: number;
+  totalAfterDiscount: number;
   isDiscountApplied: boolean;
   isCartModalOpen: boolean;
   value: ISingleProductForCart;
@@ -24,6 +25,7 @@ const initialState: CartSlicerState = {
   cartItems: [],
   total: 0,
   discount: 0,
+  totalAfterDiscount: 0,
   isDiscountApplied: false,
   isCartModalOpen: false,
   value: {
@@ -112,7 +114,7 @@ const cartSlicerTwo = createSlice({
 
     applyDiscount: (state, action) => {
       state.discount = action.payload;
-      state.total = state.total - state.discount;
+      state.totalAfterDiscount = state.total - state.discount;
       state.isDiscountApplied = true;
     },
 
