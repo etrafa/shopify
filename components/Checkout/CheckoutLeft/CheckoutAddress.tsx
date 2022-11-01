@@ -27,6 +27,8 @@ const CheckoutAddress = () => {
     const newInput = { [e.target.name]: e.target.value };
 
     setCurrentAddress({ ...currentAddress, ...newInput });
+
+    console.log(currentAddress);
   };
 
   return (
@@ -83,13 +85,20 @@ const CheckoutAddress = () => {
         </div>
 
         <div className="relative w-full md:w-6/12 h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
-          <label className="absolute top-0 text-xs text-gray-500">State</label>
-          <input
-            name="state"
+          <label className="absolute top-0 text-xs text-gray-500">
+            Country
+          </label>
+          <select
+            value={currentAddress.country}
+            onChange={(e) =>
+              setCurrentAddress({ ...currentAddress, country: e.target.value })
+            }
             className="mt-5 text-base md:text-sm lg:text-base w-full bg-white"
-            onChange={addressChangeHandler}
-            value={currentAddress?.state}
-          />
+          >
+            {COUNTRY_LIST.map((country) => (
+              <option key={country}>{country}</option>
+            ))}
+          </select>
         </div>
         <div className="relative w-full md:w-6/12 h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
           <label className="absolute top-0 text-xs text-gray-500">
@@ -103,6 +112,33 @@ const CheckoutAddress = () => {
           />
         </div>
       </div>
+      {currentAddress.country === "United States" ||
+      currentAddress.country === "Canada" ||
+      currentAddress.country === "Germany" ? (
+        <div className="relative w-full h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
+          <label className="absolute top-0 text-xs text-gray-500">State</label>
+          <select
+            value={currentAddress.state}
+            onChange={(e) =>
+              setCurrentAddress({ ...currentAddress, state: e.target.value })
+            }
+            className="mt-5 text-base md:text-sm lg:text-base w-full bg-white border-0"
+          >
+            {currentAddress.country === "United States" &&
+              USA_STATE_LIST.map((state) => (
+                <option key={state}>{state}</option>
+              ))}
+            {currentAddress.country === "Canada" &&
+              CANADA_PROVINCES.map((state) => (
+                <option key={state}>{state}</option>
+              ))}
+            {currentAddress.country === "Germany" &&
+              GERMANY_STATES.map((state) => (
+                <option key={state}>{state}</option>
+              ))}
+          </select>
+        </div>
+      ) : null}
 
       <div className="relative w-full h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
         <label className="absolute top-0 text-xs text-gray-500">Phone</label>
