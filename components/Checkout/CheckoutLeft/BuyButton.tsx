@@ -53,6 +53,7 @@ const BuyButton = ({ currentAddress }: BuyButtonProps) => {
           {
             cartItems,
             createdAt: serverTimestamp(),
+            address: currentAddress,
           }
         );
         cartItems.map(async (item) => {
