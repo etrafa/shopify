@@ -27,8 +27,6 @@ const CheckoutAddress = () => {
     const newInput = { [e.target.name]: e.target.value };
 
     setCurrentAddress({ ...currentAddress, ...newInput });
-
-    console.log(currentAddress);
   };
 
   return (
@@ -89,7 +87,7 @@ const CheckoutAddress = () => {
             Country
           </label>
           <select
-            value={currentAddress.country}
+            value={currentAddress?.country}
             onChange={(e) =>
               setCurrentAddress({ ...currentAddress, country: e.target.value })
             }
@@ -112,9 +110,9 @@ const CheckoutAddress = () => {
           />
         </div>
       </div>
-      {currentAddress.country === "United States" ||
-      currentAddress.country === "Canada" ||
-      currentAddress.country === "Germany" ? (
+      {currentAddress?.country === "United States" ||
+      currentAddress?.country === "Canada" ||
+      currentAddress?.country === "Germany" ? (
         <div className="relative w-full h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
           <label className="absolute top-0 text-xs text-gray-500">State</label>
           <select
@@ -149,7 +147,7 @@ const CheckoutAddress = () => {
           value={currentAddress?.phone}
         />
       </div>
-      <BuyButton />
+      <BuyButton currentAddress={currentAddress} />
     </div>
   );
 };
