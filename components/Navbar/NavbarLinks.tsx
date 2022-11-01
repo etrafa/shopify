@@ -24,7 +24,11 @@ const NavbarLinks = () => {
       }
     >
       <ul
-        onClick={() => dispatch(TOGGLE_NAVBAR())}
+        onClick={() => {
+          if (isNavbarOpen) {
+            dispatch(TOGGLE_NAVBAR());
+          }
+        }}
         className="flex ml-4 flex-col lg:flex-row lg:justify-center pt-10 lg:pt-0"
       >
         <Link href="/">
