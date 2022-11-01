@@ -16,9 +16,8 @@ interface BuyButtonProps {
 }
 
 const BuyButton = ({ currentAddress }: BuyButtonProps) => {
-  const { cartItems } = useAppSelector((store) => store.cart);
+  const { cartItems, discount } = useAppSelector((store) => store.cart);
   const currentUser = useAuth();
-
   const [buyError, setBuyError] = useState("");
 
   const handleBuy = async (e: MouseEvent<HTMLButtonElement>) => {
@@ -54,6 +53,7 @@ const BuyButton = ({ currentAddress }: BuyButtonProps) => {
             cartItems,
             createdAt: serverTimestamp(),
             address: currentAddress,
+            discount: discount,
           }
         );
         cartItems.map(async (item) => {

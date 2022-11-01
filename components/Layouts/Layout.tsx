@@ -25,7 +25,7 @@ const Layout = ({ children }: LayoutProps) => {
     <>
       <Navbar />
       {isNavbarOpen ? null : <main className="lg:my-24">{children}</main>}
-      <Footer />
+      {isNavbarOpen ? null : <Footer />}
     </>
   );
 };

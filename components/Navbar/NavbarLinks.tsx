@@ -19,7 +19,7 @@ const NavbarLinks = () => {
     <section
       className={
         isNavbarOpen
-          ? `${styles.hamburgerMenu} absolute top-9 w-full z-50 h-12 bg-white`
+          ? `${styles.hamburgerMenu} absolute top-9 w-full z-50 h-12`
           : "hidden lg:block absolute top-32 lg:relative lg:top-0 w-full left-0 lg:w-auto bg-white"
       }
     >
@@ -29,7 +29,7 @@ const NavbarLinks = () => {
             dispatch(TOGGLE_NAVBAR());
           }
         }}
-        className="flex ml-4 flex-col lg:flex-row lg:justify-center pt-10 lg:pt-0"
+        className="flex ml-4 flex-col lg:flex-row lg:justify-center pt-10 lg:pt-0 z-50"
       >
         <Link href="/">
           <div className="bg-light-gray lg:bg-transparent w-11/12 lg:w-auto h-16 rounded-md mb-4 lg:my-0">
