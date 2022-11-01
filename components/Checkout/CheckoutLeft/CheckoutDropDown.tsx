@@ -15,12 +15,12 @@ const CheckoutDropDown = (props: CheckoutDropDownProps) => {
       setCurrentAddress({
         address: "",
         city: "",
-        country: "",
+        country: "United States",
         firstName: "",
         id: "",
         lastName: "",
         phone: "",
-        state: "",
+        state: "Alabama",
         zipCode: "",
       });
     } else {

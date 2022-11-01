@@ -46,7 +46,7 @@ const CheckoutAddress = () => {
           </label>
           <input
             name="firstName"
-            className="mt-4 text-base w-full bg-white"
+            className="mt-4 text-base w-full bg-white border-none outline-none"
             value={currentAddress?.firstName}
             onChange={addressChangeHandler}
           />
@@ -57,7 +57,7 @@ const CheckoutAddress = () => {
           </label>
           <input
             name="lastName"
-            className="mt-4 text-base w-full bg-white"
+            className="mt-4 text-base w-full bg-white border-none outline-none"
             onChange={addressChangeHandler}
             value={currentAddress?.lastName}
           />
@@ -67,7 +67,7 @@ const CheckoutAddress = () => {
         <label className="absolute top-0 text-xs text-gray-500">Address</label>
         <input
           name="address"
-          className="mt-4 text-base w-full bg-white"
+          className="mt-4 text-base w-full bg-white border-none outline-none"
           onChange={addressChangeHandler}
           value={currentAddress?.address}
         />
@@ -78,7 +78,7 @@ const CheckoutAddress = () => {
           <label className="absolute top-0 text-xs text-gray-500">City</label>
           <input
             name="city"
-            className="mt-4 text-base w-full bg-white"
+            className="mt-4 text-base w-full bg-white border-none outline-none"
             onChange={addressChangeHandler}
             value={currentAddress?.city}
           />
@@ -93,7 +93,7 @@ const CheckoutAddress = () => {
             onChange={(e) =>
               setCurrentAddress({ ...currentAddress, country: e.target.value })
             }
-            className="mt-5 text-base md:text-sm lg:text-base w-full bg-white"
+            className="mt-5 text-base md:text-sm lg:text-base w-full bg-white border-none outline-none"
           >
             {COUNTRY_LIST.map((country) => (
               <option key={country}>{country}</option>
@@ -106,7 +106,7 @@ const CheckoutAddress = () => {
           </label>
           <input
             name="zipCode"
-            className="mt-4 text-base w-full bg-white"
+            className="mt-4 text-base w-full bg-white border-none outline-none"
             onChange={addressChangeHandler}
             value={currentAddress?.zipCode}
           />
@@ -122,7 +122,7 @@ const CheckoutAddress = () => {
             onChange={(e) =>
               setCurrentAddress({ ...currentAddress, state: e.target.value })
             }
-            className="mt-5 text-base md:text-sm lg:text-base w-full bg-white border-0"
+            className="mt-5 text-base md:text-sm lg:text-base w-full bg-white border-none outline-none"
           >
             {currentAddress.country === "United States" &&
               USA_STATE_LIST.map((state) => (
@@ -144,7 +144,7 @@ const CheckoutAddress = () => {
         <label className="absolute top-0 text-xs text-gray-500">Phone</label>
         <input
           name="phone"
-          className="mt-4 text-base w-full bg-white"
+          className="mt-4 text-base w-full bg-white border-none outline-none"
           onChange={addressChangeHandler}
           value={currentAddress?.phone}
         />
