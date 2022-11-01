@@ -6,31 +6,31 @@ interface CheckoutDropDownProps {
   setCurrentAddress: Dispatch<SetStateAction<AddressProps>>;
 }
 
-const addressChangeHandler = (
-  e: ChangeEvent<HTMLSelectElement>,
-  setAddress: Dispatch<SetStateAction<AddressProps>>
-) => {
-  if (e.target.value === "new-address") {
-    setAddress({
-      address: "",
-      city: "",
-      country: "",
-      firstName: "",
-      id: "",
-      lastName: "",
-      phone: "",
-      state: "",
-      zipCode: "",
-    });
-  } else {
-    setAddress(JSON.parse(e.target.value));
-  }
-};
-
 const CheckoutDropDown = (props: CheckoutDropDownProps) => {
+  const dropDownAddressChangeHandler = (
+    e: ChangeEvent<HTMLSelectElement>,
+    setCurrentAddress: Dispatch<SetStateAction<AddressProps>>
+  ) => {
+    if (e.target.value === "new-address") {
+      setCurrentAddress({
+        address: "",
+        city: "",
+        country: "",
+        firstName: "",
+        id: "",
+        lastName: "",
+        phone: "",
+        state: "",
+        zipCode: "",
+      });
+    } else {
+      setCurrentAddress(JSON.parse(e.target.value));
+    }
+  };
+
   return (
     <select
-      onChange={(e) => addressChangeHandler(e, props.setCurrentAddress)}
+      onChange={(e) => dropDownAddressChangeHandler(e, props.setCurrentAddress)}
       className="border h-12 border-gray-300 pl-2 w-full"
     >
       {props.addresslist.map((address) => (

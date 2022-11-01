@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../firebase/firabaseConfig";
 import { getUserAddress } from "../../../src/features/addressSlicer";
 import { useAppDispatch, useAppSelector } from "../../../src/store";
@@ -23,6 +23,12 @@ const CheckoutAddress = () => {
     if (currentUser) dispatch(getUserAddress(currentUser.uid));
   }, [currentUser, dispatch]);
 
+  const addressChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newInput = { [e.target.name]: e.target.value };
+
+    setCurrentAddress({ ...currentAddress, ...newInput });
+  };
+
   return (
     <div className="w-11/12 max-w-lg mx-auto md:mx-0 lg:ml-auto lg:mr-12">
       <ShippingOptions />
@@ -37,9 +43,10 @@ const CheckoutAddress = () => {
             First Name
           </label>
           <input
-            disabled
+            name="firstName"
             className="mt-4 text-base w-full bg-white"
             value={currentAddress?.firstName}
+            onChange={addressChangeHandler}
           />
         </div>
         <div className="relative w-full md:w-6/12 h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
@@ -47,8 +54,9 @@ const CheckoutAddress = () => {
             Last Name
           </label>
           <input
-            disabled
+            name="lastName"
             className="mt-4 text-base w-full bg-white"
+            onChange={addressChangeHandler}
             value={currentAddress?.lastName}
           />
         </div>
@@ -56,8 +64,9 @@ const CheckoutAddress = () => {
       <div className="relative h-12 w-full border border-gray-400 pl-4 mt-4 rounded-sm">
         <label className="absolute top-0 text-xs text-gray-500">Address</label>
         <input
-          disabled
+          name="address"
           className="mt-4 text-base w-full bg-white"
+          onChange={addressChangeHandler}
           value={currentAddress?.address}
         />
       </div>
@@ -66,8 +75,9 @@ const CheckoutAddress = () => {
         <div className="relative w-full md:w-6/12 h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
           <label className="absolute top-0 text-xs text-gray-500">City</label>
           <input
-            disabled
+            name="city"
             className="mt-4 text-base w-full bg-white"
+            onChange={addressChangeHandler}
             value={currentAddress?.city}
           />
         </div>
@@ -75,8 +85,9 @@ const CheckoutAddress = () => {
         <div className="relative w-full md:w-6/12 h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
           <label className="absolute top-0 text-xs text-gray-500">State</label>
           <input
-            disabled
+            name="state"
             className="mt-5 text-base md:text-sm lg:text-base w-full bg-white"
+            onChange={addressChangeHandler}
             value={currentAddress?.state}
           />
         </div>
@@ -85,8 +96,9 @@ const CheckoutAddress = () => {
             ZIP code
           </label>
           <input
-            disabled
+            name="zipCode"
             className="mt-4 text-base w-full bg-white"
+            onChange={addressChangeHandler}
             value={currentAddress?.zipCode}
           />
         </div>
@@ -95,8 +107,9 @@ const CheckoutAddress = () => {
       <div className="relative w-full h-12 border border-gray-400 pl-4 mt-4 rounded-sm">
         <label className="absolute top-0 text-xs text-gray-500">Phone</label>
         <input
-          disabled
+          name="phone"
           className="mt-4 text-base w-full bg-white"
+          onChange={addressChangeHandler}
           value={currentAddress?.phone}
         />
       </div>
