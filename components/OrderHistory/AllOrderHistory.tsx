@@ -1,18 +1,12 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { IOrderHistory } from "../../interfaces/IOrderHistory";
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  CashIcon,
-} from "../../Utilities/Icons/Icons";
-import SingleOrder from "./SingleOrder";
+import { ArrowDownIcon, ArrowUpIcon } from "../../Utilities/Icons/Icons";
 
 type AllOrderHistoryProps = IOrderHistory;
 
 const AllOrderHistory = (props: AllOrderHistoryProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [historyTotal, setHistoryTotal] = useState(0);
 
   const newDate = new Date(props?.createdAt?.seconds * 1000)
     ?.toDateString()
@@ -137,7 +131,7 @@ const AllOrderHistory = (props: AllOrderHistoryProps) => {
               </div>
             </article>
             <article className="w-full lg:w-6/12 mt-2">
-              <h2 className="font-bold text-lg text-button-text px-8 my-4 text-center">
+              <h2 className="font-bold text-lg text-button-text px-8 my-4 text-center lg:text-right">
                 Billing Information
               </h2>
               <div className="flex px-6 gap-x-4 py-4 justify-center lg:justify-end">
@@ -150,12 +144,12 @@ const AllOrderHistory = (props: AllOrderHistoryProps) => {
                 )}
                 {props.boughtCurrency === "CAD" && (
                   <p className="text-button-text opacity-110 font-bold">
-                    ${total * 1.38} CAD
+                    ${(total * 1.38).toFixed(2)} CAD
                   </p>
                 )}
                 {props.boughtCurrency === "EUR" && (
                   <p className="text-button-text opacity-110 font-bold">
-                    {total * 1.04} €
+                    {(total * 1.04).toFixed(2)} €
                   </p>
                 )}
               </div>
@@ -168,12 +162,12 @@ const AllOrderHistory = (props: AllOrderHistoryProps) => {
                 )}
                 {props.boughtCurrency === "CAD" && (
                   <p className="line-through text-button-text opacity-110 font-bold">
-                    ${props.discount * 1.38 || 0} CAD
+                    ${(props.discount * 1.38).toFixed(2) || 0} CAD
                   </p>
                 )}
-                {props.boughtCurrency === "USD" && (
+                {props.boughtCurrency === "EUR" && (
                   <p className="line-through text-button-text opacity-110 font-bold">
-                    {props.discount * 1.04 || 0} €
+                    {(props.discount * 1.04).toFixed(2) || 0} €
                   </p>
                 )}
               </div>
