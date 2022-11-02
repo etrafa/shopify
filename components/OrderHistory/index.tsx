@@ -2,7 +2,7 @@ import { collection, DocumentData, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db, useAuth } from "../../firebase/firabaseConfig";
 import { IOrderHistory } from "../../interfaces/IOrderHistory";
-import OrderHistoryTable from "./OrderHistoryTable";
+import AllOrderHistory from "./AllOrderHistory";
 
 const OrderHistoryMain = () => {
   const currentUser = useAuth();
@@ -37,12 +37,14 @@ const OrderHistoryMain = () => {
     getOrderHistoryData();
   }, [currentUser]);
 
-  console.log(orderHistory);
-
   return (
-    <div>
-      {orderHistory && <OrderHistoryTable orderHistory={orderHistory} />}
-    </div>
+    <>
+      <h1 className="font-bold text-2xl text-button-text text-center">
+        Order History
+      </h1>
+      {orderHistory &&
+        orderHistory.map((item) => <AllOrderHistory key={item.id} {...item} />)}
+    </>
   );
 };
 export default OrderHistoryMain;

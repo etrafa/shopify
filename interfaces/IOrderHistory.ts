@@ -1,3 +1,4 @@
+import { AddressProps } from "../src/features/addressSlicer";
 import { ISingleProductForCart } from "./SingleProductForCart";
 
 export interface IOrderHistory {
@@ -7,4 +8,7 @@ export interface IOrderHistory {
     seconds: number;
   };
   id?: string;
+  address: AddressProps;
+  discount: number;
+  boughtCurrency: string;
 }

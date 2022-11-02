@@ -17,6 +17,7 @@ interface BuyButtonProps {
 
 const BuyButton = ({ currentAddress }: BuyButtonProps) => {
   const { cartItems, discount } = useAppSelector((store) => store.cart);
+  const { currentCurrency } = useAppSelector((store) => store.currency);
   const currentUser = useAuth();
   const [buyError, setBuyError] = useState("");
 
@@ -54,6 +55,7 @@ const BuyButton = ({ currentAddress }: BuyButtonProps) => {
             createdAt: serverTimestamp(),
             address: currentAddress,
             discount: discount,
+            boughtCurrency: currentCurrency,
           }
         );
         cartItems.map(async (item) => {
