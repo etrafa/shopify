@@ -1,6 +1,7 @@
 //icons
 import Link from "next/link";
 import Router from "next/router";
+import { useAuth } from "../../firebase/firabaseConfig";
 
 import { firebaseLogout } from "../../firebase/FirebaseAuthFunctions/firebaseLogout";
 import {
@@ -13,11 +14,16 @@ import {
 } from "../../Utilities/Icons/Icons";
 
 const MyAccount = () => {
+  const currentUser = useAuth();
+
   return (
     <div className="w-full mt-14 min-h-[50vh]">
       <h1 className="text-border text-2xl font-bold text-zinc-700 text-center">
         Account
       </h1>
+      <h4 className="text-center pt-4 font-semibold">
+        Welcome back {currentUser?.displayName}
+      </h4>
       <div className="grid grid-cols-2 justify-center w-full max-w-4xl mx-auto items-center gap-12 gap-y-24 md:gap-y-12 mt-24 place-items-center">
         <div className="w-44 h-16 ">
           <div className="flex mx-auto justify-center">
