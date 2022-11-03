@@ -21,7 +21,7 @@ const MyAccount = () => {
       <h1 className="text-border text-2xl font-bold text-zinc-700 text-center">
         Account
       </h1>
-      <h4 className="text-center pt-4 font-semibold">
+      <h4 className="text-center pt-4 font-semibold tracking-wider">
         Welcome back {currentUser?.displayName}
       </h4>
       <div className="grid grid-cols-2 justify-center w-full max-w-4xl mx-auto items-center gap-12 gap-y-24 md:gap-y-12 mt-24 place-items-center">
