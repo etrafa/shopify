@@ -81,16 +81,15 @@ const Login = () => {
           Create Account
         </p>
       </Link>
-      <Link href="/account/register">
-        <p
-          onClick={() =>
-            firebaseSignIn("testuser@gmail.com", "123456789", router)
-          }
-          className="text-xs text-button-text font-bold tracking-widest underline underline-offset-4 cursor-pointer decoration-slate-600 hover:decoration-black hover:decoration-2 py-6"
-        >
-          Sign in as demo user
-        </p>
-      </Link>
+
+      <p
+        onClick={() =>
+          firebaseSignIn("testuser@gmail.com", "123456789", router)
+        }
+        className="text-xs text-button-text font-bold tracking-widest underline underline-offset-4 cursor-pointer decoration-slate-600 hover:decoration-black hover:decoration-2 py-6"
+      >
+        Sign in as demo user
+      </p>
     </div>
   );
 };

@@ -33,9 +33,14 @@ const NavbarCurrency = () => {
   const dispatch = useAppDispatch();
   const [currentFlag, setCurrentFlag] = useState(US_FLAG);
 
+  console.log(isCurrencyModalOpen);
+
   return (
-    <div onClick={() => dispatch(TOGGLE_CURRENCY_MODAL())} className="relative">
-      <span className="inline-block w-8 h-8 pt-2 cursor-pointer">
+    <div className="relative">
+      <span
+        onClick={() => dispatch(TOGGLE_CURRENCY_MODAL())}
+        className="inline-block w-8 h-8 pt-2 cursor-pointer"
+      >
         <Image
           src={currentFlag}
           alt="currency-flag"
