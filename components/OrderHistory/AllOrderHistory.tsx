@@ -17,14 +17,6 @@ const AllOrderHistory = (props: AllOrderHistoryProps) => {
     props.cartItems.map((item) => (total += item.amount * item.price));
   }
 
-  if (!props) {
-    return (
-      <h2 className="flex items-center justify-center font-bold text-2xl">
-        No order yet...
-      </h2>
-    );
-  }
-
   if (props) {
     return (
       <div className="w-11/12 max-w-screen-lg border mx-auto rounded-md my-6 shadow-sm">
@@ -204,6 +196,14 @@ const AllOrderHistory = (props: AllOrderHistoryProps) => {
         )}
       </div>
     );
+  } else if (!props) {
+    return (
+      <h2 className="flex items-center justify-center font-bold text-2xl">
+        No order yet...
+      </h2>
+    );
+  } else {
+    return null;
   }
 };
 export default AllOrderHistory;
