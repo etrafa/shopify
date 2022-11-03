@@ -26,9 +26,7 @@ const Total = () => {
         )}
       </div>
     );
-  }
-
-  if (isDiscountApplied) {
+  } else if (isDiscountApplied) {
     return (
       <>
         <div className="flex mt-12 justify-between">
@@ -88,6 +86,8 @@ const Total = () => {
         </div>
       </>
     );
+  } else {
+    return null;
   }
 };
 export default Total;

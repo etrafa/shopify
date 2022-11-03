@@ -9,7 +9,6 @@ const CheckoutRight = () => {
       <hr className="border-border-gray mt-12" />
       <Coupon />
       <hr className="border-border-gray mt-4" />
-
       <Total />
     </div>
   );
