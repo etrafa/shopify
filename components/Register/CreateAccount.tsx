@@ -3,6 +3,7 @@ import { useState } from "react";
 import { signUpWithEmail } from "../../firebase/FirebaseAuthFunctions/signUpWithEmail";
 import CustomInput from "../../Utilities/Input/CustomInput";
 import * as yup from "yup";
+import { useRouter } from "next/router";
 
 const CreateAccount = () => {
   //this states are necessary for appyling CSS Animation
@@ -10,6 +11,9 @@ const CreateAccount = () => {
   const [lastNameInputClicked, setLastNameInputClicked] = useState(false);
   const [emailInputClicked, setEmailInputClicked] = useState(false);
   const [passwordInputClicked, setPasswordInputClicked] = useState(false);
+  const [signUpStatusMessage, setSignUpStatusMessage] = useState("");
+
+  const router = useRouter();
 
   const formik = useFormik({
     initialValues: {
@@ -33,7 +37,9 @@ const CreateAccount = () => {
         values.firstName,
         values.lastName,
         values.email,
-        values.password
+        values.password,
+        setSignUpStatusMessage,
+        router
       );
     },
   });
@@ -60,7 +66,6 @@ const CreateAccount = () => {
           isFormikTouched={formik.touched.firstName}
           formikErrorMessage={formik.errors.firstName}
         />
-
         <CustomInput
           type="text"
           value={formik.values.lastName}
@@ -100,6 +105,18 @@ const CreateAccount = () => {
           isFormikTouched={formik.touched.password}
           formikErrorMessage={formik.errors.password}
         />
+        {signUpStatusMessage && (
+          <p
+            className={
+              signUpStatusMessage === "Account has been created successfully."
+                ? "text-green-600 my-4 font-semibold tracking-widest"
+                : "text-main-red my-4 font-semibold tracking-widest"
+            }
+          >
+            {signUpStatusMessage}
+          </p>
+        )}
+
         <button
           type="submit"
           className="border w-44 h-12 bg-light-gray text-sm tracking-widest hover:scale-105 ease-in-out text-button-text"
