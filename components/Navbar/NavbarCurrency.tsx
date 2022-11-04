@@ -33,8 +33,6 @@ const NavbarCurrency = () => {
   const dispatch = useAppDispatch();
   const [currentFlag, setCurrentFlag] = useState(US_FLAG);
 
-  console.log(isCurrencyModalOpen);
-
   return (
     <div className="relative">
       <span
